@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="app_name">Kegelverwaltung</string>
+    <string name="txt_kegelverwaltung_titel">Kegelverwaltung</string>
+    <string name="txt_ligaverwaltung_titel">Ligaverwaltung</string>
+    <string name="txt_ergebnisse_titel">Ergebnisse</string>
+    <string name="txt_schnittlisten_titel">Schnittlisten</string>
+    <string name="txt_tabellen_titel">Tabellen</string>
+    <string name="sf_ligaverwaltung_titel">Ligaverwaltung</string>
+    <string name="sf_tabellen_titel">Tabellen</string>
+    <string name="sf_schnittlisten_titel">Schnittliste</string>
+    <string name="sf_ergebnisse_titel">Ergebnisse</string>
+    <string name="txt_spieler_auflisten_titel">Spieler</string>
+    <string name="txt_spieler_auflisten_keineDaten">Noch keine Spielerdaten vorhanden</string>
+    <string name="txt_spieler_auflisten_spielerauswahl">Spieler auswählen</string>
+    <string name="txt_col_spieler_id">ID</string>
+    <string name="txt_col_spieler_value">Name</string>
+    
+    <string name="men_klasse_anlegen">Klasse anlegen</string>
+    <string name="men_mannschaft_anlegen">Mannschaft anlegen</string>
+    <string name="men_spieler_anlegen">Spieler anlegen</string>
+    <string name="men_verein_anlegen">Verein anlegen</string>
+    
+    <string name="men_spieler_loeschen">Spieler löschen</string>
+    
+    
+    <string name="txt_spieler_neuanlegen_titel">Spieler neu anlegen</string>
+    <string name="txt_spieler_neuanlegen_name">Name:</string>
+    <string name="edt_spieler_neuanlegen_name">Name Vorname</string>
+    <string name="sf_spieler_neuanlagen_ok">Speichern</string>
+    <string name="sf_spieler_neuanlagen_abbrechen">Abbrechen</string>
+    
+    <string name="txt_mannschaft_neuanlegen_titel">Mannschaft neu anlegen</string>
+    <string name="txt_mannschaft_neuanlegen_name">Name:</string>
+    <string name="edt_mannschaft_neuanlegen_name">Mannschaft</string>
+    <string name="sf_mannschaft_neuanlagen_ok">Speichern</string>
+    <string name="sf_mannschaft_neuanlagen_abbrechen">Abbrechen</string>
+    
+    <string name="txt_klasse_neuanlegen_titel">Klasse neu anlegen</string>
+    <string name="txt_klasse_neuanlegen_name">Name:</string>
+    <string name="edt_klasse_neuanlegen_name">Klasse</string>
+    <string name="sf_klasse_neuanlagen_ok">Speichern</string>
+    <string name="sf_klasse_neuanlagen_abbrechen">Abbrechen</string>
+    
+    <string name="txt_verein_neuanlegen_titel">Verein neu anlegen</string>
+    <string name="txt_verein_neuanlegen_name">Name:</string>
+    <string name="edt_verein_neuanlegen_name">Verein</string>
+    <string name="sf_verein_neuanlagen_ok">Speichern</string>
+    <string name="sf_verein_neuanlagen_abbrechen">Abbrechen</string>
+    
+    <string name="col_ergebnis_spiel_id">Spiel</string>
+    <string name="col_ergebnis_gesamtergebnis">Gesamt</string>
+    <string name="col_ergebnis_volle_1">V1</string>
+    <string name="col_ergebnis_abraeumen_1">A1</string>
+    <string name="col_ergebnis_fehler_1">F1</string>
+    <string name="col_ergebnis_volle_2">V2</string>
+    <string name="col_ergebnis_abraeumen_2">A2</string>
+    <string name="col_ergebnis_fehler_2">F2</string>
+    
+    
+    <string name="txt_ergebnis_anzeigen_titel">Ergebnisse</string>
+    
+    <string name="sf_ergebnis_neuanlagen">neuer Eintrag</string>
+    <string name="sf_ergebnis_loeschen">Löschen</string>
+    
+    <string name="txt_ergebnis_neuanlegen_titel">Ergebnis eintragen</string>
+    <string name="txt_ergebnis_neuanlegen_gesamtergebnis">Gesamt:</string>
+    <string name="edt_ergebnis_neuanlegen_gesamtergebnis">0</string>
+	<string name="txt_ergebnis_neuanlegen_ergebnis_50_1">Ergebnis 1.DG:</string>
+	<string name="edt_ergebnis_neuanlegen_ergebnis_50_1">1</string>	
+	<string name="txt_ergebnis_neuanlegen_ergebnis_50_2">Ergebnis 2.DG:</string>
+	<string name="edt_ergebnis_neuanlegen_ergebnis_50_2">2</string>
+	<string name="txt_ergebnis_neuanlegen_volle_50_1">Volle 1.DG:</string>
+	<string name="edt_ergebnis_neuanlegen_volle_50_1">3</string>	
+	<string name="txt_ergebnis_neuanlegen_volle_50_2">Volle 2.DG:</string>
+	<string name="edt_ergebnis_neuanlegen_volle_50_2">4</string>	
+	<string name="txt_ergebnis_neuanlegen_abraeumen_50_1">Abräumen 1.DG:</string>
+	<string name="edt_ergebnis_neuanlegen_abraeumen_50_1">5</string>	
+	<string name="txt_ergebnis_neuanlegen_abraeumen_50_2">Abräumen 2.DG:</string>	
+	<string name="edt_ergebnis_neuanlegen_abraeumen_50_2">6</string>	
+	<string name="txt_ergebnis_neuanlegen_fehl_50_1">Fehler 1.DG:</string>
+	<string name="edt_ergebnis_neuanlegen_fehl_50_1">7</string>	
+	<string name="txt_ergebnis_neuanlegen_fehl_50_2">Fehler 2.DG:</string>
+	<string name="edt_ergebnis_neuanlegen_fehl_50_2">8</string>
+    
+    <string name="men_ergebnis_loeschen">Ergebnis löschen</string>
+    
+    <string name="sf_ergebnis_neuanlagen_ok">Speichern</string>
+    <string name="sf_ergebnis_neuanlagen_abbrechen">Abbrechen</string>
+    
+    <string name="sf_spieler_auflisten_loeschen">Spieler löschen</string>
+    
+    
+</resources>

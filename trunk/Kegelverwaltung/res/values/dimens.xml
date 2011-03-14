@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="textview_height">25dp</dimen>
+    <dimen name="textview_width">150dp</dimen>
+    <dimen name="ball_radius">30dp</dimen>
+    <dimen name="font_size">16sp</dimen>
+    
+     <dimen name="txt_spieler_anlegen_column_width">80dip</dimen>
+     <dimen name="edt_spieler_anlegen_column_width">200dip</dimen>
+     
+     <dimen name="txt_mannschaft_anlegen_column_width">80dip</dimen>
+     <dimen name="edt_mannschaft_anlegen_column_width">200dip</dimen>
+     
+     <dimen name="txt_klasse_anlegen_column_width">80dip</dimen>
+     <dimen name="edt_klasse_anlegen_column_width">200dip</dimen>
+     
+     <dimen name="txt_verein_anlegen_column_width">80dip</dimen>
+     <dimen name="edt_verein_anlegen_column_width">200dip</dimen>
+     
+     <dimen name="txt_ergebnis_anlegen_column_width">150dip</dimen>
+     <dimen name="edt_ergebnis_anlegen_column_width">100dip</dimen>
+     <dimen name="edt_ergebnis_anlegen_row_filler">5dip</dimen>
+     
+</resources>

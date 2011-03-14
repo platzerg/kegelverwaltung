@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_height="match_parent"
+	android:layout_width="match_parent" android:background="@color/WINDOW_BACKGROUND_COLOR">
+	<LinearLayout android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:id="@id/linearLayoutHeader" android:layout_marginLeft="5dip"
+		android:layout_marginRight="5dip" android:layout_marginBottom="5dip">
+		<TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center_vertical|center_horizontal"
+			style="@style/TitelTextBold" android:id="@id/txt_mannschaft_neuanlegen_titel" android:text="@string/txt_mannschaft_neuanlegen_titel"></TextView>
+	</LinearLayout>
+	<TableLayout android:id="@+id/tableLayout1" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_marginLeft="5dip" android:layout_marginRight="5dip" android:layout_marginBottom="5dip">
+		
+		<TableRow android:id="@+id/tableRow2" 
+			android:layout_width="match_parent" 
+			android:layout_height="wrap_content">
+			<TextView 
+				android:width="@dimen/txt_mannschaft_anlegen_column_width"
+				android:layout_width="wrap_content" 
+				android:layout_height="wrap_content" android:id="@id/txt_mannschaft_neuanlegen_name" android:text="@string/txt_mannschaft_neuanlegen_name">
+				<!-- android:layout_column="1" -->
+			</TextView>
+			<EditText 
+				android:width="@dimen/edt_mannschaft_anlegen_column_width"
+				android:layout_height="wrap_content" 
+				android:background="@color/TITEL_COLOR" 
+				android:layout_width="match_parent" android:id="@id/edt_mannschaft_neuanlegen_name" android:text="@string/edt_mannschaft_neuanlegen_name">
+			</EditText>
+		</TableRow>
+	</TableLayout>
+	<LinearLayout android:layout_width="match_parent"
+		android:id="@id/linearLayoutFooter"
+		android:layout_marginLeft="5dip" android:layout_marginRight="5dip"
+		android:layout_height="wrap_content" android:layout_weight="1">
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sf_mannschaft_neuanlagen_ok" android:layout_gravity="bottom" android:id="@id/sf_mannschaft_neuanlagen_ok"></Button>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom" android:id="@id/sf_mannschaft_neuanlagen_abbruch" android:text="@string/sf_mannschaft_neuanlagen_abbrechen"></Button>
+	</LinearLayout>
+</LinearLayout>

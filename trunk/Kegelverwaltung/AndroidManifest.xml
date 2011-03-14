@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="platzerworld.kegeln"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="9"/>
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@style/PlatzerworldTheme">
+        <activity android:label="@string/app_name" android:name=".gui.Startseite" android:theme="@style/PlatzerworldTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/PlatzerworldTheme" android:name=".gui.LigaVerwalten">
+		</activity>
+        <activity android:name=".gui.ErgebnisseAnzeigen" android:theme="@style/PlatzerworldTheme"></activity>
+        <activity android:name=".gui.SchnittlisteAnzeigen" android:theme="@style/PlatzerworldTheme"></activity>
+        <activity android:name=".gui.TabellenAnzeigen" android:theme="@style/PlatzerworldTheme"></activity>
+        <activity android:name=".gui.SpielerAnlegen" android:theme="@style/PlatzerworldTheme"></activity>
+        <activity android:theme="@style/PlatzerworldTheme" android:name=".gui.KlasseAnlegen"></activity>
+        <activity android:theme="@style/PlatzerworldTheme" android:name=".gui.MannschaftAnlegen"></activity>
+        <activity android:theme="@style/PlatzerworldTheme" android:name=".gui.VereinAnlegen"></activity>
+        <activity android:theme="@style/PlatzerworldTheme" android:name=".gui.ErgebnisAnlegen"></activity>
+    </application>
+</manifest>
