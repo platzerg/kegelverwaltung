@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="geschlecht">
+        <item>Herren</item>
+        <item>Damen</item>
+        <item>Jugend</item>
+   	</string-array>   	
+   	<integer-array name="geschlecht_id">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+   	</integer-array>
+   	
+ 	<string-array name="kegelklassen">
+        <item>Bezirksoberliga</item>
+        <item>Bezirksliga</item>
+        <item>Bezirksklasse</item>
+        <item>Kreisliga</item>
+        <item>Kreisklasse</item>
+        <item>A-Klasse</item>
+        <item>B-Klasse</item>
+        <item>C-Klasse</item>
+   	</string-array>   	
+   	<integer-array name="kegelklassen_id">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+   	</integer-array>
+   	
+   	 <string-array name="Sortierung">
+      <item>Standard</item>
+      <item>Name</item>
+  </string-array>
+
+</resources>

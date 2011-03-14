@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_height="match_parent"
+	android:layout_width="match_parent" android:background="@color/WINDOW_BACKGROUND_COLOR" android:id="@id/txt_schnittlisten_titel">
+	<LinearLayout android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:id="@id/linearLayoutHeader" android:layout_marginLeft="5dip"
+		android:layout_marginRight="5dip">
+		<TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center_vertical|center_horizontal"
+			style="@style/TitelTextBold" android:id="@id/txt_schnittlisten_titel" android:text="@string/txt_schnittlisten_titel"></TextView>
+	</LinearLayout>
+	<LinearLayout android:layout_width="match_parent"
+		android:id="@id/linearLayoutContent" android:layout_marginLeft="5dip" android:layout_marginRight="5dip"
+		android:layout_marginTop="5dip" android:orientation="vertical"
+		android:layout_height="wrap_content">
+		<Button android:id="@id/sf_ergebnisse" android:layout_width="match_parent"
+			android:layout_height="wrap_content" android:text="@string/sf_ergebnisse_titel"
+			style="@style/PlatzerworldTheme.Button"></Button>
+		<Button android:layout_height="wrap_content"
+			android:layout_width="match_parent" android:id="@id/sf_ligaverwaltung"
+			android:text="@string/sf_ligaverwaltung_titel" style="@style/PlatzerworldTheme.Button"></Button>
+		<Button android:layout_height="wrap_content"
+			android:layout_width="match_parent" android:id="@id/sf_tabellen"
+			android:text="@string/sf_tabellen_titel" style="@style/PlatzerworldTheme.Button"></Button>
+		<Button android:layout_height="wrap_content"
+			android:layout_width="match_parent" android:id="@id/sf_schnittlisten"
+			android:text="@string/sf_schnittlisten_titel" style="@style/PlatzerworldTheme.Button"></Button>
+	</LinearLayout>
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_weight="0.5" android:id="@id/linearLayoutFooter"
+		android:layout_marginLeft="5dip" android:layout_marginRight="5dip"
+		android:layout_height="wrap_content"></LinearLayout>
+</LinearLayout>

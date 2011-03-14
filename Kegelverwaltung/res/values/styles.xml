@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+	<style name="TitelTextBold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/TITEL_COLOR</item>
+	</style>
+	
+	
+	<style name ="MyTextAppearance" parent="@android:style/TextAppearance">
+		<item name="android:textSize">12sp</item>
+	</style>
+	
+	
+	
+	<style name="PlatzerworldTheme" parent="android:Theme.Light">
+		<item name="android:windowNoTitle">true</item>
+		 <item name="android:windowBackground">@color/WINDOW_BACKGROUND_COLOR</item>
+	    <item name="android:listViewStyle">@style/MyListView</item>
+	    <item name="android:spinnerStyle">@style/MySpinnerStyle</item>
+	    <item name="android:spinnerItemStyle">@style/MySpinnterItem</item>
+	    
+	</style>
+	
+	<!--Spinner -->   
+	<style name="MySpinnerStyle" parent="@android:style/Widget.Spinner">
+		<item name="android:clickable">true</item>	
+	</style>
+	
+	<style name="MySpinnterItem" parent="@android:style/Widget.TextView.SpinnerItem">
+		<item name="android:textAppearance">@style/MyTextAppearanceSpinnerItem</item>
+	</style>
+	<style name="MyTextAppearanceSpinnerItem" parent="@android:style/TextAppearance.Widget.TextView.SpinnerItem">
+		<item name="android:textColor">@color/SPINNER_TEXTCOLOR</item>
+		<item name="android:textSize">12sp</item>
+	</style>	
+	
+	 <!-- Button-Style -->   
+	<style name="PlatzerworldTheme.Button" >
+	 	<item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/BUTTON_TEXT</item>
+	</style>	
+	
+	<!-- ListView-Style -->
+	<style name="MyListView" parent="@android:style/Widget.ListView">
+	    <!--  item name="android:listSelector">@drawable/icon</item>  -->
+	    <item name="android:textSize">12sp</item>
+	</style>
+
+</resources>

@@ -1,0 +1,24 @@
+<menu xmlns:android=
+    "http://schemas.android.com/apk/res/android">
+  
+  <item
+    android:id="@id/opt_klasse_anlegen"
+    android:title="@string/men_klasse_anlegen"/>  
+    
+  <item
+    android:id="@id/opt_mannschaft_anlegen"
+    android:title="@string/men_mannschaft_anlegen"/>   
+    
+  <item
+    android:id="@id/opt_spieler_anlegen"
+    android:title="@string/men_spieler_anlegen"/>   
+    
+  <item
+    android:id="@id/opt_verein_anlegen"
+    android:title="@string/men_verein_anlegen"/> 
+    
+  <item
+    android:id="@id/opt_spieler_loeschen"
+    android:title="@string/men_spieler_loeschen"/>  
+    
+</menu>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_height="match_parent"
+	android:layout_width="match_parent" android:background="@color/WINDOW_BACKGROUND_COLOR">
+    
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginRight="5dip" android:layout_marginLeft="5dip" android:id="@id/linearLayoutHeader" android:layout_weight="0.1">
+        <TextView android:gravity="center_vertical|center_horizontal" android:layout_width="fill_parent" style="@style/TitelTextBold" android:layout_height="wrap_content" android:text="@string/txt_ligaverwaltung_titel" android:id="@id/txt_kegelverwaltung_titel"></TextView>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginRight="5dip" android:layout_marginLeft="5dip" android:id="@+id/main" android:orientation="vertical" android:layout_marginTop="5dip" android:layout_weight="5">
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/auswahl" android:orientation="horizontal">
+            <Spinner android:layout_width="match_parent" android:layout_height="35dip" android:id="@id/sp_klassen" android:layout_weight="1" android:entries="@array/kegelklassen"></Spinner>
+            <Spinner android:layout_width="match_parent" android:layout_height="35dip" android:id="@id/sp_mannschaften" android:layout_weight="0.8"></Spinner>
+        </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/TITEL_COLOR" android:id="@+id/header">
+            <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/txt_col_spieler_id" android:id="@id/col_spieler_id" android:width="80dip"></TextView>
+            <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/txt_col_spieler_value" android:id="@id/col_spieler_value" android:width="240dip"></TextView>
+    </LinearLayout>
+        <View android:layout_width="fill_parent" android:id="@+id/view1" android:layout_height="1dip" android:background="?android:attr/listDivider"></View>
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:id="@+id/layout">
+            <ListView android:layout_width="wrap_content" android:layout_height="wrap_content" android:textFilterEnabled="true" android:id="@+id/android:list" android:cacheColorHint="@color/WINDOW_BACKGROUND_COLOR"></ListView>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/txt_spieler_auflisten_keineDaten" android:id="@+id/android:empty"></TextView>
+        </LinearLayout>
+    </LinearLayout>
+	<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/linearLayout1" android:layout_weight="1">
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@id/sf_spieler_auflisten_loeschen" android:text="@string/sf_spieler_auflisten_loeschen" android:enabled="false"></Button>
+	</LinearLayout>
+</LinearLayout>
+
+
+
+
+
+
+
+
