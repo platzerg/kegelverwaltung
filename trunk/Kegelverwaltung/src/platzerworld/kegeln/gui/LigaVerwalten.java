@@ -165,10 +165,7 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		if (item.getItemId() == R.id.opt_verein_anlegen) {
 			anlegenVerein();
 			return true;
-		} else if (item.getItemId() == R.id.opt_spieler_loeschen) {
-			loeschenSpieler();
-			return true;
-		}
+		} 
 		return super.onContextItemSelected(item);
 	}
 
@@ -241,7 +238,7 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 			mHashMapListForListView.add(entitiesHashMap);
 		}
 
-		SimpleAdapter adapterForList = new SimpleAdapter(this, mHashMapListForListView, R.layout.grid_item, from, to);
+		SimpleAdapter adapterForList = new SimpleAdapter(this, mHashMapListForListView, R.layout.spieler_grid_item, from, to);
 
 		setListAdapter(adapterForList);
 	}

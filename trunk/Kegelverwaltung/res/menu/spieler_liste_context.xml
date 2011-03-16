@@ -17,8 +17,4 @@
     android:id="@id/opt_verein_anlegen"
     android:title="@string/men_verein_anlegen"/> 
     
-  <item
-    android:id="@id/opt_spieler_loeschen"
-    android:title="@string/men_spieler_loeschen"/>  
-    
 </menu>
