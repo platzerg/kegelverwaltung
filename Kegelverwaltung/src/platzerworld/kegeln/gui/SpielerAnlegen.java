@@ -43,8 +43,6 @@ public class SpielerAnlegen extends Activity implements ConstantsIF{
 	private SpielerSpeicher mSpielerSpeicher;
 	
 	private SpielerVO mSpielerVO;
-	
-	private KeyValueVO klasseVO;
 	private KeyValueVO mannschaftVO;
 
 	@Override
@@ -58,12 +56,9 @@ public class SpielerAnlegen extends Activity implements ConstantsIF{
 		if (extras == null) {
 			return;
 		}
-		klasseVO = (KeyValueVO) extras.getSerializable(INTENT_EXTRA_KLASSE);
 		mannschaftVO = (KeyValueVO) extras.getSerializable(INTENT_EXTRA_MANNSCHAFT);
 		
-		if (klasseVO != null && mannschaftVO != null) {
-			Toast.makeText(this, "Spieler anlegen: " +klasseVO.value + " " +mannschaftVO.value, Toast.LENGTH_SHORT).show();
-		}
+		
 
 		final Button speichernButton = (Button) findViewById(R.id.sf_spieler_neuanlagen_ok);
 		speichernButton.setOnClickListener(mSpielerAnlegenOkListener);
