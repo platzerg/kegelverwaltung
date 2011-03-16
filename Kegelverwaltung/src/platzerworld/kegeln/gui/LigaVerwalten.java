@@ -131,9 +131,7 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	 * @version Android 1.6 >
 	 */
 	public void onClickSpielerLoeschen(final View sfNormal) {
-		Toast.makeText(this, "ERGEBNIS: SpielerId: " +mEdSelectedItemId , Toast.LENGTH_SHORT).show();
 		mSpielerSpeicher.loescheSpielerById(mEdSelectedItemId);
-		Toast.makeText(this, "ERGEBNIS: SpielerId: " +mEdSelectedItemId + " gelöscht.", Toast.LENGTH_SHORT).show();
 		((Button) findViewById(R.id.sf_spieler_auflisten_loeschen)).setEnabled(false);
 		
 		zeigeSpielerZurMannschaftId(mMannschaftId);
