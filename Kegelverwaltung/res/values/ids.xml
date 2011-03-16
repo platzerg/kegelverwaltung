@@ -11,6 +11,8 @@
 	<item type="id" name="sf_ergebnisse" />
 	
 	
+	<item type="id" name="opt_kegelverwaltung_hilfe" />
+	<item type="id" name="opt_kegelverwaltung_einstellung" />
 	
 	<item type="id" name="txt_kegelverwaltung_titel" />
 	<item type="id" name="txt_ergebnisse_titel" />

@@ -63,23 +63,23 @@
     
     <string name="txt_ergebnis_neuanlegen_titel">Ergebnis eintragen</string>
     <string name="txt_ergebnis_neuanlegen_gesamtergebnis">Gesamt:</string>
-    <string name="edt_ergebnis_neuanlegen_gesamtergebnis">0</string>
+    <string name="edt_ergebnis_neuanlegen_gesamtergebnis"></string>
 	<string name="txt_ergebnis_neuanlegen_ergebnis_50_1">Ergebnis 1.DG:</string>
-	<string name="edt_ergebnis_neuanlegen_ergebnis_50_1">1</string>	
+	<string name="edt_ergebnis_neuanlegen_ergebnis_50_1"></string>	
 	<string name="txt_ergebnis_neuanlegen_ergebnis_50_2">Ergebnis 2.DG:</string>
-	<string name="edt_ergebnis_neuanlegen_ergebnis_50_2">2</string>
+	<string name="edt_ergebnis_neuanlegen_ergebnis_50_2"></string>
 	<string name="txt_ergebnis_neuanlegen_volle_50_1">Volle 1.DG:</string>
-	<string name="edt_ergebnis_neuanlegen_volle_50_1">3</string>	
+	<string name="edt_ergebnis_neuanlegen_volle_50_1"></string>	
 	<string name="txt_ergebnis_neuanlegen_volle_50_2">Volle 2.DG:</string>
-	<string name="edt_ergebnis_neuanlegen_volle_50_2">4</string>	
+	<string name="edt_ergebnis_neuanlegen_volle_50_2"></string>	
 	<string name="txt_ergebnis_neuanlegen_abraeumen_50_1">Abräumen 1.DG:</string>
-	<string name="edt_ergebnis_neuanlegen_abraeumen_50_1">5</string>	
+	<string name="edt_ergebnis_neuanlegen_abraeumen_50_1"></string>	
 	<string name="txt_ergebnis_neuanlegen_abraeumen_50_2">Abräumen 2.DG:</string>	
-	<string name="edt_ergebnis_neuanlegen_abraeumen_50_2">6</string>	
+	<string name="edt_ergebnis_neuanlegen_abraeumen_50_2"></string>	
 	<string name="txt_ergebnis_neuanlegen_fehl_50_1">Fehler 1.DG:</string>
-	<string name="edt_ergebnis_neuanlegen_fehl_50_1">7</string>	
+	<string name="edt_ergebnis_neuanlegen_fehl_50_1"></string>	
 	<string name="txt_ergebnis_neuanlegen_fehl_50_2">Fehler 2.DG:</string>
-	<string name="edt_ergebnis_neuanlegen_fehl_50_2">8</string>
+	<string name="edt_ergebnis_neuanlegen_fehl_50_2"></string>
     
     <string name="men_ergebnis_loeschen">Ergebnis löschen</string>
     

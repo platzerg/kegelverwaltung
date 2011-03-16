@@ -5,9 +5,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Startseite extends Activity {
 
@@ -34,6 +38,7 @@ public class Startseite extends Activity {
 		// hinzufuegen
 		final Button buttonSchnittlisten = (Button) findViewById(R.id.sf_schnittlisten);
 		buttonSchnittlisten.setOnClickListener(mSchnittlisteListener);
+				
 	}
 
 	/*
@@ -46,6 +51,9 @@ public class Startseite extends Activity {
 		Log.d(TAG, "onDestroy");
 		super.onDestroy();
 	}
+	
+	
+
 
 	/**
 	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
@@ -162,4 +170,30 @@ public class Startseite extends Activity {
 		final Intent i = new Intent(this, SchnittlisteAnzeigen.class);
 		startActivity(i);
 	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.kegelverwaltung_option_menu, menu);
+	    return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return(applyMenuChoice(item) || super.onOptionsItemSelected(item));
+	}
+	
+	private boolean applyMenuChoice(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.opt_kegelverwaltung_einstellung:
+			Toast.makeText(this, "Einstellung", Toast.LENGTH_SHORT);
+			return(true);
+		case R.id.opt_kegelverwaltung_hilfe:
+			Toast.makeText(this, "Hilfe", Toast.LENGTH_SHORT);
+			return(true);
+		}
+		
+		return false;
+	}
+	
 }

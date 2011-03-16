@@ -24,6 +24,8 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -390,10 +392,6 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	private void anlegenVerein() {
 		final Intent intent = new Intent(this, VereinAnlegen.class);
 		startActivityForResult(intent, REQUEST_CODE_VEREIN_NEUANLEGEN);
-	}
-
-	private void loeschenSpieler() {
-
 	}
 
 }
