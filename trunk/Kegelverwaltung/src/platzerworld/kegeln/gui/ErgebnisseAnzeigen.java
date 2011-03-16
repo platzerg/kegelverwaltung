@@ -130,10 +130,8 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 	 * @version Android 1.6 >
 	 */
 	public void onClickErgebnisLoeschen(final View sfNormal) {
-		Toast.makeText(this, "ERGEBNIS: SpielId: " +mEdSelectedItemId , Toast.LENGTH_SHORT).show();
 		mErgebnisSpeicher.loescheErgebnis(mEdSelectedItemId);
 		((Button) findViewById(R.id.sf_ergebnis_loeschen)).setEnabled(false);
-		Toast.makeText(this, "ERGEBNIS: SpielId: " +mEdSelectedItemId + " gelöscht.", Toast.LENGTH_SHORT).show();
 		zeigeErgebnisse();
 	}
 
