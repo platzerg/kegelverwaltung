@@ -28,8 +28,6 @@
 	<item type="id" name="opt_spieler_anlegen" />
 	<item type="id" name="opt_verein_anlegen" />
 	
-	<item type="id" name="opt_spieler_loeschen" />
-	
 	<item type="id" name="txt_spieler_neuanlegen_titel" />
 	<item type="id" name="txt_spieler_neuanlegen_name" />
 	<item type="id" name="edt_spieler_neuanlegen_name" />

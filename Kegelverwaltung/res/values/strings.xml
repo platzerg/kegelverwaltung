@@ -20,9 +20,7 @@
     <string name="men_mannschaft_anlegen">Mannschaft anlegen</string>
     <string name="men_spieler_anlegen">Spieler anlegen</string>
     <string name="men_verein_anlegen">Verein anlegen</string>
-    
-    <string name="men_spieler_loeschen">Spieler löschen</string>
-    
+   
     
     <string name="txt_spieler_neuanlegen_titel">Spieler neu anlegen</string>
     <string name="txt_spieler_neuanlegen_name">Name:</string>
