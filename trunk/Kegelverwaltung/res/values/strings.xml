@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="app_name">Kegelverwaltung</string>
+    
+    <string name="opt_kegelverwaltung_hilfe">Hilfe</string>
+    <string name="opt_kegelverwaltung_einstellung">Einstellungen</string>
+    <string name="opt_kegelverwaltung_beenden">Beenden</string>
+    
     <string name="txt_kegelverwaltung_titel">Kegelverwaltung</string>
     <string name="txt_ligaverwaltung_titel">Ligaverwaltung</string>
     <string name="txt_ergebnisse_titel">Ergebnisse</string>
