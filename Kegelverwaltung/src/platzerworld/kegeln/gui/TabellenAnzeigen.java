@@ -16,6 +16,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
@@ -37,10 +38,14 @@ public class TabellenAnzeigen extends Activity {
 		super.onCreate(icicle);
 		Log.d(TAG, "onCreate(): entered...");
 
-		// start tracing to "/sdcard/listview.trace"
-		// Debug.startMethodTracing("listview");
-
+		
 		setContentView(R.layout.tabellen_anzeigen);
+		         
+        WebView webView= (WebView) findViewById(R.id.wv_tabellen_anzeigen);
+        
+		webView.getSettings().setJavaScriptEnabled(true);
+		webView.loadUrl("http://www.kegelkreisrunde.de/punktspielbetrieb/tabellen/index.html");	
+		
 
 
 	}

@@ -2,7 +2,6 @@ package platzerworld.kegeln.gui;
 
 import platzerworld.kegeln.R;
 import platzerworld.kegeln.gui.einstellung.EinstellungenBearbeiten;
-import platzerworld.kegeln.gui.einstellung.EinstellungenBearbeiten;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -166,7 +165,7 @@ public class Startseite extends Activity {
 	 * @version Android 1.6 >
 	 */
 	public void onClickTabellenAnzeigen(final View sfNormal) {
-		final Intent settingsActivity = new Intent(getBaseContext(), EinstellungenBearbeiten.class);
+		final Intent settingsActivity = new Intent(this, TabellenAnzeigen.class);
 		startActivity(settingsActivity);
 	}
 
@@ -192,7 +191,9 @@ public class Startseite extends Activity {
 	 * @version Android 1.6 >
 	 */
 	public void onClickSchnittlisteAnzeigen(final View sfNormal) {
-		Toast.makeText(this, "not emplemented yet", Toast.LENGTH_SHORT).show();
+		//Toast.makeText(this, "not emplemented yet", Toast.LENGTH_SHORT).show();
+		final Intent settingsActivity = new Intent(this, SchnittlisteAnzeigen.class);
+		startActivity(settingsActivity);
 	}
 	
 	@Override
