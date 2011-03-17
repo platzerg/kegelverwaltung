@@ -57,6 +57,10 @@ public class EinstellungenBearbeiten extends PreferenceActivity {
 	      case AMANDO_BEENDEN_ID:
 	    	  SharedPreferences sharedPreferences = getAnwendungsEinstellungen(this);
 	    	  final Editor e = sharedPreferences.edit();
+	    	  boolean herren = sharedPreferences.getBoolean("CHECK_HERREN_PREF", true);
+	    	  String klasse = sharedPreferences.getString("LIST_KLASSE_PREF", "Kreisklasse");
+	    	  String verein = sharedPreferences.getString("LIST_VEREIN_PREF", "KC-Ismaning");
+	    	  String spielername = sharedPreferences.getString("EDIT_SPIELERNAME_PREF", "Guenter Platzer");
 		      finish();
 		      return true;
 	      default:
