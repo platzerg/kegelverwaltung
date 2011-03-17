@@ -23,7 +23,6 @@
         <activity android:theme="@style/PlatzerworldTheme" android:name=".gui.MannschaftAnlegen"></activity>
         <activity android:theme="@style/PlatzerworldTheme" android:name=".gui.VereinAnlegen"></activity>
         <activity android:theme="@style/PlatzerworldTheme" android:name=".gui.ErgebnisAnlegen"></activity>
-        <activity android:name=".gui.einstellung.EinstellungenBearbeiten" android:theme="@style/PlatzerworldTheme"></activity>
-        <activity android:name=".gui.einstellung.Preferences" android:theme="@style/PlatzerworldTheme"></activity>
+        <activity android:theme="@style/PlatzerworldTheme" android:name=".gui.einstellung.EinstellungenBearbeiten"></activity>
     </application>
 </manifest>
