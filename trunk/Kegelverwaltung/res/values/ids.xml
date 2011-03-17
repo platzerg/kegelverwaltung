@@ -97,5 +97,8 @@
 	
 	
 	<item type="id" name="sf_spieler_auflisten_loeschen" />
+	
+	<item type="id" name="wv_tabellen_anzeigen" />
+	<item type="id" name="wv_schnittliste_anzeigen" />
 
 </resources>

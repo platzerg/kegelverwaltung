@@ -4,29 +4,18 @@
 	android:layout_width="match_parent" android:background="@color/WINDOW_BACKGROUND_COLOR">
 	<LinearLayout android:layout_height="wrap_content"
 		android:layout_width="match_parent" android:id="@id/linearLayoutHeader" android:layout_marginLeft="5dip"
-		android:layout_marginRight="5dip">
+		android:layout_marginRight="5dip" android:layout_weight="0.1">
 		<TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center_vertical|center_horizontal"
 			style="@style/TitelTextBold" android:id="@id/txt_tabellen_titel" android:text="@string/txt_tabellen_titel"></TextView>
 	</LinearLayout>
 	<LinearLayout android:layout_width="match_parent"
 		android:id="@id/linearLayoutContent" android:layout_marginLeft="5dip" android:layout_marginRight="5dip"
 		android:layout_marginTop="5dip" android:orientation="vertical"
-		android:layout_height="wrap_content">
-		<Button android:id="@id/sf_ergebnisse" android:layout_width="match_parent"
-			android:layout_height="wrap_content" android:text="@string/sf_ergebnisse_titel"
-			style="@style/PlatzerworldTheme.Button"></Button>
-		<Button android:layout_height="wrap_content"
-			android:layout_width="match_parent" android:id="@id/sf_ligaverwaltung"
-			android:text="@string/sf_ligaverwaltung_titel" style="@style/PlatzerworldTheme.Button"></Button>
-		<Button android:layout_height="wrap_content"
-			android:layout_width="match_parent" android:id="@id/sf_tabellen"
-			android:text="@string/sf_tabellen_titel" style="@style/PlatzerworldTheme.Button"></Button>
-		<Button android:layout_height="wrap_content"
-			android:layout_width="match_parent" android:id="@id/sf_schnittlisten"
-			android:text="@string/sf_schnittlisten_titel" style="@style/PlatzerworldTheme.Button"></Button>
+		android:layout_height="wrap_content" android:layout_weight="5">
+		<WebView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@id/wv_tabellen_anzeigen"></WebView>
 	</LinearLayout>
 	<LinearLayout android:layout_width="match_parent"
-		android:layout_weight="0.5" android:id="@id/linearLayoutFooter"
+		android:id="@id/linearLayoutFooter"
 		android:layout_marginLeft="5dip" android:layout_marginRight="5dip"
-		android:layout_height="wrap_content"></LinearLayout>
+		android:layout_height="wrap_content" android:layout_weight="1"></LinearLayout>
 </LinearLayout>
