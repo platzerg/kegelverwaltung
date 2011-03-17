@@ -2,7 +2,7 @@ package platzerworld.kegeln.gui;
 
 import platzerworld.kegeln.R;
 import platzerworld.kegeln.gui.einstellung.EinstellungenBearbeiten;
-import platzerworld.kegeln.gui.einstellung.Preferences;
+import platzerworld.kegeln.gui.einstellung.EinstellungenBearbeiten;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,7 +22,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 public class Startseite extends Activity {
@@ -171,7 +170,7 @@ public class Startseite extends Activity {
 	 * @version Android 1.6 >
 	 */
 	public void onClickTabellenAnzeigen(final View sfNormal) {
-		final Intent settingsActivity = new Intent(getBaseContext(), Preferences.class);
+		final Intent settingsActivity = new Intent(getBaseContext(), EinstellungenBearbeiten.class);
 		startActivity(settingsActivity);
 	}
 
@@ -235,16 +234,12 @@ public class Startseite extends Activity {
                         .getDefaultSharedPreferences(getBaseContext());
         CheckboxPreference = prefs.getBoolean("checkboxPref", true);
         ListPreference = prefs.getString("listPref", "nr1");
-        editTextPreference = prefs.getString("editTextPref",
-                        "Nothing has been entered");
-        ringtonePreference = prefs.getString("ringtonePref",
-                        "DEFAULT_RINGTONE_URI");
-        secondEditTextPreference = prefs.getString("SecondEditTextPref",
-                        "Nothing has been entered");
+        editTextPreference = prefs.getString("editTextPref", "Nothing has been entered");
+        ringtonePreference = prefs.getString("ringtonePref", "DEFAULT_RINGTONE_URI");
+        secondEditTextPreference = prefs.getString("SecondEditTextPref", "Nothing has been entered");
         
         // Get the custom preference
-        SharedPreferences mySharedPreferences = getSharedPreferences(
-                        "myCustomSharedPrefs", Activity.MODE_PRIVATE);
+        SharedPreferences mySharedPreferences = getSharedPreferences("myCustomSharedPrefs", Activity.MODE_PRIVATE);
         customPref = mySharedPreferences.getString("myCusomPref", "");
 	}
 	
