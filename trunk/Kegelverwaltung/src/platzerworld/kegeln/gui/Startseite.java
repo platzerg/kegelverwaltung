@@ -27,12 +27,14 @@ import android.widget.Toast;
 public class Startseite extends Activity {
 
 	private static final String TAG = "Startseite Kegelverwaltung";
-	boolean CheckboxPreference;
-    String ListPreference;
-    String editTextPreference;
-    String ringtonePreference;
-    String secondEditTextPreference;
-    String customPref;
+	private boolean checkboxPreferenceHerren;
+	private String listPreferenceKlasse;
+	private String listPreferenceVerein;
+	private String editSpielernameTextPreference;
+	private String ringtonePreference;
+	private String secondEditTextPreference;
+	private String customPref;
+	
 
 
 	/** Called when the activity is first created. */
@@ -61,12 +63,6 @@ public class Startseite extends Activity {
 		final Button buttonSchnittlisten = (Button) findViewById(R.id.sf_schnittlisten);
 		buttonSchnittlisten.setOnClickListener(mSchnittlisteListener);
 				
-		final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-		final Editor editor = pref.edit();
-		editor.putLong("MAX_ERGEBNIS", 452);
-		editor.putString("NAME", "Guenter");
-		editor.commit();
-		
 		registerSMS();
 		
 	}
@@ -230,17 +226,25 @@ public class Startseite extends Activity {
 	
 	private void getPrefs() {
         // Get the xml/preferences.xml preferences
-        SharedPreferences prefs = PreferenceManager
-                        .getDefaultSharedPreferences(getBaseContext());
-        CheckboxPreference = prefs.getBoolean("checkboxPref", true);
-        ListPreference = prefs.getString("listPref", "nr1");
-        editTextPreference = prefs.getString("editTextPref", "Nothing has been entered");
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        
+        checkboxPreferenceHerren = prefs.getBoolean("CHECK_HERREN_PREF", true);
+        listPreferenceKlasse = prefs.getString("LIST_KLASSE_PREF", "Kreisklasse");
+        listPreferenceVerein = prefs.getString("LIST_VEREIN_PREF", "KC-Ismaning");
+        
+        editSpielernameTextPreference = prefs.getString("EDIT_SPIELERNAME_PREF", "Guenter Platzer");
         ringtonePreference = prefs.getString("ringtonePref", "DEFAULT_RINGTONE_URI");
         secondEditTextPreference = prefs.getString("SecondEditTextPref", "Nothing has been entered");
         
         // Get the custom preference
         SharedPreferences mySharedPreferences = getSharedPreferences("myCustomSharedPrefs", Activity.MODE_PRIVATE);
         customPref = mySharedPreferences.getString("myCusomPref", "");
+        
+        Log.d(TAG, "getPrefs() CHECK_HERREN_PREF: Herren: " + checkboxPreferenceHerren);
+        Log.d(TAG, "getPrefs() LIST_KLASSE_PREF: Klasse: " + listPreferenceKlasse);
+        Log.d(TAG, "getPrefs() LIST_VEREIN_PREF: Verein: " + listPreferenceVerein);
+        Log.d(TAG, "getPrefs() EDIT_SPIELERNAME_PREF: Spielername: " + editSpielernameTextPreference);
+        
 	}
 	
 	private void registerSMS() {
@@ -275,6 +279,14 @@ public class Startseite extends Activity {
 		IntentFilter SMSfilter = new IntentFilter(SMS_RECEIVED);
 		this.registerReceiver(SMSbr, SMSfilter);
 		
+	}
+	
+	private void addCustomPreference(String preferenceId){
+		final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+		final Editor editor = pref.edit();
+		editor.putLong("MAX_ERGEBNIS", 452);
+		editor.putString("NAME", "Guenter");
+		editor.commit();
 	}
 	
 	private boolean checkSMS() {

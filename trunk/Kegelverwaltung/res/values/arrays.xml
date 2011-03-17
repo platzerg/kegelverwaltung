@@ -33,6 +33,17 @@
         <item>7</item>
    	</integer-array>
    	
+   	<string-array name="vereine">
+        <item>KC-Ismaning</item>
+        <item>KC Isen</item>
+        <item>KC Neufinsing</item>
+   	</string-array>   
+   	<string-array name="vereine_id">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+   	</string-array>   	
+   	
    	 <string-array name="Sortierung">
       <item>Standard</item>
       <item>Name</item>
