@@ -28,7 +28,7 @@
 		<Button android:layout_height="wrap_content"
 			android:layout_width="match_parent" android:id="@id/sf_schnittlisten"
 			android:text="@string/sf_schnittlisten_titel" style="@style/PlatzerworldTheme.Button"></Button>
-		<ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/imageView1"></ImageView>
+		<ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/imageView1" android:src="@drawable/kegel" android:scaleType="center"></ImageView>
 	</LinearLayout>
 	<LinearLayout android:layout_width="match_parent"
 		android:layout_weight="0.5" android:id="@id/linearLayoutFooter"
