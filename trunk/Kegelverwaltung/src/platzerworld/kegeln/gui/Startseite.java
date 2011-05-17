@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Process;
@@ -42,24 +43,30 @@ public class Startseite extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.startseite);
 		
+		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Chantelli_Antiqua.ttf");  
+		
 		Log.d(TAG, "onCreate(): PID: " + Process.myPid());
 		Log.d(TAG, "onCreate(): TID: " + Process.myTid());
 		Log.d(TAG, "onCreate(): UID: " + Process.myUid());
 
 		// hinzufuegen
 		final Button buttonErgebnisse = (Button) findViewById(R.id.sf_ergebnisse);
+		buttonErgebnisse.setTypeface(font);  
 		buttonErgebnisse.setOnClickListener(mErgebnisseListener);
 
 		// hinzufuegen
 		final Button buttonLigaverwaltung = (Button) findViewById(R.id.sf_ligaverwaltung);
+		buttonLigaverwaltung.setTypeface(font);  
 		buttonLigaverwaltung.setOnClickListener(mLigaverwaltungListener);
 
 		// hinzufuegen
 		final Button buttonTabellen = (Button) findViewById(R.id.sf_tabellen);
+		buttonTabellen.setTypeface(font);  
 		buttonTabellen.setOnClickListener(mTabellenListener);
 
 		// hinzufuegen
 		final Button buttonSchnittlisten = (Button) findViewById(R.id.sf_schnittlisten);
+		buttonSchnittlisten.setTypeface(font);  
 		buttonSchnittlisten.setOnClickListener(mSchnittlisteListener);
 				
 		registerSMS();

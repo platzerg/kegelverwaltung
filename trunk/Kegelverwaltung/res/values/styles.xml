@@ -4,20 +4,20 @@
 
 	<style name="TitelTextBold">
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">26sp</item>
         <item name="android:textColor">@color/TITEL_COLOR</item>
 	</style>
 	
 	
 	<style name ="MyTextAppearance" parent="@android:style/TextAppearance">
-		<item name="android:textSize">12sp</item>
+		<item name="android:textSize">14sp</item>
 	</style>
 	
 	
 	
 	<style name="PlatzerworldTheme" parent="android:Theme.Light">
 		<item name="android:windowNoTitle">true</item>
-		 <item name="android:windowBackground">@color/WINDOW_BACKGROUND_COLOR</item>
+		 <item name="android:windowBackground">@drawable/bggrey</item>
 	    <item name="android:listViewStyle">@style/MyListView</item>
 	    <item name="android:spinnerStyle">@style/MySpinnerStyle</item>
 	    <item name="android:spinnerItemStyle">@style/MySpinnterItem</item>
@@ -34,19 +34,25 @@
 	</style>
 	<style name="MyTextAppearanceSpinnerItem" parent="@android:style/TextAppearance.Widget.TextView.SpinnerItem">
 		<item name="android:textColor">@color/SPINNER_TEXTCOLOR</item>
-		<item name="android:textSize">12sp</item>
+		<item name="android:textSize">14sp</item>
 	</style>	
 	
 	 <!-- Button-Style -->   
 	<style name="PlatzerworldTheme.Button" >
-	 	<item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/BUTTON_TEXT</item>
+	 	<item name="android:typeface">serif</item><item name="android:textStyle">bold</item><item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/BUTTON_TEXT</item>        
+        <item name="android:shadowColor">#00ccff</item>
+        <item name="android:shadowRadius">1.5</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <!--<item name="android:background">@drawable/buttonshape</item>-->  
+        
 	</style>	
 	
 	<!-- ListView-Style -->
 	<style name="MyListView" parent="@android:style/Widget.ListView">
 	    <!--  item name="android:listSelector">@drawable/icon</item>  -->
-	    <item name="android:textSize">12sp</item>
+	    <item name="android:textSize">14sp</item>
 	</style>
 
 </resources>

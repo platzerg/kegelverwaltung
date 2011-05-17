@@ -21,10 +21,15 @@
 			style="@style/PlatzerworldTheme.Button"></Button>
 		<Button android:layout_height="wrap_content"
 			android:layout_width="match_parent" android:id="@id/sf_ligaverwaltung"
-			android:text="@string/sf_ligaverwaltung_titel" style="@style/PlatzerworldTheme.Button"></Button>
+			android:text="@string/sf_ligaverwaltung_titel" 
+			style="@style/PlatzerworldTheme.Button"
+			>
+		</Button>
 		<Button android:layout_height="wrap_content"
 			android:layout_width="match_parent" android:id="@id/sf_tabellen"
-			android:text="@string/sf_tabellen_titel" style="@style/PlatzerworldTheme.Button"></Button>
+			android:text="@string/sf_tabellen_titel" 
+			style="@style/PlatzerworldTheme.Button">
+			</Button>
 		<Button android:layout_height="wrap_content"
 			android:layout_width="match_parent" android:id="@id/sf_schnittlisten"
 			android:text="@string/sf_schnittlisten_titel" style="@style/PlatzerworldTheme.Button"></Button>
