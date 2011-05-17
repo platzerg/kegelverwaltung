@@ -17,16 +17,16 @@
 		android:layout_marginTop="5dip" android:orientation="vertical"
 		android:layout_height="wrap_content" android:layout_gravity="center">
 		<Button android:id="@id/sf_ergebnisse" android:layout_height="wrap_content" android:text="@string/sf_ergebnisse_titel"
-			style="@style/PlatzerworldTheme.Button" android:maxWidth="120dip" android:layout_width="wrap_content" android:layout_gravity="center_horizontal" android:width="120dip"></Button>
+			style="@style/PlatzerworldTheme.Button" android:layout_width="wrap_content" android:layout_gravity="center_horizontal" android:maxWidth="200dip" android:width="200dip"></Button>
 		<Button android:layout_height="wrap_content"
 			android:id="@id/sf_ligaverwaltung"
-			android:text="@string/sf_ligaverwaltung_titel" style="@style/PlatzerworldTheme.Button" android:maxWidth="120dip" android:layout_width="wrap_content" android:layout_gravity="center_horizontal" android:width="120dip"></Button>
+			android:text="@string/sf_ligaverwaltung_titel" style="@style/PlatzerworldTheme.Button" android:layout_width="wrap_content" android:layout_gravity="center_horizontal" android:maxWidth="200dip" android:width="200dip"></Button>
 		<Button android:layout_height="wrap_content"
 			android:id="@id/sf_tabellen"
-			android:text="@string/sf_tabellen_titel" style="@style/PlatzerworldTheme.Button" android:maxWidth="120dip" android:layout_width="wrap_content" android:layout_gravity="center_horizontal" android:width="120dip"></Button>
+			android:text="@string/sf_tabellen_titel" style="@style/PlatzerworldTheme.Button" android:layout_width="wrap_content" android:layout_gravity="center_horizontal" android:maxWidth="200dip" android:width="200dip"></Button>
 		<Button android:layout_height="wrap_content"
 			android:id="@id/sf_schnittlisten"
-			android:text="@string/sf_schnittlisten_titel" style="@style/PlatzerworldTheme.Button" android:maxWidth="120dip" android:layout_width="wrap_content" android:layout_gravity="center_horizontal" android:width="120dip"></Button>
+			android:text="@string/sf_schnittlisten_titel" style="@style/PlatzerworldTheme.Button" android:layout_width="wrap_content" android:layout_gravity="center_horizontal" android:maxWidth="200dip" android:width="200dip"></Button>
 		<ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/imageView1"></ImageView>
 	</LinearLayout>
 	<LinearLayout android:layout_width="match_parent"
