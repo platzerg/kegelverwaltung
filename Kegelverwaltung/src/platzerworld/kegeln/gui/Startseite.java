@@ -11,6 +11,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.graphics.Typeface;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Process;
@@ -42,7 +44,7 @@ public class Startseite extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.startseite);
-		
+		playSound(getCurrentFocus());
 		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Chantelli_Antiqua.ttf");  
 		
 		Log.d(TAG, "onCreate(): PID: " + Process.myPid());
@@ -306,6 +308,22 @@ public class Startseite extends Activity {
 	                return false;
 	        } else
 	                return true;
+	}
+	
+	public void playSound(View view) {
+		// First parameter defines the number of channels which should be played
+		// in parallel, last one currently not used
+		SoundPool soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+		int soundID = soundPool.load(this, R.raw.metalhit, 1);
+
+		// Getting the user sound settings
+		AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+		float actualVolume = (float) audioManager
+				.getStreamVolume(AudioManager.STREAM_MUSIC);
+		float maxVolume = (float) audioManager
+				.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+		float volume = actualVolume / maxVolume;
+		soundPool.play(soundID, volume, volume, 1, 0, 1f);
 	}
 	
 }
