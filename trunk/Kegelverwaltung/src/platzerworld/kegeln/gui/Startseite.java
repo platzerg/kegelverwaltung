@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.net.Uri;
@@ -25,7 +26,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,8 +42,7 @@ public class Startseite extends Activity {
 	private String ringtonePreference;
 	private String secondEditTextPreference;
 	private String customPref;
-	
-
+	private ImageView imageView;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -48,45 +50,58 @@ public class Startseite extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.startseite);
 		playSound(getCurrentFocus());
-		
+
 		Typeface font = StyleManager.getInstance().init(this).getTypeface();
 		SoundManager.getInstance().initSounds(this);
 		SoundManager.getInstance().loadSounds();
 		SoundManager.getInstance().playSound(1, 1);
-		
-		
+
+		imageView = (ImageView) findViewById(R.id.imageView1);
+
+		imageView.startAnimation(AnimationUtils.loadAnimation(this,
+				R.anim.rotate_indefinitely));
+
+		imageView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				AnimationDrawable animator = (AnimationDrawable) imageView
+						.getBackground();
+				imageView.setImageDrawable(null);
+				animator.stop();
+			}
+		});
+
 		Log.d(TAG, "onCreate(): PID: " + Process.myPid());
 		Log.d(TAG, "onCreate(): TID: " + Process.myTid());
 		Log.d(TAG, "onCreate(): UID: " + Process.myUid());
 
 		TextView titeltext = (TextView) findViewById(R.id.txt_kegelverwaltung_titel);
-		titeltext.setTypeface(font);  
-		
+		titeltext.setTypeface(font);
+
 		// hinzufuegen
 		final Button buttonErgebnisse = (Button) findViewById(R.id.sf_ergebnisse);
-		buttonErgebnisse.setTypeface(font);  
+		buttonErgebnisse.setTypeface(font);
 		buttonErgebnisse.setOnClickListener(mErgebnisseListener);
 
 		// hinzufuegen
 		final Button buttonLigaverwaltung = (Button) findViewById(R.id.sf_ligaverwaltung);
-		buttonLigaverwaltung.setTypeface(font);  
+		buttonLigaverwaltung.setTypeface(font);
 		buttonLigaverwaltung.setOnClickListener(mLigaverwaltungListener);
 
 		// hinzufuegen
 		final Button buttonTabellen = (Button) findViewById(R.id.sf_tabellen);
-		buttonTabellen.setTypeface(font);  
+		buttonTabellen.setTypeface(font);
 		buttonTabellen.setOnClickListener(mTabellenListener);
 
 		// hinzufuegen
 		final Button buttonSchnittlisten = (Button) findViewById(R.id.sf_schnittlisten);
-		buttonSchnittlisten.setTypeface(font);  
+		buttonSchnittlisten.setTypeface(font);
 		buttonSchnittlisten.setOnClickListener(mSchnittlisteListener);
-				
-		registerSMS();
-		
-	}
 
-	
+		registerSMS();
+
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -98,18 +113,12 @@ public class Startseite extends Activity {
 		Log.d(TAG, "onDestroy");
 		super.onDestroy();
 	}
-	
-	
-
 
 	@Override
 	protected void onStart() {
 		getPrefs();
 		super.onStart();
 	}
-
-
-
 
 	/**
 	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
@@ -211,22 +220,24 @@ public class Startseite extends Activity {
 	 * @version Android 1.6 >
 	 */
 	public void onClickSchnittlisteAnzeigen(final View sfNormal) {
-		//Toast.makeText(this, "not emplemented yet", Toast.LENGTH_SHORT).show();
-		final Intent settingsActivity = new Intent(this, SchnittlisteAnzeigen.class);
+		// Toast.makeText(this, "not emplemented yet",
+		// Toast.LENGTH_SHORT).show();
+		final Intent settingsActivity = new Intent(this,
+				SchnittlisteAnzeigen.class);
 		startActivity(settingsActivity);
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    getMenuInflater().inflate(R.menu.kegelverwaltung_option_menu, menu);
-	    return true;
+		getMenuInflater().inflate(R.menu.kegelverwaltung_option_menu, menu);
+		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		return applyMenuChoice(item);
 	}
-	
+
 	private boolean applyMenuChoice(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.opt_kegelverwaltung_einstellung:
@@ -241,86 +252,102 @@ public class Startseite extends Activity {
 			finish();
 			return true;
 		default:
-	        return super.onOptionsItemSelected(item);   
-		}		
+			return super.onOptionsItemSelected(item);
+		}
 	}
-	
+
 	private void getPrefs() {
-        // Get the xml/preferences.xml preferences
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        
-        checkboxPreferenceHerren = prefs.getBoolean("CHECK_HERREN_PREF", true);
-        listPreferenceKlasse = prefs.getString("LIST_KLASSE_PREF", "Kreisklasse");
-        listPreferenceVerein = prefs.getString("LIST_VEREIN_PREF", "KC-Ismaning");
-        
-        editSpielernameTextPreference = prefs.getString("EDIT_SPIELERNAME_PREF", "Guenter Platzer");
-        ringtonePreference = prefs.getString("ringtonePref", "DEFAULT_RINGTONE_URI");
-        secondEditTextPreference = prefs.getString("SecondEditTextPref", "Nothing has been entered");
-        
-        // Get the custom preference
-        SharedPreferences mySharedPreferences = getSharedPreferences("myCustomSharedPrefs", Activity.MODE_PRIVATE);
-        customPref = mySharedPreferences.getString("myCusomPref", "");
-        
-        Log.d(TAG, "getPrefs() CHECK_HERREN_PREF: Herren: " + checkboxPreferenceHerren);
-        Log.d(TAG, "getPrefs() LIST_KLASSE_PREF: Klasse: " + listPreferenceKlasse);
-        Log.d(TAG, "getPrefs() LIST_VEREIN_PREF: Verein: " + listPreferenceVerein);
-        Log.d(TAG, "getPrefs() EDIT_SPIELERNAME_PREF: Spielername: " + editSpielernameTextPreference);
-        
+		// Get the xml/preferences.xml preferences
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(getBaseContext());
+
+		checkboxPreferenceHerren = prefs.getBoolean("CHECK_HERREN_PREF", true);
+		listPreferenceKlasse = prefs.getString("LIST_KLASSE_PREF",
+				"Kreisklasse");
+		listPreferenceVerein = prefs.getString("LIST_VEREIN_PREF",
+				"KC-Ismaning");
+
+		editSpielernameTextPreference = prefs.getString(
+				"EDIT_SPIELERNAME_PREF", "Guenter Platzer");
+		ringtonePreference = prefs.getString("ringtonePref",
+				"DEFAULT_RINGTONE_URI");
+		secondEditTextPreference = prefs.getString("SecondEditTextPref",
+				"Nothing has been entered");
+
+		// Get the custom preference
+		SharedPreferences mySharedPreferences = getSharedPreferences(
+				"myCustomSharedPrefs", Activity.MODE_PRIVATE);
+		customPref = mySharedPreferences.getString("myCusomPref", "");
+
+		Log.d(TAG, "getPrefs() CHECK_HERREN_PREF: Herren: "
+				+ checkboxPreferenceHerren);
+		Log.d(TAG, "getPrefs() LIST_KLASSE_PREF: Klasse: "
+				+ listPreferenceKlasse);
+		Log.d(TAG, "getPrefs() LIST_VEREIN_PREF: Verein: "
+				+ listPreferenceVerein);
+		Log.d(TAG, "getPrefs() EDIT_SPIELERNAME_PREF: Spielername: "
+				+ editSpielernameTextPreference);
+
 	}
-	
+
 	private void registerSMS() {
 		// SMS RECEIVER
 		final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
 		BroadcastReceiver SMSbr = new BroadcastReceiver() {
-		 
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // Called every time a new sms is received
-            Bundle bundle = intent.getExtras();
-            if (bundle != null) {
-                // This will put every new message into a array of
-                // SmsMessages. The message is received as a pdu,
-                // and needs to be converted to a SmsMessage, if you want to
-                // get information about the message.
-                Object[] pdus = (Object[]) bundle.get("pdus");
-                final SmsMessage[] messages = new SmsMessage[pdus.length];
-                for (int i = 0; i < pdus.length; i++)
-                        messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
-                if (messages.length > -1) {
-                    // Shows a Toast with the phone number of the sender,
-                    // and the message.
-                    String smsToast = "New SMS received from " + messages[0].getOriginatingAddress() + "\n'"
-                                    + messages[0].getMessageBody() + "'";
-                    Toast.makeText(context, smsToast, Toast.LENGTH_LONG).show();
-                }
-            }
-        }
+
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				// Called every time a new sms is received
+				Bundle bundle = intent.getExtras();
+				if (bundle != null) {
+					// This will put every new message into a array of
+					// SmsMessages. The message is received as a pdu,
+					// and needs to be converted to a SmsMessage, if you want to
+					// get information about the message.
+					Object[] pdus = (Object[]) bundle.get("pdus");
+					final SmsMessage[] messages = new SmsMessage[pdus.length];
+					for (int i = 0; i < pdus.length; i++)
+						messages[i] = SmsMessage
+								.createFromPdu((byte[]) pdus[i]);
+					if (messages.length > -1) {
+						// Shows a Toast with the phone number of the sender,
+						// and the message.
+						String smsToast = "New SMS received from "
+								+ messages[0].getOriginatingAddress() + "\n'"
+								+ messages[0].getMessageBody() + "'";
+						Toast.makeText(context, smsToast, Toast.LENGTH_LONG)
+								.show();
+					}
+				}
+			}
 		};
 		// The BroadcastReceiver needs to be registered before use.
 		IntentFilter SMSfilter = new IntentFilter(SMS_RECEIVED);
 		this.registerReceiver(SMSbr, SMSfilter);
-		
+
 	}
-	
-	private void addCustomPreference(String preferenceId){
-		final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+
+	private void addCustomPreference(String preferenceId) {
+		final SharedPreferences pref = PreferenceManager
+				.getDefaultSharedPreferences(this);
 		final Editor editor = pref.edit();
 		editor.putLong("MAX_ERGEBNIS", 452);
 		editor.putString("NAME", "Guenter");
 		editor.commit();
 	}
-	
+
 	private boolean checkSMS() {
-	        // Sets the sms inbox's URI
-	        Uri uriSMS = Uri.parse("content://sms");
-	        Cursor c = getBaseContext().getContentResolver().query(uriSMS, null, "read = 0", null, null);
-	        // Checks the number of unread messages in the inbox
-	        if (c.getCount() == 0) {
-	                return false;
-	        } else
-	                return true;
+		// Sets the sms inbox's URI
+		Uri uriSMS = Uri.parse("content://sms");
+		Cursor c = getBaseContext().getContentResolver().query(uriSMS, null,
+				"read = 0", null, null);
+		// Checks the number of unread messages in the inbox
+		if (c.getCount() == 0) {
+			return false;
+		} else
+			return true;
 	}
-	
+
 	public void playSound(View view) {
 		// First parameter defines the number of channels which should be played
 		// in parallel, last one currently not used
@@ -336,5 +363,13 @@ public class Startseite extends Activity {
 		float volume = actualVolume / maxVolume;
 		soundPool.play(soundID, volume, volume, 1, 0, 1f);
 	}
-	
+
+	// Call this method to stop the animation
+	public void stopAnimation() {
+		AnimationDrawable animator = (AnimationDrawable) imageView
+				.getBackground();
+		animator.stop();
+		imageView.setImageResource(R.drawable.icon);
+	}
+
 }
