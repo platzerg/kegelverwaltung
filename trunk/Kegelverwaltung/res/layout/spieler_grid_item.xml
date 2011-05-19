@@ -2,12 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_height="fill_parent" 
-    android:layout_width="fill_parent" android:background="@color/SPINNER_TEXTCOLOR">
+    android:layout_width="fill_parent">
         <TextView 
         	android:id="@id/col_spieler_id"
             android:text="row_id" 
             android:layout_height="fill_parent" 
-            android:background="@color/SPINNER_TEXTCOLOR"
             android:layout_width="wrap_content"
             android:width="80dip"
             />
@@ -16,7 +15,6 @@
         	android:id="@id/col_spieler_value"
             android:text="col_1"            
             android:layout_height="fill_parent" 
-            android:background="@color/SPINNER_TEXTCOLOR"
             android:layout_width="wrap_content"
             android:width="240dip"/>
 

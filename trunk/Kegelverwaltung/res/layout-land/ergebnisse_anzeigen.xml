@@ -2,7 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_height="match_parent"
-	android:layout_width="match_parent" android:background="@color/WINDOW_BACKGROUND_COLOR">
+	android:layout_width="match_parent">
 	<LinearLayout 
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent" 
@@ -102,14 +102,13 @@
     <LinearLayout 
     	android:id="@+id/layout"   
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent" android:background="@color/SPINNER_TEXTCOLOR">
+        android:layout_height="fill_parent">
   
 	  <ListView
 	    android:id="@+id/android:list"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:textFilterEnabled="true"     
-	    android:cacheColorHint="@color/WINDOW_BACKGROUND_COLOR"/>
+	    android:textFilterEnabled="true"     />
 	    <!-- android:cacheColorHint: 
 	      Performantes Erhalten der Hintergrundfarbe beim Scrollen -->
 	    

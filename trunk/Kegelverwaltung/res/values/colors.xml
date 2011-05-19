@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
  
-	<color name="BLUE">#4F94CD</color>
-    
     <color name="TITEL_COLOR">#ECFFD7</color>
-    
-    <color name="WINDOW_BACKGROUND_COLOR">#4F94CD</color>    
-    <color name="SPINNER_TEXTCOLOR">#4CAEFF</color>
-   
     <color name="BUTTON_TEXT">#4CAEFF</color>
 
 </resources>
