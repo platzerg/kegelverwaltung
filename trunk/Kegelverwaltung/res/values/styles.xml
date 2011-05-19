@@ -2,19 +2,6 @@
 
 <resources>
 
-	<style name="TitelTextBold">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">38sp</item>
-        <item name="android:textColor">@color/TITEL_COLOR</item>
-	</style>
-	
-	
-	<style name ="MyTextAppearance" parent="@android:style/TextAppearance">
-		<item name="android:textSize">16sp</item>
-	</style>
-	
-	
-	
 	<style name="PlatzerworldTheme" parent="android:Theme.Light">
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowBackground">@drawable/bggrey</item>
@@ -24,19 +11,34 @@
 	    <item name="android:textViewStyle">@style/MyTextViewStyle</item>
 	</style>
 	
-	<!--Spinner -->   
+	<!--TitelTextBold -->   
+	<style name="TitelTextBold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">38sp</item>
+        <item name="android:textColor">@color/TITEL_COLOR</item>
+	</style>
+	
+	<!--MyTextAppearance:TextAppearance --> 
+	<style name ="MyTextAppearance" parent="@android:style/TextAppearance">
+		<item name="android:textSize">16sp</item>
+	</style>
+	
+	<!--MySpinnerStyle:Spinner -->   
 	<style name="MySpinnerStyle" parent="@android:style/Widget.Spinner">
 		<item name="android:clickable">true</item>	
 	</style>
 	
+	<!--MySpinnterItem:SpinnerItem -->
 	<style name="MySpinnterItem" parent="@android:style/Widget.TextView.SpinnerItem">
 		<item name="android:textAppearance">@style/MyTextAppearanceSpinnerItem</item>
 	</style>
+	
+	<!--MyTextAppearanceSpinnerItem:TextView.SpinnerItem -->
 	<style name="MyTextAppearanceSpinnerItem" parent="@android:style/TextAppearance.Widget.TextView.SpinnerItem">
 		<item name="android:textSize">16sp</item>
 	</style>	
 	
-	<!-- Button-Style -->   
+	<!-- PlatzerworldTheme.Button -->   
 	<style name="PlatzerworldTheme.Button" >
 	 	<item name="android:typeface">serif</item>
 	 	<item name="android:textStyle">bold</item>
