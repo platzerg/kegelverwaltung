@@ -2,40 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_height="fill_parent" 
-    android:layout_width="fill_parent" android:background="@color/SPINNER_TEXTCOLOR">
+    android:layout_width="fill_parent" >
         <TextView 
         	android:id="@id/col_ergebnis_spiel_id"
             android:text="row_id" 
             android:layout_height="fill_parent" 
-            android:background="@color/SPINNER_TEXTCOLOR"
             android:layout_width="wrap_content"
             android:width="40dip"/>
         <TextView 
         	android:id="@id/col_ergebnis_gesamtergebnis"
             android:text="col_1"            
             android:layout_height="fill_parent" 
-            android:background="@color/SPINNER_TEXTCOLOR"
             android:layout_width="wrap_content"
             android:width="70dip"/>
         <TextView 
         	android:id="@id/col_ergebnis_volle_1"
             android:text="col_1"            
             android:layout_height="fill_parent" 
-            android:background="@color/SPINNER_TEXTCOLOR"
             android:layout_width="wrap_content"
             android:width="35dip"/>
         <TextView 
         	android:id="@id/col_ergebnis_abraeumen_1"
             android:text="col_1"            
             android:layout_height="fill_parent" 
-            android:background="@color/SPINNER_TEXTCOLOR"
             android:layout_width="wrap_content"
             android:width="35dip"/>
         <TextView 
         	android:id="@id/col_ergebnis_fehler_1"
             android:text="col_1"            
             android:layout_height="fill_parent" 
-            android:background="@color/SPINNER_TEXTCOLOR"
             android:layout_width="wrap_content"
             android:width="35dip"/>
             
@@ -43,21 +38,18 @@
         	android:id="@id/col_ergebnis_volle_2"
             android:text="col_1"            
             android:layout_height="fill_parent" 
-            android:background="@color/SPINNER_TEXTCOLOR"
             android:layout_width="wrap_content"
             android:width="35dip"/>
         <TextView 
         	android:id="@id/col_ergebnis_abraeumen_2"
             android:text="col_1"            
             android:layout_height="fill_parent" 
-            android:background="@color/SPINNER_TEXTCOLOR"
             android:layout_width="wrap_content"
             android:width="35dip"/>
         <TextView 
         	android:id="@id/col_ergebnis_fehler_2"
             android:text="col_1"            
             android:layout_height="fill_parent" 
-            android:background="@color/SPINNER_TEXTCOLOR"
             android:layout_width="wrap_content"
             android:width="35dip"/>
 

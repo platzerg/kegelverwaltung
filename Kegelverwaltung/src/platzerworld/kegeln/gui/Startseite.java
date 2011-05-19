@@ -1,6 +1,8 @@
 package platzerworld.kegeln.gui;
 
 import platzerworld.kegeln.R;
+import platzerworld.kegeln.common.sound.SoundManager;
+import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.gui.einstellung.EinstellungenBearbeiten;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -24,6 +26,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Startseite extends Activity {
@@ -45,12 +48,20 @@ public class Startseite extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.startseite);
 		playSound(getCurrentFocus());
-		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Chantelli_Antiqua.ttf");  
+		
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		SoundManager.getInstance().initSounds(this);
+		SoundManager.getInstance().loadSounds();
+		SoundManager.getInstance().playSound(1, 1);
+		
 		
 		Log.d(TAG, "onCreate(): PID: " + Process.myPid());
 		Log.d(TAG, "onCreate(): TID: " + Process.myTid());
 		Log.d(TAG, "onCreate(): UID: " + Process.myUid());
 
+		TextView titeltext = (TextView) findViewById(R.id.txt_kegelverwaltung_titel);
+		titeltext.setTypeface(font);  
+		
 		// hinzufuegen
 		final Button buttonErgebnisse = (Button) findViewById(R.id.sf_ergebnisse);
 		buttonErgebnisse.setTypeface(font);  
