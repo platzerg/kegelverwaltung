@@ -4,7 +4,7 @@
 
 	<style name="PlatzerworldTheme" parent="android:Theme.Light">
 		<item name="android:windowNoTitle">true</item>
-		<item name="android:windowBackground">@drawable/holz1</item>
+		<item name="android:windowBackground">@drawable/holz80</item>
 	    <item name="android:listViewStyle">@style/MyListView</item>
 	    <item name="android:spinnerStyle">@style/MySpinnerStyle</item>
 	    <item name="android:spinnerItemStyle">@style/MySpinnterItem</item>
