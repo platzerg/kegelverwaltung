@@ -22,8 +22,10 @@
             <TextView android:layout_height="wrap_content" android:text="@string/txt_spieler_auflisten_keineDaten" android:id="@+id/android:empty" android:layout_width="match_parent"></TextView>
         </LinearLayout>
     </LinearLayout>
-	<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:id="@id/linearLayoutFooter">
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@id/sf_spieler_auflisten_loeschen" android:text="@string/sf_spieler_auflisten_loeschen" android:enabled="false" android:layout_gravity="bottom"></Button>
+	<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1" android:id="@id/linearLayoutFooter" android:layout_marginTop="5dip" android:layout_marginRight="5dip" android:layout_marginLeft="5dip">
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@id/sf_spieler_auflisten_loeschen" android:text="@string/sf_spieler_auflisten_loeschen" android:enabled="false" android:layout_gravity="bottom" android:layout_weight="0.3"></Button>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@string/sf_mannschaften_auflisten_loeschen" android:text="@string/sf_mannschaften_auflisten_loeschen" android:layout_weight="0.3" android:enabled="false" android:layout_gravity="bottom"></Button>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@string/sf_klassen_auflisten_loeschen" android:text="@string/sf_klassen_auflisten_loeschen" android:layout_weight="0.3" android:layout_gravity="bottom" android:enabled="false"></Button>
 	</LinearLayout>
 </LinearLayout>
 
