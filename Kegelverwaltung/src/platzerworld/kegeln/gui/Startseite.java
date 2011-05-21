@@ -3,6 +3,7 @@ package platzerworld.kegeln.gui;
 import platzerworld.kegeln.R;
 import platzerworld.kegeln.common.sound.SoundManager;
 import platzerworld.kegeln.common.style.StyleManager;
+
 import platzerworld.kegeln.gui.einstellung.EinstellungenBearbeiten;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -61,17 +62,7 @@ public class Startseite extends Activity {
 		imageView.startAnimation(AnimationUtils.loadAnimation(this,
 				R.anim.rotate_indefinitely));
 
-		imageView.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				AnimationDrawable animator = (AnimationDrawable) imageView
-						.getBackground();
-				imageView.setImageDrawable(null);
-				animator.stop();
-			}
-		});
-
+		
 		Log.d(TAG, "onCreate(): PID: " + Process.myPid());
 		Log.d(TAG, "onCreate(): TID: " + Process.myTid());
 		Log.d(TAG, "onCreate(): UID: " + Process.myUid());
@@ -125,7 +116,6 @@ public class Startseite extends Activity {
 	 * Anzeigen'.
 	 */
 	private final OnClickListener mErgebnisseListener = new OnClickListener() {
-		@Override
 		public void onClick(View v) {
 			onClickErgebnisseAnzeigen(v);
 		}
@@ -151,7 +141,6 @@ public class Startseite extends Activity {
 	 * Anzeigen'.
 	 */
 	private final OnClickListener mLigaverwaltungListener = new OnClickListener() {
-		@Override
 		public void onClick(View v) {
 			onClickLigaverwaltungAnzeigen(v);
 		}
@@ -177,7 +166,6 @@ public class Startseite extends Activity {
 	 * Anzeigen'.
 	 */
 	private final OnClickListener mTabellenListener = new OnClickListener() {
-		@Override
 		public void onClick(View v) {
 			onClickTabellenAnzeigen(v);
 		}
@@ -203,7 +191,6 @@ public class Startseite extends Activity {
 	 * Anzeigen'.
 	 */
 	private final OnClickListener mSchnittlisteListener = new OnClickListener() {
-		@Override
 		public void onClick(View v) {
 			onClickSchnittlisteAnzeigen(v);
 		}

@@ -8,6 +8,7 @@ import platzerworld.kegeln.R;
 import platzerworld.kegeln.common.ConstantsIF;
 import platzerworld.kegeln.common.KeyValueVO;
 import platzerworld.kegeln.common.db.KlassenFilterQueryProvider;
+import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.ergebnis.db.ErgebnisTbl;
 import platzerworld.kegeln.klasse.db.KlasseSpeicher;
 import platzerworld.kegeln.klasse.vo.KlasseVO;
@@ -17,8 +18,11 @@ import platzerworld.kegeln.spieler.db.SpielerSpeicher;
 import platzerworld.kegeln.spieler.db.SpielerTbl;
 import platzerworld.kegeln.spieler.vo.SpielerVO;
 import platzerworld.kegeln.verein.vo.VereinVO;
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -29,11 +33,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -57,8 +65,15 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	static Spinner klassenSpinner = null;
 	static Spinner mannschaftSpinner = null;
 	static ListView spielerListView = null;
+	
+	Button buttonSpielerLoeschen = null;
+	Button buttonMannschaftLoeschen = null;
+	Button buttonKlasseLoeschen = null;
+	
 	private long mEdSelectedItemId;
 	private long mMannschaftId;
+	
+	private KeyValueVO mSelectedSpieler;
 
 	ArrayList<HashMap<String, String>> mHashMapListForListView;
 	@Override
@@ -68,6 +83,11 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 
 		setContentView(R.layout.liga_verwalten);
 		setTitle(R.string.txt_spieler_auflisten_titel);
+		
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		
+		TextView titeltext = (TextView) findViewById(R.id.txt_kegelverwaltung_titel);
+		titeltext.setTypeface(font);
 
 		klassenSpinner = (Spinner) this.findViewById(R.id.sp_klassen);
 		klassenSpinner.setOnItemSelectedListener(mSpinnerKlassenItemAuswahlListener);
@@ -76,15 +96,21 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		mannschaftSpinner.setOnItemSelectedListener(mSpinnerMansnchaftenItemAuswahlListener);
 
 		spielerListView = (ListView) this.findViewById(android.R.id.list);
-		spielerListView.setOnItemSelectedListener(mListSpielerItemAuswahlListener);
-
+		
 		mKlasseSpeicher = new KlasseSpeicher(this);
 
-		registerForContextMenu(findViewById(android.R.id.list));
+		//registerForContextMenu(findViewById(android.R.id.list));
 		registerForContextMenu(findViewById(android.R.id.empty));
+		registerForContextMenu(findViewById(R.id.layoutForClickEvent));
 		
-		final Button buttonLoeschen = (Button) findViewById(R.id.sf_spieler_auflisten_loeschen);
-		buttonLoeschen.setOnClickListener(mSpielerLoeschenListener);
+		buttonSpielerLoeschen = (Button) findViewById(R.id.sf_spieler_auflisten_loeschen);
+		buttonSpielerLoeschen.setOnClickListener(mSpielerLoeschenListener);
+		
+	    buttonMannschaftLoeschen = (Button) findViewById(R.id.sf_mannschaften_auflisten_loeschen);
+		//buttonMannschaftLoeschen.setOnClickListener(mMannschaftLoeschenListener);
+		
+		buttonKlasseLoeschen = (Button) findViewById(R.id.sf_klassen_auflisten_loeschen);
+		//buttonKlasseLoeschen.setOnClickListener(mKlasseLoeschenListener);
 
 	}
 
@@ -107,16 +133,49 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	 * Anzeigen'.
 	 */
 	private final OnClickListener mSpielerLoeschenListener = new OnClickListener() {
-		@Override
+		
 		public void onClick(View v) {
 			onClickSpielerLoeschen(v);
+		}
+	};
+	
+	/**
+	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
+	 * Anzeigen'.
+	 */
+	private final OnClickListener mKlasseLoeschenListener = new OnClickListener() {
+		
+		public void onClick(View v) {
+			onClickKlasseLoeschen(v);
+		}
+	};
+	
+	/**
+	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
+	 * Anzeigen'.
+	 */
+	private final OnClickListener mMannschaftLoeschenListener = new OnClickListener() {
+		
+		public void onClick(View v) {
+			onClickMannschaftLoeschen(v);
 		}
 	};
 	
 	@Override
 	protected void onListItemClick (ListView l, View v, int position, long id){
 		HashMap<String, String> selHashMap = (HashMap<String, String>) spielerListView.getItemAtPosition(position);
-		((Button) findViewById(R.id.sf_spieler_auflisten_loeschen)).setEnabled(true);
+		
+		String name = selHashMap.get("name");
+		String mannschaft_id = selHashMap.get("mannschaft_id");
+		String _id = selHashMap.get("_id");
+		
+		
+		
+		mSelectedSpieler = new KeyValueVO(Integer.parseInt(_id), name);
+		
+		Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT)
+		.show();
+		buttonSpielerLoeschen.setEnabled(true);
 		
 		mEdSelectedItemId = Long.parseLong(selHashMap.get(ErgebnisTbl.ID));
 		mMannschaftId = Long.parseLong(selHashMap.get(ErgebnisTbl.MANNSCHAFT_ID));
@@ -132,19 +191,99 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	 * 
 	 * @version Android 1.6 >
 	 */
-	public void onClickSpielerLoeschen(final View sfNormal) {
-		mSpielerSpeicher.loescheSpielerById(mEdSelectedItemId);
-		((Button) findViewById(R.id.sf_spieler_auflisten_loeschen)).setEnabled(false);
+	public void onClickKlasseLoeschen(final View sfNormal) {
+		KeyValueVO keyValueVO = (KeyValueVO) klassenSpinner.getSelectedItem();
 		
-		zeigeSpielerZurMannschaftId(mMannschaftId);
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
+        builder.setMessage("Klasse " +keyValueVO.value +" wirklich l�schen?" ).setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+        	   buttonKlasseLoeschen.setEnabled(false);
+        	   mSpielerSpeicher.loescheSpielerById(mEdSelectedItemId);
+        	   zeigeSpielerZurMannschaftId(mMannschaftId);
+           }
+       }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+        	   dialog.cancel();
+           }
+       });
+        
+		AlertDialog alertDialog = builder.create();
+		alertDialog.show();
+	}
+	
+	/**
+	 * Wird bei Klick auf Schaltflaeche 'Karte anzeigen' aufgerufen.
+	 * 
+	 * @see res.layout.startseite_anzeigen.xml
+	 * 
+	 * @param sfNormal
+	 *            Schaltfläche
+	 * 
+	 * @version Android 1.6 >
+	 */
+	public void onClickMannschaftLoeschen(final View sfNormal) {
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		KeyValueVO keyValueVO = (KeyValueVO) mannschaftSpinner.getSelectedItem();
+		
+        builder.setMessage("Mannschaft " +keyValueVO.value +" wirklich l�schen?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+        	   buttonMannschaftLoeschen.setEnabled(false);
+        	   mSpielerSpeicher.loescheSpielerById(mEdSelectedItemId);
+        	   zeigeSpielerZurMannschaftId(mMannschaftId);
+           }
+       }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+        	   dialog.cancel();
+           }
+       });
+        
+		AlertDialog alertDialog = builder.create();
+		alertDialog.show();
+	}
+	
+	/**
+	 * Wird bei Klick auf Schaltflaeche 'Karte anzeigen' aufgerufen.
+	 * 
+	 * @see res.layout.startseite_anzeigen.xml
+	 * 
+	 * @param sfNormal
+	 *            Schaltfläche
+	 * 
+	 * @version Android 1.6 >
+	 */
+	public void onClickSpielerLoeschen(final View sfNormal) {
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
+        builder.setMessage("Spieler " +mSelectedSpieler.value +" wirklich l�schen?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+        	   buttonSpielerLoeschen.setEnabled(false);
+        	   mSpielerSpeicher.loescheSpielerById(mEdSelectedItemId);
+        	   zeigeSpielerZurMannschaftId(mMannschaftId);
+           }
+       }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+           public void onClick(DialogInterface dialog, int id) {
+        	   dialog.cancel();
+           }
+       });
+        
+		AlertDialog alertDialog = builder.create();
+		alertDialog.show();
+
+		
 	}
 
 
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-		if (v.getId() == android.R.id.list) {
+		if (v.getId() == android.R.id.empty) {
 			getMenuInflater().inflate(R.menu.spieler_liste_context, menu);
-		} else if (v.getId() == android.R.id.empty) {
+		} 
+		else if (v.getId() == android.R.id.list) {
+			getMenuInflater().inflate(R.menu.spieler_liste_context, menu);
+		} else if (v.getId() == R.id.layoutForClickEvent) {
 			getMenuInflater().inflate(R.menu.spieler_liste_context, menu);
 		}
 		super.onCreateContextMenu(menu, v, menuInfo);
@@ -246,23 +385,21 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	}
 
 	/**
-	 * Ersetzt nach einer Änderung der Sortierung den Cursor, den die Liste als
+	 * Ersetzt nach einer �nderung der Sortierung den Cursor, den die Liste als
 	 * Grundlage verwendet.
 	 * 
 	 * @author David Müller, Arno Becker
 	 */
 	private final AdapterView.OnItemSelectedListener mSpinnerKlassenItemAuswahlListener = new AdapterView.OnItemSelectedListener() {
 
-		@Override
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-
+			buttonKlasseLoeschen.setEnabled(true);
 			KeyValueVO keyValueVO = (KeyValueVO) klassenSpinner.getSelectedItem();
 
 			mMannschaftSpeicher = new MannschaftSpeicher(LigaVerwalten.this);
 			zeigeMannschaftenZurKlasseId(keyValueVO.key);
 		}
 
-		@Override
 		public void onNothingSelected(AdapterView<?> arg0) {
 
 		}
@@ -276,8 +413,8 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	 */
 	private final AdapterView.OnItemSelectedListener mSpinnerMansnchaftenItemAuswahlListener = new AdapterView.OnItemSelectedListener() {
 
-		@Override
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+			buttonMannschaftLoeschen.setEnabled(true);
 			mSpielerSpeicher = new SpielerSpeicher(LigaVerwalten.this);
 			KeyValueVO keyValueVO = (KeyValueVO) mannschaftSpinner.getSelectedItem();
 
@@ -285,32 +422,11 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 
 		}
 
-		@Override
 		public void onNothingSelected(AdapterView<?> arg0) {
 
 		}
 	};
 
-	/**
-	 * Ersetzt nach einer Änderung der Sortierung den Cursor, den die Liste als
-	 * Grundlage verwendet.
-	 * 
-	 * @author David Müller, Arno Becker
-	 */
-	private final AdapterView.OnItemSelectedListener mListSpielerItemAuswahlListener = new AdapterView.OnItemSelectedListener() {
-
-		@Override
-		public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-			Object item = spielerListView.getSelectedItem();
-			Toast.makeText(getApplicationContext(), "mListSpielerItemAuswahlListener.onClick ", Toast.LENGTH_SHORT)
-					.show();
-		}
-
-		@Override
-		public void onNothingSelected(AdapterView<?> arg0) {
-
-		}
-	};
 
 	/**
 	 * Wenn aufgerufene Intents Daten zurueckgeben landet es hier.
