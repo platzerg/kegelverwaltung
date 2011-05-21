@@ -17,7 +17,7 @@
             <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/txt_col_spieler_value" android:id="@id/col_spieler_value" android:width="240dip"></TextView>
     </LinearLayout>
         <View android:layout_width="fill_parent" android:id="@+id/view1" android:layout_height="1dip" android:background="?android:attr/listDivider" android:layout_marginLeft="5dip" android:layout_marginRight="5dip"></View>
-    <LinearLayout android:id="@+id/layout" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="5dip" android:layout_marginRight="5dip">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="5dip" android:layout_marginRight="5dip" android:id="@id/layoutForClickEvent" android:clickable="true">
             <ListView android:layout_height="wrap_content" android:textFilterEnabled="true" android:id="@+id/android:list" android:layout_width="match_parent"></ListView>
             <TextView android:layout_height="wrap_content" android:text="@string/txt_spieler_auflisten_keineDaten" android:id="@+id/android:empty" android:layout_width="match_parent"></TextView>
         </LinearLayout>
