@@ -3,16 +3,19 @@ package platzerworld.kegeln.gui;
 import platzerworld.kegeln.R;
 import platzerworld.kegeln.common.ConstantsIF;
 import platzerworld.kegeln.common.KeyValueVO;
+import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.mannschaft.db.MannschaftSpeicher;
 import platzerworld.kegeln.mannschaft.vo.MannschaftVO;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -38,6 +41,10 @@ public class MannschaftAnlegen extends Activity implements ConstantsIF{
 		Log.d(TAG, "onCreate(): entered...");
 
 		setContentView(R.layout.mannschaft_anlegen);
+		
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		TextView titeltext = (TextView) findViewById(R.id.txt_mannschaft_neuanlegen_titel);
+		titeltext.setTypeface(font);
 
 		Bundle extras = getIntent().getExtras();
 		if (extras == null) {

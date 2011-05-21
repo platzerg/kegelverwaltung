@@ -6,11 +6,13 @@ import java.util.List;
 
 import platzerworld.kegeln.R;
 import platzerworld.kegeln.common.ConstantsIF;
+import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.ergebnis.db.ErgebnisSpeicher;
 import platzerworld.kegeln.ergebnis.db.ErgebnisTbl;
 import platzerworld.kegeln.ergebnis.vo.ErgebnisVO;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -21,6 +23,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -49,6 +52,10 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 
 		setContentView(R.layout.ergebnisse_anzeigen);
 		setTitle(R.string.txt_ergebnis_anzeigen_titel);
+		
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		TextView titeltext = (TextView) findViewById(R.id.txt_ergebnisse_titel);
+		titeltext.setTypeface(font);
 
 		mErgebnisListView = (ListView) this.findViewById(android.R.id.list);
 
@@ -79,7 +86,6 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 	 * Anzeigen'.
 	 */
 	private final OnClickListener mErgebnisAnlegenListener = new OnClickListener() {
-		@Override
 		public void onClick(View v) {
 			onClickErgebnisAnlegen(v);
 		}
@@ -90,7 +96,6 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 	 * Anzeigen'.
 	 */
 	private final OnClickListener mErgebnisLoeschenListener = new OnClickListener() {
-		@Override
 		public void onClick(View v) {
 			onClickErgebnisLoeschen(v);
 		}

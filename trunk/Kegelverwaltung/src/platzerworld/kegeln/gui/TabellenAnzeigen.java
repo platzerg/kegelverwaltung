@@ -4,6 +4,7 @@ import platzerworld.kegeln.R;
 import platzerworld.kegeln.common.db.KlassenFilterQueryProvider;
 import platzerworld.kegeln.common.db.PerformanterListenAdapter;
 import platzerworld.kegeln.common.db.PerformanterSpinnerAdapter;
+import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.klasse.db.KlasseSpeicher;
 import platzerworld.kegeln.mannschaft.db.MannschaftSpeicher;
 import platzerworld.kegeln.spieler.db.SpielerTbl;
@@ -13,12 +14,14 @@ import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 /**
  * Zeigt die Liste der Geokontakte an.
@@ -40,6 +43,10 @@ public class TabellenAnzeigen extends Activity {
 
 		
 		setContentView(R.layout.tabellen_anzeigen);
+		
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		TextView titeltext = (TextView) findViewById(R.id.txt_tabellen_titel);
+		titeltext.setTypeface(font);
 		         
         WebView webView= (WebView) findViewById(R.id.wv_tabellen_anzeigen);
         

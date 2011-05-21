@@ -2,16 +2,19 @@ package platzerworld.kegeln.gui;
 
 import platzerworld.kegeln.R;
 import platzerworld.kegeln.common.ConstantsIF;
+import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.ergebnis.db.ErgebnisSpeicher;
 import platzerworld.kegeln.ergebnis.vo.ErgebnisVO;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Zeigt die Liste der Geokontakte an.
@@ -34,6 +37,10 @@ public class ErgebnisAnlegen extends Activity implements ConstantsIF {
 		Log.d(TAG, "onCreate(): entered...");
 
 		setContentView(R.layout.ergebnis_anlegen);
+		
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		TextView titeltext = (TextView) findViewById(R.id.txt_ergebnis_neuanlegen_titel);
+		titeltext.setTypeface(font);
 
 		final Button speichernButton = (Button) findViewById(R.id.sf_ergebnis_neuanlagen_ok);
 		speichernButton.setOnClickListener(mVereinAnlegenOkListener);
@@ -44,14 +51,12 @@ public class ErgebnisAnlegen extends Activity implements ConstantsIF {
 	}
 
 	private final OnClickListener mVereinAnlegenOkListener = new OnClickListener() {
-		@Override
 		public void onClick(View v) {
 			speichern();
 		}
 	};
 
 	private final OnClickListener mVereinAnlegenAbbruchListener = new OnClickListener() {
-		@Override
 		public void onClick(View v) {
 			finish();
 		}
