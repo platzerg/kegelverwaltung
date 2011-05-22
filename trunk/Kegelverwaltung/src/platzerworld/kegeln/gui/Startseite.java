@@ -5,6 +5,7 @@ import platzerworld.kegeln.common.receiver.SMSBroadcastReceiver;
 import platzerworld.kegeln.common.sound.SoundManager;
 import platzerworld.kegeln.common.style.StyleManager;
 
+import platzerworld.kegeln.gui.beta.BetaActivity;
 import platzerworld.kegeln.gui.einstellung.EinstellungenBearbeiten;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -258,15 +259,23 @@ public class Startseite extends Activity {
 			startActivity(new Intent(this, EinstellungenBearbeiten.class));
 			return true;
 		case R.id.opt_kegelverwaltung_hilfe:
+			startHilfe();
 			Log.d(TAG, "opt_kegelverwaltung_hilfe");
 			return true;
 		case R.id.opt_kegelverwaltung_beenden:
-			Log.d(TAG, "opt_kegelverwaltung_hilfe");
+			Log.d(TAG, "opt_kegelverwaltung_beenden");
 			finish();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+	
+	private void startHilfe(){
+		final Intent settingsActivity = new Intent(this,
+				BetaActivity.class);
+		startActivity(settingsActivity);
+		
 	}
 
 	private void getPrefs() {
@@ -275,31 +284,21 @@ public class Startseite extends Activity {
 				.getDefaultSharedPreferences(getBaseContext());
 
 		checkboxPreferenceHerren = prefs.getBoolean("CHECK_HERREN_PREF", true);
-		listPreferenceKlasse = prefs.getString("LIST_KLASSE_PREF",
-				"Kreisklasse");
-		listPreferenceVerein = prefs.getString("LIST_VEREIN_PREF",
-				"KC-Ismaning");
+		listPreferenceKlasse = prefs.getString("LIST_KLASSE_PREF", "Kreisklasse");
+		listPreferenceVerein = prefs.getString("LIST_VEREIN_PREF", "KC-Ismaning");
 
-		editSpielernameTextPreference = prefs.getString(
-				"EDIT_SPIELERNAME_PREF", "Guenter Platzer");
-		ringtonePreference = prefs.getString("ringtonePref",
-				"DEFAULT_RINGTONE_URI");
-		secondEditTextPreference = prefs.getString("SecondEditTextPref",
-				"Nothing has been entered");
+		editSpielernameTextPreference = prefs.getString("EDIT_SPIELERNAME_PREF", "Guenter Platzer");
+		ringtonePreference = prefs.getString("ringtonePref", "DEFAULT_RINGTONE_URI");
+		secondEditTextPreference = prefs.getString("SecondEditTextPref", "Nothing has been entered");
 
 		// Get the custom preference
-		SharedPreferences mySharedPreferences = getSharedPreferences(
-				"myCustomSharedPrefs", Activity.MODE_PRIVATE);
+		SharedPreferences mySharedPreferences = getSharedPreferences("myCustomSharedPrefs", Activity.MODE_PRIVATE);
 		customPref = mySharedPreferences.getString("myCusomPref", "");
 
-		Log.d(TAG, "getPrefs() CHECK_HERREN_PREF: Herren: "
-				+ checkboxPreferenceHerren);
-		Log.d(TAG, "getPrefs() LIST_KLASSE_PREF: Klasse: "
-				+ listPreferenceKlasse);
-		Log.d(TAG, "getPrefs() LIST_VEREIN_PREF: Verein: "
-				+ listPreferenceVerein);
-		Log.d(TAG, "getPrefs() EDIT_SPIELERNAME_PREF: Spielername: "
-				+ editSpielernameTextPreference);
+		Log.d(TAG, "getPrefs() CHECK_HERREN_PREF: Herren: " + checkboxPreferenceHerren);
+		Log.d(TAG, "getPrefs() LIST_KLASSE_PREF: Klasse: " + listPreferenceKlasse);
+		Log.d(TAG, "getPrefs() LIST_VEREIN_PREF: Verein: " + listPreferenceVerein);
+		Log.d(TAG, "getPrefs() EDIT_SPIELERNAME_PREF: Spielername: " + editSpielernameTextPreference);
 
 	}
 

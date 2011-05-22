@@ -322,6 +322,28 @@ public class KlasseSpeicher {
 		return klassenVOs;
 	}
 	
+	/**
+	 * L‰dt die Klassen aus dem KlasseTbl-Datensatz, auf dem der Cursor gerade steht.
+	 * 
+	 * Der Cursor wird anschlieﬂend deaktiviert, da er im KlasseSpeicher nur intern als "letzter Aufruf" aufgerufen wird.
+	 * 
+	 * @param c aktuelle Cursorposition != null
+	 * @return Exemplar von Klasse.
+	 */
+	public ArrayList<String> ladeKlassenAsString() {	
+		Cursor c = ladeKlassenListe(null);
+		ArrayList<String> klassenListe = new ArrayList<String>();
+		if (c != null ) {
+    		if  (c.moveToFirst()) {
+    			do { 
+    				klassenListe.add(c.getString(c.getColumnIndex(KlasseTbl.NAME)));
+    			}while (c.moveToNext());
+    		} 
+    	}
+
+		return klassenListe;
+	}
+	
 	
 
 	/**
