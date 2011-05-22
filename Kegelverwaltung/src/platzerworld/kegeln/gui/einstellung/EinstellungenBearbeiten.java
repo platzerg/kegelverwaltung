@@ -47,26 +47,20 @@ public class EinstellungenBearbeiten extends PreferenceActivity {
 		ArrayList<String> klassen = (ArrayList<String>) holeKlassen();
 		String[] klasseArray = (String[]) klassen.toArray(new String[klassen.size()]);
 		ListPreference klasseListPreference = (ListPreference) findPreference("LIST_KLASSE_PREF");
-		klasseListPreference.setEntries(klasseArray);
-		
-		klasseListPreference.getValue();
-		
-		
 		klasseListPreference.setOnPreferenceChangeListener(mKlassePreferenceChangedListener);
-		//klasseListPreference.setOnPreferenceClickListener(mKlassePreferenceClickListener);
-		
+		klasseListPreference.setEntries(null);
+		klasseListPreference.setEntries(klasseArray);
+		klasseListPreference.getValue();
 		
 		
 		mMannschaftSpeicher = new MannschaftSpeicher(this);
 		ArrayList<String> mannschaften = (ArrayList<String>) holeMannschaften();
 		String[] mannschaftArray = (String[]) mannschaften.toArray(new String[mannschaften.size()]);
-		
 		ListPreference vereinListPreference = (ListPreference) findPreference("LIST_VEREIN_PREF");
-		vereinListPreference.setEntries(mannschaftArray);
-		
-		vereinListPreference.getValue();
-		
 		vereinListPreference.setOnPreferenceChangeListener(mMannschaftPreferenceChangedListener);
+		vereinListPreference.setEntries(null);
+		vereinListPreference.setEntries(mannschaftArray);
+		vereinListPreference.getValue();
 		
 		CheckBoxPreference herrenCheckBoxPreference = (CheckBoxPreference) findPreference("CHECK_HERREN_PREF");
 		herrenCheckBoxPreference.setChecked(true);
@@ -146,6 +140,7 @@ public class EinstellungenBearbeiten extends PreferenceActivity {
 	@Override
 	protected void onDestroy() {
 		mKlasseSpeicher.schliessen();
+		mMannschaftSpeicher.schliessen();
 		super.onDestroy();
 	}
 	
