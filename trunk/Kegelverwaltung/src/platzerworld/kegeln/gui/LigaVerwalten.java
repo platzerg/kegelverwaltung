@@ -107,10 +107,10 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		buttonSpielerLoeschen.setOnClickListener(mSpielerLoeschenListener);
 		
 	    buttonMannschaftLoeschen = (Button) findViewById(R.id.sf_mannschaften_auflisten_loeschen);
-		//buttonMannschaftLoeschen.setOnClickListener(mMannschaftLoeschenListener);
+		buttonMannschaftLoeschen.setOnClickListener(mMannschaftLoeschenListener);
 		
 		buttonKlasseLoeschen = (Button) findViewById(R.id.sf_klassen_auflisten_loeschen);
-		//buttonKlasseLoeschen.setOnClickListener(mKlasseLoeschenListener);
+		buttonKlasseLoeschen.setOnClickListener(mKlasseLoeschenListener);
 
 	}
 
