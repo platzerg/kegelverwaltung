@@ -16,49 +16,49 @@
 		android:layout_marginLeft="5dip" android:layout_marginRight="5dip"
 		android:layout_marginBottom="5dip">
 		<TableRow android:layout_width="match_parent"
-			android:layout_height="wrap_content" android:id="@+id/TableRow08" android:layout_marginBottom="5dip">
+			android:layout_height="wrap_content" android:id="@+id/TableRow08">
 			<TextView android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/txt_ergebnis_neuanlegen_gesamtergebnis"
-				android:id="@+id/TextView08" android:width="110dip"></TextView>
+				android:id="@+id/TextView08" android:width="130dip"></TextView>
 			<EditText android:text="@string/edt_ergebnis_neuanlegen_gesamtergebnis"
 				android:layout_height="wrap_content" android:background="@color/TITEL_COLOR" android:layout_width="match_parent" android:id="@id/edt_ergebnis_neuanlegen_gesamtergebnis" 
 				android:inputType="number" android:width="90dip">
 				</EditText>
 		</TableRow>
 		<TableRow android:layout_width="match_parent"
-			android:layout_height="wrap_content" android:id="@+id/TableRow07" android:layout_marginTop="@dimen/edt_ergebnis_anlegen_row_filler" android:layout_marginBottom="5dip">
+			android:layout_height="wrap_content" android:id="@+id/TableRow07" android:layout_marginTop="@dimen/edt_ergebnis_anlegen_row_filler">
 			<TextView android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:id="@id/txt_ergebnis_neuanlegen_ergebnis_50_1" android:text="@string/txt_ergebnis_neuanlegen_ergebnis_50_1" android:width="110dip"></TextView>
+				android:id="@id/txt_ergebnis_neuanlegen_ergebnis_50_1" android:text="@string/txt_ergebnis_neuanlegen_ergebnis_50_1" android:width="130dip"></TextView>
 			<EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/TITEL_COLOR" android:id="@id/edt_ergebnis_neuanlegen_ergebnis_50_1" android:text="@string/edt_ergebnis_neuanlegen_ergebnis_50_1" android:inputType="number" android:width="90dip"></EditText>
-			<TextView android:layout_height="wrap_content" android:id="@id/txt_ergebnis_neuanlegen_ergebnis_50_2" android:layout_width="wrap_content" android:text="@string/txt_ergebnis_neuanlegen_ergebnis_50_2" android:width="110dip" android:layout_marginLeft="5dip"></TextView>
+			<TextView android:layout_height="wrap_content" android:id="@id/txt_ergebnis_neuanlegen_ergebnis_50_2" android:layout_width="wrap_content" android:text="@string/txt_ergebnis_neuanlegen_ergebnis_50_2" android:layout_marginLeft="5dip" android:width="130dip"></TextView>
 			<EditText android:inputType="number" android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@id/edt_ergebnis_neuanlegen_ergebnis_50_2" android:text="@string/edt_ergebnis_neuanlegen_ergebnis_50_2" android:background="@color/TITEL_COLOR" android:width="90dip"></EditText>
 		</TableRow>
 		<TableRow android:layout_width="match_parent"
-			android:layout_height="wrap_content" android:id="@+id/TableRow05" android:layout_marginTop="@dimen/edt_ergebnis_anlegen_row_filler" android:layout_marginBottom="5dip">
+			android:layout_height="wrap_content" android:id="@+id/TableRow05" android:layout_marginTop="@dimen/edt_ergebnis_anlegen_row_filler">
 			<TextView android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:id="@id/txt_ergebnis_neuanlegen_volle_50_1" android:text="@string/txt_ergebnis_neuanlegen_volle_50_1" android:width="110dip"></TextView>
+				android:id="@id/txt_ergebnis_neuanlegen_volle_50_1" android:text="@string/txt_ergebnis_neuanlegen_volle_50_1" android:width="130dip"></TextView>
 			<EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/TITEL_COLOR" android:id="@id/edt_ergebnis_neuanlegen_volle_50_1" android:text="@string/edt_ergebnis_neuanlegen_volle_50_1" android:inputType="number" android:width="90dip"></EditText>
-			<TextView android:layout_width="wrap_content" android:id="@id/txt_ergebnis_neuanlegen_volle_50_2" android:layout_height="wrap_content" android:text="@string/txt_ergebnis_neuanlegen_volle_50_2" android:width="110dip" android:layout_marginLeft="5dip"></TextView>
+			<TextView android:layout_width="wrap_content" android:id="@id/txt_ergebnis_neuanlegen_volle_50_2" android:layout_height="wrap_content" android:text="@string/txt_ergebnis_neuanlegen_volle_50_2" android:layout_marginLeft="5dip" android:width="130dip"></TextView>
 			<EditText android:layout_width="match_parent" android:inputType="number" android:id="@id/edt_ergebnis_neuanlegen_volle_50_2" android:layout_height="wrap_content" android:text="@string/edt_ergebnis_neuanlegen_volle_50_2" android:background="@color/TITEL_COLOR" android:width="90dip"></EditText>
 		</TableRow>
 		<TableRow android:layout_width="match_parent"
-			android:layout_height="wrap_content" android:id="@+id/TableRow03" android:layout_marginTop="@dimen/edt_ergebnis_anlegen_row_filler" android:layout_marginBottom="5dip">
+			android:layout_height="wrap_content" android:id="@+id/TableRow03" android:layout_marginTop="@dimen/edt_ergebnis_anlegen_row_filler">
 			<TextView android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:id="@id/txt_ergebnis_neuanlegen_abraeumen_50_1" android:text="@string/txt_ergebnis_neuanlegen_abraeumen_50_1" android:width="110dip"></TextView>
+				android:id="@id/txt_ergebnis_neuanlegen_abraeumen_50_1" android:text="@string/txt_ergebnis_neuanlegen_abraeumen_50_1" android:width="130dip"></TextView>
 			<EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/TITEL_COLOR" android:id="@id/edt_ergebnis_neuanlegen_abraeumen_50_1" android:text="@string/edt_ergebnis_neuanlegen_abraeumen_50_1" android:inputType="number" android:width="90dip"></EditText>
-			<TextView android:layout_height="wrap_content" android:id="@id/txt_ergebnis_neuanlegen_abraeumen_50_2" android:layout_width="wrap_content" android:text="@string/txt_ergebnis_neuanlegen_abraeumen_50_2" android:width="110dip" android:layout_marginLeft="5dip"></TextView>
+			<TextView android:layout_height="wrap_content" android:id="@id/txt_ergebnis_neuanlegen_abraeumen_50_2" android:layout_width="wrap_content" android:text="@string/txt_ergebnis_neuanlegen_abraeumen_50_2" android:layout_marginLeft="5dip" android:width="130dip"></TextView>
 			<EditText android:inputType="number" android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@id/edt_ergebnis_neuanlegen_abraeumen_50_2" android:text="@string/edt_ergebnis_neuanlegen_abraeumen_50_2" android:background="@color/TITEL_COLOR" android:width="90dip"></EditText>
 		</TableRow>
-		<TableRow android:id="@+id/TableRow01" android:layout_marginTop="@dimen/edt_ergebnis_anlegen_row_filler" android:layout_marginBottom="5dip" android:layout_height="wrap_content" android:layout_width="match_parent">
+		<TableRow android:id="@+id/TableRow01" android:layout_marginTop="@dimen/edt_ergebnis_anlegen_row_filler" android:layout_height="wrap_content" android:layout_width="match_parent">
 			<TextView android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:id="@id/txt_ergebnis_neuanlegen_fehl_50_1" android:text="@string/txt_ergebnis_neuanlegen_fehl_50_1" android:width="110dip"></TextView>
+				android:id="@id/txt_ergebnis_neuanlegen_fehl_50_1" android:text="@string/txt_ergebnis_neuanlegen_fehl_50_1" android:width="130dip"></TextView>
 			<EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/TITEL_COLOR" android:id="@id/edt_ergebnis_neuanlegen_fehl_50_1" android:text="@string/edt_ergebnis_neuanlegen_fehl_50_1" android:inputType="number" android:width="90dip"></EditText>
-			<TextView android:layout_height="wrap_content" android:id="@id/txt_ergebnis_neuanlegen_fehl_50_2" android:layout_width="wrap_content" android:text="@string/txt_ergebnis_neuanlegen_fehl_50_2" android:width="110dip" android:paddingLeft="5dip"></TextView>
+			<TextView android:layout_height="wrap_content" android:id="@id/txt_ergebnis_neuanlegen_fehl_50_2" android:layout_width="wrap_content" android:text="@string/txt_ergebnis_neuanlegen_fehl_50_2" android:paddingLeft="5dip" android:width="130dip"></TextView>
 			<EditText android:inputType="number" android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@id/edt_ergebnis_neuanlegen_fehl_50_2" android:text="@string/edt_ergebnis_neuanlegen_fehl_50_2" android:background="@color/TITEL_COLOR" android:width="90dip"></EditText>
 		</TableRow>
 	</TableLayout>
