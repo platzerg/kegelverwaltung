@@ -53,7 +53,8 @@
     <string name="txt_ergebnis_anzeigen_titel">Ergebnisse (en)</string>
     <string name="sf_ergebnis_neuanlagen">neuer Eintrag (en)</string>
     <string name="sf_ergebnis_loeschen">Löschen (en)</string>
-    <string name="txt_ergebnis_neuanlegen_titel">Ergebnis eintragen (en)</string>
+    <string name="txt_ergebnis_neuanlegen_titel">neues Ergebnis
+ (en)</string>
     <string name="txt_ergebnis_neuanlegen_gesamtergebnis">Gesamt: (en)</string>
     <string name="edt_ergebnis_neuanlegen_gesamtergebnis"/>
     <string name="txt_ergebnis_neuanlegen_ergebnis_50_1">Ergebnis 1.DG: (en)</string>
