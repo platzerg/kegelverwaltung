@@ -12,9 +12,9 @@
             <Spinner android:layout_width="match_parent" android:id="@id/sp_klassen" android:layout_weight="1" android:entries="@array/kegelklassen" android:layout_height="40dip"></Spinner>
             <Spinner android:layout_width="match_parent" android:id="@id/sp_mannschaften" android:layout_weight="0.8" android:layout_height="40dip"></Spinner>
         </LinearLayout>
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/TITEL_COLOR" android:id="@+id/header" android:layout_marginLeft="5dip" android:layout_marginRight="5dip">
-            <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/txt_col_spieler_id" android:id="@id/col_spieler_id" android:width="80dip"></TextView>
-            <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/txt_col_spieler_value" android:id="@id/col_spieler_value" android:width="240dip"></TextView>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/header" android:layout_marginLeft="5dip" android:layout_marginRight="5dip" android:background="@color/TITEL_COLOR">
+            <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/txt_col_spieler_id" android:id="@id/col_spieler_id" android:width="80dip" android:textColor="@color/BUTTON_TEXT" android:textSize="18dip"></TextView>
+            <TextView android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/txt_col_spieler_value" android:id="@id/col_spieler_value" android:width="240dip" android:textColor="@color/BUTTON_TEXT" android:textSize="18dip"></TextView>
     </LinearLayout>
         <View android:layout_width="fill_parent" android:id="@+id/view1" android:layout_height="1dip" android:background="?android:attr/listDivider" android:layout_marginLeft="5dip" android:layout_marginRight="5dip"></View>
     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="5dip" android:layout_marginRight="5dip" android:id="@id/layoutForClickEvent" android:clickable="true">
