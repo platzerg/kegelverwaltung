@@ -23,7 +23,7 @@
 				android:width="@dimen/edt_klasse_anlegen_column_width"
 				android:layout_height="wrap_content" 
 				android:background="@color/TITEL_COLOR" 
-				android:layout_width="match_parent" android:id="@id/edt_klasse_neuanlegen_name" android:text="@string/edt_klasse_neuanlegen_name">
+				android:layout_width="match_parent" android:id="@id/edt_klasse_neuanlegen_name" android:inputType="text|textAutoComplete">
 			</EditText>
 		</TableRow>
 	</TableLayout>
