@@ -6,6 +6,7 @@ import platzerworld.kegeln.common.KeyValueVO;
 import platzerworld.kegeln.common.db.KlassenFilterQueryProvider;
 import platzerworld.kegeln.common.db.PerformanterListenAdapter;
 import platzerworld.kegeln.common.db.PerformanterSpinnerAdapter;
+import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.klasse.db.KlasseSpeicher;
 import platzerworld.kegeln.klasse.vo.KlasseVO;
 import platzerworld.kegeln.mannschaft.db.MannschaftSpeicher;
@@ -19,6 +20,7 @@ import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +29,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -53,6 +56,10 @@ public class SpielerAnlegen extends Activity implements ConstantsIF{
 		Log.d(TAG, "onCreate(): entered...");
 
 		setContentView(R.layout.spieler_anlegen);
+		
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		TextView titeltext = (TextView) findViewById(R.id.txt_spieler_neuanlegen_titel);
+		titeltext.setTypeface(font);
 
 		Bundle extras = getIntent().getExtras();
 		if (extras == null) {

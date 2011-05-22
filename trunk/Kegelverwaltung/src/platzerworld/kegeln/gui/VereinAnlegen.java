@@ -2,16 +2,19 @@ package platzerworld.kegeln.gui;
 
 import platzerworld.kegeln.R;
 import platzerworld.kegeln.common.ConstantsIF;
+import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.verein.db.VereinSpeicher;
 import platzerworld.kegeln.verein.vo.VereinVO;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * Zeigt die Liste der Geokontakte an.
@@ -36,6 +39,9 @@ public class VereinAnlegen extends Activity implements ConstantsIF{
 
 		setContentView(R.layout.verein_anlegen);
 
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		TextView titeltext = (TextView) findViewById(R.id.txt_verein_neuanlegen_titel);
+		titeltext.setTypeface(font);
 
 		final Button speichernButton = (Button) findViewById(R.id.sf_verein_neuanlagen_ok);
 		speichernButton.setOnClickListener(mVereinAnlegenOkListener);
