@@ -272,8 +272,7 @@ public class Startseite extends Activity {
 	}
 	
 	private void startHilfe(){
-		final Intent settingsActivity = new Intent(this,
-				BetaActivity.class);
+		final Intent settingsActivity = new Intent(this, BetaActivity.class);
 		startActivity(settingsActivity);
 		
 	}
