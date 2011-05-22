@@ -3,5 +3,7 @@
  
     <color name="TITEL_COLOR">#ECFFD7</color>
     <color name="BUTTON_TEXT">#4CAEFF</color>
+    <color name="COLOR_BLACK">#000000</color>
+     
 
 </resources>
