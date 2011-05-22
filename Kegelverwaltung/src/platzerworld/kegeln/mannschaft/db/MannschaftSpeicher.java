@@ -291,6 +291,28 @@ public class MannschaftSpeicher {
 
 		return mannschaftVOs;
 	}
+	
+	/**
+	 * Lädt die Klassen aus dem KlasseTbl-Datensatz, auf dem der Cursor gerade steht.
+	 * 
+	 * Der Cursor wird anschließend deaktiviert, da er im KlasseSpeicher nur intern als "letzter Aufruf" aufgerufen wird.
+	 * 
+	 * @param c aktuelle Cursorposition != null
+	 * @return Exemplar von Klasse.
+	 */
+	public ArrayList<String> ladeMannschaftenAsString() {	
+		Cursor c = ladeMannschaftListe(null);
+		ArrayList<String> mannschaftListe = new ArrayList<String>();
+		if (c != null ) {
+    		if  (c.moveToFirst()) {
+    			do { 
+    				mannschaftListe.add(c.getString(c.getColumnIndex(KlasseTbl.NAME)));
+    			}while (c.moveToNext());
+    		} 
+    	}
+
+		return mannschaftListe;
+	}
 
 	/**
 	 * Liefert alle Mannschaften mit einstellbarer Sortierung zurück.
