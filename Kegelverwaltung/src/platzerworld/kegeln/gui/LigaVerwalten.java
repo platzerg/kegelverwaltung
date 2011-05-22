@@ -84,6 +84,12 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		setContentView(R.layout.liga_verwalten);
 		setTitle(R.string.txt_spieler_auflisten_titel);
 		
+		init();
+		
+
+	}
+	
+	private void init(){
 		Typeface font = StyleManager.getInstance().init(this).getTypeface();
 		
 		TextView titeltext = (TextView) findViewById(R.id.txt_kegelverwaltung_titel);
@@ -111,7 +117,6 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		
 		buttonKlasseLoeschen = (Button) findViewById(R.id.sf_klassen_auflisten_loeschen);
 		buttonKlasseLoeschen.setOnClickListener(mKlasseLoeschenListener);
-
 	}
 
 	@Override
@@ -169,12 +174,7 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		String mannschaft_id = selHashMap.get("mannschaft_id");
 		String _id = selHashMap.get("_id");
 		
-		
-		
 		mSelectedSpieler = new KeyValueVO(Integer.parseInt(_id), name);
-		
-		Toast.makeText(getApplicationContext(), name, Toast.LENGTH_SHORT)
-		.show();
 		buttonSpielerLoeschen.setEnabled(true);
 		
 		mEdSelectedItemId = Long.parseLong(selHashMap.get(ErgebnisTbl.ID));
@@ -192,15 +192,13 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	 * @version Android 1.6 >
 	 */
 	public void onClickKlasseLoeschen(final View sfNormal) {
-		KeyValueVO keyValueVO = (KeyValueVO) klassenSpinner.getSelectedItem();
-		
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		
-        builder.setMessage("Klasse " +keyValueVO.value +" wirklich lšschen?" ).setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setMessage("Klasse " +((KeyValueVO) klassenSpinner.getSelectedItem()).value +" wirklich lšschen?" ).setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
            public void onClick(DialogInterface dialog, int id) {
         	   buttonKlasseLoeschen.setEnabled(false);
-        	   mSpielerSpeicher.loescheSpielerById(mEdSelectedItemId);
-        	   zeigeSpielerZurMannschaftId(mMannschaftId);
+        	   mKlasseSpeicher.loescheKlasse(((KeyValueVO) klassenSpinner.getSelectedItem()).key);
+        	   zeigeKlassen();
            }
        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
            public void onClick(DialogInterface dialog, int id) {
@@ -230,8 +228,8 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
         builder.setMessage("Mannschaft " +keyValueVO.value +" wirklich lšschen?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
            public void onClick(DialogInterface dialog, int id) {
         	   buttonMannschaftLoeschen.setEnabled(false);
-        	   mSpielerSpeicher.loescheSpielerById(mEdSelectedItemId);
-        	   zeigeSpielerZurMannschaftId(mMannschaftId);
+        	   mMannschaftSpeicher.loescheMannschaft( ((KeyValueVO) mannschaftSpinner.getSelectedItem()).key);
+        	   zeigeMannschaftenZurKlasseId(((KeyValueVO) klassenSpinner.getSelectedItem()).key);
            }
        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
            public void onClick(DialogInterface dialog, int id) {
@@ -360,8 +358,6 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	 * Zeige die Liste der Mannschaften zur Klasse an.
 	 */
 	private void zeigeSpielerZurMannschaftId(long mannschaftId) {
-		final long t0 = System.currentTimeMillis();
-
 		List<SpielerVO> spielerListeVO = mSpielerSpeicher.ladeSpielerListeZurMannschaftVO(null, mannschaftId);
 
 		mHashMapListForListView = new ArrayList<HashMap<String, String>>();

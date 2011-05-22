@@ -1,6 +1,7 @@
 package platzerworld.kegeln.gui;
 
 import platzerworld.kegeln.R;
+import platzerworld.kegeln.common.receiver.SMSBroadcastReceiver;
 import platzerworld.kegeln.common.sound.SoundManager;
 import platzerworld.kegeln.common.style.StyleManager;
 
@@ -34,6 +35,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Startseite extends Activity {
+	
+	private BroadcastReceiver SMSbr;
+	private IntentFilter SMSIntentFilter;
+	final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
 
 	private static final String TAG = "Startseite Kegelverwaltung";
 	private boolean checkboxPreferenceHerren;
@@ -94,22 +99,43 @@ public class Startseite extends Activity {
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see android.app.Activity#onStop()
-	 */
+	
+	@Override
+	protected void onStart() {
+		getPrefs();
+		super.onStart();
+	}
+
+	@Override
+	protected void onResume() {
+		Log.d(TAG, "onResume");
+		super.onResume();
+	}
+	
+	@Override
+	protected void onPause() {
+		Log.d(TAG, "onPause");
+		super.onPause();
+	}
+
+	@Override
+	protected void onStop() {
+		Log.d(TAG, "onStop");
+		super.onStop();
+	}
+	
+	@Override
+	protected void onRestart() {
+		Log.d(TAG, "onRestart");
+		super.onRestart();
+	}
+
 	@Override
 	protected void onDestroy() {
 		Log.d(TAG, "onDestroy");
 		super.onDestroy();
 	}
 
-	@Override
-	protected void onStart() {
-		getPrefs();
-		super.onStart();
-	}
 
 	/**
 	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
@@ -279,38 +305,10 @@ public class Startseite extends Activity {
 
 	private void registerSMS() {
 		// SMS RECEIVER
-		final String SMS_RECEIVED = "android.provider.Telephony.SMS_RECEIVED";
-		BroadcastReceiver SMSbr = new BroadcastReceiver() {
-
-			@Override
-			public void onReceive(Context context, Intent intent) {
-				// Called every time a new sms is received
-				Bundle bundle = intent.getExtras();
-				if (bundle != null) {
-					// This will put every new message into a array of
-					// SmsMessages. The message is received as a pdu,
-					// and needs to be converted to a SmsMessage, if you want to
-					// get information about the message.
-					Object[] pdus = (Object[]) bundle.get("pdus");
-					final SmsMessage[] messages = new SmsMessage[pdus.length];
-					for (int i = 0; i < pdus.length; i++)
-						messages[i] = SmsMessage
-								.createFromPdu((byte[]) pdus[i]);
-					if (messages.length > -1) {
-						// Shows a Toast with the phone number of the sender,
-						// and the message.
-						String smsToast = "New SMS received from "
-								+ messages[0].getOriginatingAddress() + "\n'"
-								+ messages[0].getMessageBody() + "'";
-						Toast.makeText(context, smsToast, Toast.LENGTH_LONG)
-								.show();
-					}
-				}
-			}
-		};
+		SMSbr = new SMSBroadcastReceiver() ;
 		// The BroadcastReceiver needs to be registered before use.
-		IntentFilter SMSfilter = new IntentFilter(SMS_RECEIVED);
-		this.registerReceiver(SMSbr, SMSfilter);
+		SMSIntentFilter = new IntentFilter(SMS_RECEIVED);
+		this.registerReceiver(SMSbr, SMSIntentFilter);
 
 	}
 

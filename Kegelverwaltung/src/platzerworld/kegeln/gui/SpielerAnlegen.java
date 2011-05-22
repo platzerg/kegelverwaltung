@@ -37,6 +37,8 @@ import android.widget.Toast;
  */
 public class SpielerAnlegen extends Activity implements ConstantsIF{
 
+	private static final long serialVersionUID = 1L;
+
 	/** Kuerzel fuers Logging. */
 	private static final String TAG = ErgebnisseAnzeigen.class.getSimpleName();
 
