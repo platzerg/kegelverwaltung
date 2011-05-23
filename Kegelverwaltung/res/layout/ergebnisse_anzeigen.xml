@@ -42,57 +42,56 @@
         	android:id="@id/col_ergebnis_spiel_id"
             android:layout_height="fill_parent"
             android:layout_width="wrap_content"
-			android:width="40dip" 
-			android:text="@string/col_ergebnis_spiel_id"/>
+			android:text="@string/col_ergebnis_spiel_id" android:textColor="@color/BUTTON_TEXT" android:textSize="18dip" android:width="40dip"/>
 
         <TextView 
        		android:id="@id/col_ergebnis_gesamtergebnis"
            android:layout_height="fill_parent"
            android:layout_width="wrap_content"
            android:width="70dip" 
-           android:text="@string/col_ergebnis_gesamtergebnis"/>
+           android:text="@string/col_ergebnis_gesamtergebnis" android:textColor="@color/BUTTON_TEXT" android:textSize="18dip"/>
            
            <TextView 
        		android:id="@id/col_ergebnis_volle_1"
            android:layout_height="fill_parent"
            android:layout_width="wrap_content"
            android:width="35dip" 
-           android:text="@string/col_ergebnis_volle_1"/>
+           android:text="@string/col_ergebnis_volle_1" android:textColor="@color/BUTTON_TEXT" android:textSize="18dip"/>
            
            <TextView 
        		android:id="@id/col_ergebnis_abraeumen_1"
            android:layout_height="fill_parent"
            android:layout_width="wrap_content"
            android:width="35dip" 
-           android:text="@string/col_ergebnis_abraeumen_1"/>
+           android:text="@string/col_ergebnis_abraeumen_1" android:textColor="@color/BUTTON_TEXT" android:textSize="18dip"/>
            
            <TextView 
        		android:id="@id/col_ergebnis_fehler_1"
            android:layout_height="fill_parent"
            android:layout_width="wrap_content"
            android:width="35dip" 
-           android:text="@string/col_ergebnis_fehler_1"/>
+           android:text="@string/col_ergebnis_fehler_1" android:textColor="@color/BUTTON_TEXT" android:textSize="18dip"/>
            
            <TextView 
        		android:id="@id/col_ergebnis_volle_2"
            android:layout_height="fill_parent"
            android:layout_width="wrap_content"
            android:width="35dip" 
-           android:text="@string/col_ergebnis_volle_2"/>
+           android:text="@string/col_ergebnis_volle_2" android:textColor="@color/BUTTON_TEXT" android:textSize="18dip"/>
            
            <TextView 
        		android:id="@id/col_ergebnis_abraeumen_2"
            android:layout_height="fill_parent"
            android:layout_width="wrap_content"
            android:width="35dip" 
-           android:text="@string/col_ergebnis_abraeumen_2"/>
+           android:text="@string/col_ergebnis_abraeumen_2" android:textColor="@color/BUTTON_TEXT" android:textSize="18dip"/>
            
            <TextView 
        		android:id="@id/col_ergebnis_fehler_2"
            android:layout_height="fill_parent"
            android:layout_width="wrap_content"
            android:width="35dip" 
-           android:text="@string/col_ergebnis_fehler_2"/>
+           android:text="@string/col_ergebnis_fehler_2" android:textColor="@color/BUTTON_TEXT" android:textSize="18dip"/>
            
     </LinearLayout>
 

@@ -18,21 +18,21 @@
 		android:layout_height="wrap_content">
 		<Button android:id="@id/sf_ergebnisse" android:layout_width="match_parent"
 			android:layout_height="wrap_content" android:text="@string/sf_ergebnisse_titel"
-			style="@style/PlatzerworldTheme.Button" android:background="@drawable/custom_button" android:layout_marginBottom="10dip" android:layout_marginTop="20dip" android:layout_marginLeft="20dip" android:layout_marginRight="20dip"></Button>
+			style="@style/PlatzerworldTheme.Button" android:layout_marginBottom="10dip" android:layout_marginTop="20dip" android:layout_marginLeft="20dip" android:layout_marginRight="20dip" android:background="@drawable/kegeln_button"></Button>
 		<Button android:layout_height="wrap_content"
 			android:layout_width="match_parent" android:id="@id/sf_ligaverwaltung"
 			android:text="@string/sf_ligaverwaltung_titel" 
 			style="@style/PlatzerworldTheme.Button"
-			android:background="@drawable/custom_button" android:layout_marginBottom="10dip" android:layout_marginLeft="20dip" android:layout_marginRight="20dip">
+			android:layout_marginBottom="10dip" android:layout_marginLeft="20dip" android:layout_marginRight="20dip" android:background="@drawable/kegeln_button">
 		</Button>
 		<Button android:layout_height="wrap_content"
 			android:layout_width="match_parent" android:id="@id/sf_tabellen"
 			android:text="@string/sf_tabellen_titel" 
-			style="@style/PlatzerworldTheme.Button" android:background="@drawable/custom_button" android:layout_marginBottom="10dip" android:layout_marginLeft="20dip" android:layout_marginRight="20dip">
+			style="@style/PlatzerworldTheme.Button" android:layout_marginBottom="10dip" android:layout_marginLeft="20dip" android:layout_marginRight="20dip" android:background="@drawable/kegeln_button">
 			</Button>
 		<Button android:layout_height="wrap_content"
 			android:layout_width="match_parent" android:id="@id/sf_schnittlisten"
-			android:text="@string/sf_schnittlisten_titel" style="@style/PlatzerworldTheme.Button" android:background="@drawable/custom_button" android:layout_marginBottom="10dip" android:layout_marginLeft="20dip" android:layout_marginRight="20dip"></Button>
+			android:text="@string/sf_schnittlisten_titel" style="@style/PlatzerworldTheme.Button" android:layout_marginBottom="10dip" android:layout_marginLeft="20dip" android:layout_marginRight="20dip" android:background="@drawable/kegeln_button"></Button>
 		<ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/imageView1" android:src="@drawable/kegel" android:scaleType="center"></ImageView>
 	</LinearLayout>
 	<LinearLayout android:layout_width="match_parent"
