@@ -5,7 +5,7 @@
 	<style name="PlatzerworldTheme" parent="android:Theme.Light">
 		<item name="android:windowNoTitle">true</item>
 		<item name="android:windowBackground">@drawable/holz27</item>
-	    <item name="android:listViewStyle">@style/MyListView</item>
+	    <item name="android:listViewStyle">@style/MyListViewStyle</item>
 	    <item name="android:spinnerStyle">@style/MySpinnerStyle</item>
 	    <item name="android:spinnerItemStyle">@style/MySpinnterItem</item>
 	    <item name="android:textViewStyle">@style/MyTextViewStyle</item>
@@ -53,7 +53,7 @@
 	</style>	
 	
 	<!-- ListView-Style -->
-	<style name="MyListView" parent="@android:style/Widget.ListView">
+	<style name="MyListViewStyle" parent="@android:style/Widget.ListView">
 	    <!--  item name="android:listSelector">@drawable/icon</item>  -->
 	    <item name="android:textSize">16sp</item>
 	</style>
