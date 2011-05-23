@@ -42,7 +42,7 @@
     <string name="edt_verein_neuanlegen_name">Verein</string>
     <string name="sf_verein_neuanlagen_ok">Speichern</string>
     <string name="sf_verein_neuanlagen_abbrechen">Abbrechen</string>
-    <string name="col_ergebnis_spiel_id">Spiel</string>
+    <string name="col_ergebnis_spiel_id">Nr.</string>
     <string name="col_ergebnis_gesamtergebnis">Gesamt</string>
     <string name="col_ergebnis_volle_1">V1</string>
     <string name="col_ergebnis_abraeumen_1">A1</string>
