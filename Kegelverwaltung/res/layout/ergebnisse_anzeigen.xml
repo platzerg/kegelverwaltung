@@ -131,11 +131,11 @@
 <LinearLayout android:layout_width="match_parent"
 		android:id="@id/linearLayoutFooter"
 		android:layout_marginLeft="5dip" android:layout_marginRight="5dip"
-		android:layout_height="wrap_content" android:layout_weight="1">
+		android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginBottom="5dip">
 		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" 
 		android:layout_gravity="bottom" android:id="@id/sf_ergebnis_neuanlagen" 
-		android:text="@string/sf_ergebnis_neuanlagen"></Button>
-		<Button android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@id/sf_ergebnis_loeschen" android:text="@string/sf_ergebnis_loeschen" android:enabled="false"></Button>
+		android:text="@string/sf_ergebnis_neuanlagen" style="@style/ActionButton"></Button>
+		<Button android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@id/sf_ergebnis_loeschen" android:text="@string/sf_ergebnis_loeschen" android:enabled="false" style="@style/ActionButton"></Button>
 	</LinearLayout>
 	
 </LinearLayout>

@@ -52,6 +52,11 @@
         <!--<item name="android:background">@drawable/buttonshape</item>-->          
 	</style>	
 	
+	<!-- PlatzerworldTheme.Button -->   
+	<style name="ActionButton" parent="@android:style/Widget.Button" >
+	 	<item name="android:background">@drawable/kegeln_button</item>        
+	</style>	
+	
 	<!-- ListView-Style -->
 	<style name="MyListViewStyle" parent="@android:style/Widget.ListView">
 	    <!--  item name="android:listSelector">@drawable/icon</item>  -->
