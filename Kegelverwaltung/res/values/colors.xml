@@ -4,6 +4,17 @@
     <color name="TITEL_COLOR">#ECFFD7</color>
     <color name="BUTTON_TEXT">#4CAEFF</color>
     <color name="COLOR_BLACK">#000000</color>
+    
+    <color name="COLOR_BLUE_1">#000000</color>
+    <color name="COLOR_BLUE_2">#000000</color>
+    
+    <color name="COLOR_YELLOW_1">#000000</color>
+    <color name="COLOR_YELLOW_2">#000000</color>
+        
+    <color name="COLOR_ORANGE_1">#000000</color>
+    <color name="COLOR_ORANGE_2">#000000</color>
+    
+    <color name="COLOR_GREY_1">#000000</color>
      
 
 </resources>
