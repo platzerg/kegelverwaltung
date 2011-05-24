@@ -1,6 +1,7 @@
 package platzerworld.kegeln.gui;
 
 import platzerworld.kegeln.R;
+import platzerworld.kegeln.common.ConstantsIF;
 import platzerworld.kegeln.common.receiver.SMSBroadcastReceiver;
 import platzerworld.kegeln.common.sound.SoundManager;
 import platzerworld.kegeln.common.style.StyleManager;
@@ -8,8 +9,10 @@ import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.gui.beta.BetaActivity;
 import platzerworld.kegeln.gui.einstellung.EinstellungenBearbeiten;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -31,11 +34,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Startseite extends Activity {
+public class Startseite extends Activity implements ConstantsIF{
 	
 	private BroadcastReceiver SMSbr;
 	private IntentFilter SMSIntentFilter;
@@ -50,6 +54,7 @@ public class Startseite extends Activity {
 	private String secondEditTextPreference;
 	private String customPref;
 	private ImageView imageView;
+	
 
 	/** Called when the activity is first created. */
 	@Override
@@ -159,8 +164,34 @@ public class Startseite extends Activity {
 	 * @version Android 1.6 >
 	 */
 	public void onClickErgebnisseAnzeigen(final View sfNormal) {
-		final Intent i = new Intent(this, ErgebnisseAnzeigen.class);
-		startActivity(i);
+		alert();
+	}
+	
+	private void alert(){
+		AlertDialog.Builder alert = new AlertDialog.Builder(this);
+		alert.setTitle("Spieler zum Eintragen der Ergebnisse Suche");
+		alert.setMessage("Bitte geben Sie einen Suchstring ein!");
+
+		// You can set an EditText view to get user input besides
+		// which button was pressed.
+		final EditText inputSpielerSuche = new EditText(this);
+		alert.setView(inputSpielerSuche);
+
+		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int whichButton) {
+		  String value = inputSpielerSuche.getText().toString();
+		  final Intent intent = new Intent(Startseite.this, ErgebnisseAnzeigen.class);
+		  intent.putExtra(INTENT_EXTRA_SPIELER, value);
+			startActivity(intent);
+		  }
+		});
+		alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		  public void onClick(DialogInterface dialog, int whichButton) {
+		    // Canceled.
+		  }
+		});
+
+		alert.show();
 	}
 
 	/**

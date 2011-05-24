@@ -6,10 +6,13 @@ import java.util.List;
 
 import platzerworld.kegeln.R;
 import platzerworld.kegeln.common.ConstantsIF;
+import platzerworld.kegeln.common.KeyValueVO;
 import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.ergebnis.db.ErgebnisSpeicher;
 import platzerworld.kegeln.ergebnis.db.ErgebnisTbl;
 import platzerworld.kegeln.ergebnis.vo.ErgebnisVO;
+import platzerworld.kegeln.spieler.db.SpielerSpeicher;
+import platzerworld.kegeln.spieler.vo.SpielerVO;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -38,12 +41,15 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 	private static final String TAG = ErgebnisseAnzeigen.class.getSimpleName();
 
 	private ErgebnisSpeicher mErgebnisSpeicher;
+	private SpielerSpeicher mSpielerSpeicher;
 
 	static ListView mErgebnisListView = null;
 	
 	private ArrayList<HashMap<String, String>> hashMapListForListView;
 	
 	private long mEdSelectedItemId;
+	
+	private SpielerVO aktuellerSpieler = null;
 
 	@Override
 	protected void onCreate(Bundle icicle) {
@@ -56,10 +62,21 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 		Typeface font = StyleManager.getInstance().init(this).getTypeface();
 		TextView titeltext = (TextView) findViewById(R.id.txt_ergebnisse_titel);
 		titeltext.setTypeface(font);
+		
+		Bundle extras = getIntent().getExtras();
+		if (extras == null) {
+			return;
+		}
+		String spieler = (String) extras.getSerializable(INTENT_EXTRA_SPIELER);
+		
+		
 
 		mErgebnisListView = (ListView) this.findViewById(android.R.id.list);
 
-		mErgebnisSpeicher = new ErgebnisSpeicher(this);
+		
+		mSpielerSpeicher = new SpielerSpeicher(this);
+		
+		aktuellerSpieler = mSpielerSpeicher.ladeSpielerByName(null, spieler);
 
 		// hinzufuegen
 		final Button buttonAnlegenErgebnis = (Button) findViewById(R.id.sf_ergebnis_neuanlagen);
@@ -71,6 +88,7 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 
 	@Override
 	protected void onStart() {
+		mErgebnisSpeicher = new ErgebnisSpeicher(this);
 		zeigeErgebnisse();
 		super.onStart();
 	}
@@ -78,6 +96,7 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 	@Override
 	protected void onDestroy() {
 		mErgebnisSpeicher.schliessen();
+		mSpielerSpeicher.schliessen();
 		super.onDestroy();
 	}
 
@@ -120,8 +139,10 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 	 * @version Android 1.6 >
 	 */
 	public void onClickErgebnisAnlegen(final View sfNormal) {
-		final Intent i = new Intent(this, ErgebnisAnlegen.class);
-		startActivity(i);
+		final Intent intent = new Intent(this, ErgebnisAnlegen.class);
+		intent.putExtra(INTENT_EXTRA_SPIELER, aktuellerSpieler);
+		
+		startActivity(intent);
 	}
 	
 	/**
@@ -146,7 +167,7 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 	private void zeigeErgebnisse() {
 		final long t0 = System.currentTimeMillis();
 
-		List<ErgebnisVO> ergebnisListeVO = mErgebnisSpeicher.ladeErgebnisListeVO(null);
+		List<ErgebnisVO> ergebnisListeVO = mErgebnisSpeicher.ladeErgebnisZumSpielerListeVO(aktuellerSpieler.id);
 
 		hashMapListForListView = new ArrayList<HashMap<String, String>>();
 

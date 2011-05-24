@@ -292,6 +292,43 @@ public class SpielerSpeicher {
 				getKontaktSortierung(sortierung));
 	}
 	
+	public SpielerVO ladeSpielerByName(Sortierung sortierung, CharSequence namensFilter) {
+		SpielerVO spielerVO = null;
+		Cursor c = null;
+		
+		final SQLiteQueryBuilder kontaktSuche = new SQLiteQueryBuilder();
+		kontaktSuche.setTables(SpielerTbl.TABLE_NAME);
+		String[] whereAttribs = null;
+		if (namensFilter != null && namensFilter.length() > 0) {
+			kontaktSuche.appendWhere(WHERE_NAME_LIKE);
+			whereAttribs = new String[] { namensFilter + "%" };
+		}
+		
+		try {
+			c = kontaktSuche.query(mDb.getReadableDatabase(), SpielerTbl.ALL_COLUMNS, null, whereAttribs, null, null,
+					getKontaktSortierung(Sortierung.NAME));
+			
+			if (c.moveToFirst() == false) {
+				return null;
+			}
+			spielerVO = ladeGeoKontakt(c);
+		} finally {
+			if (c != null) {
+				c.close();
+			}
+		}
+		
+		return spielerVO;
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
 	/**
 	 * Liefert alle Kontakte mit einstellbarer Sortierung zurück. <br>
 	 * Es kann (optional) ein Filterkriterium angegeben werden. Wenn der
