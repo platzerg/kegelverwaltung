@@ -6,10 +6,7 @@ package platzerworld.kegeln.spieler.db;
 import java.util.ArrayList;
 
 import platzerworld.kegeln.KegelverwaltungDatenbank;
-import platzerworld.kegeln.common.KeyValueVO;
 import platzerworld.kegeln.common.db.Sortierung;
-import platzerworld.kegeln.klasse.db.KlasseTbl;
-import platzerworld.kegeln.mannschaft.db.MannschaftTbl;
 import platzerworld.kegeln.spieler.vo.SpielerVO;
 import android.content.ContentValues;
 import android.content.Context;
@@ -37,8 +34,15 @@ public class SpielerSpeicher {
 	private static final String TAG = "SpielerSpeicher";
 
 	private static final String WHERE_NAME_EQUALS = SpielerTbl.NAME + "=?";
-
 	private static final String WHERE_NAME_LIKE = SpielerTbl.NAME + " LIKE ?";
+	
+	private static final String WHERE_PASSNR_EQUALS = SpielerTbl.PASS_NR + "=?";
+	
+	private static final String WHERE_VORNAME_EQUALS = SpielerTbl.VORNAME + "=?";
+	private static final String WHERE_VORNAME_LIKE = SpielerTbl.VORNAME + " LIKE ?";
+	
+	private static final String WHERE_GEBDATUM_EQUALS = SpielerTbl.GEB_DATUM + "=?";
+	private static final String WHERE_GEBDATUM_LIKE = SpielerTbl.GEB_DATUM + " LIKE ?";
 
 	private static final String ORDER_BY_NAME = SpielerTbl.NAME + " DESC";
 
@@ -63,6 +67,58 @@ public class SpielerSpeicher {
 	 * Erzeugung ohne Context nicht mÃ¶glich.
 	 */
 	private SpielerSpeicher() {
+	}
+	
+	public long speichereSpieler(SpielerVO spielerVO) {
+		if (spielerVO.istNeu()) {
+			return speichereSpielerAllColumns(spielerVO);
+		} else {
+			aendereSpielerAllColumns(spielerVO);
+			return spielerVO.id;
+		}
+	}
+	
+	private long speichereSpielerAllColumns(SpielerVO spielerVO) {
+
+		final ContentValues daten = new ContentValues();
+		daten.put(SpielerTbl.MANNSCHAFT_ID, spielerVO.mannschaftId);
+		daten.put(SpielerTbl.PASS_NR, spielerVO.passNr);
+		daten.put(SpielerTbl.NAME, spielerVO.name);
+		daten.put(SpielerTbl.VORNAME, spielerVO.vorname);
+		daten.put(SpielerTbl.GEB_DATUM, spielerVO.gebDatum);
+
+		final SQLiteDatabase dbCon = mDb.getWritableDatabase();
+
+		try {
+			final long id = dbCon.insertOrThrow(SpielerTbl.TABLE_NAME, null, daten);
+			Log.i(TAG, "Spieler mit id=" + id + " erzeugt.");
+			return id;
+		} finally {
+			dbCon.close();
+		}
+	}
+	
+	private void aendereSpielerAllColumns(SpielerVO spielerVO) {
+		if (spielerVO.istNeu()) {
+			Log.w(TAG, "id == 0 => kein update mšglich.");
+			return;
+		}
+
+		final ContentValues daten = new ContentValues();
+		daten.put(SpielerTbl.MANNSCHAFT_ID, spielerVO.mannschaftId);
+		daten.put(SpielerTbl.PASS_NR, spielerVO.passNr);
+		daten.put(SpielerTbl.NAME, spielerVO.name);
+		daten.put(SpielerTbl.VORNAME, spielerVO.vorname);
+		daten.put(SpielerTbl.GEB_DATUM, spielerVO.gebDatum);
+
+		final SQLiteDatabase dbCon = mDb.getWritableDatabase();
+
+		try {
+			dbCon.update(SpielerTbl.TABLE_NAME, daten, SpielerTbl.WHERE_ID_EQUALS, new String[] { String.valueOf(spielerVO.id) });
+			Log.i(TAG, "Spieler id=" + spielerVO.id + " aktualisiert.");
+		} finally {
+			dbCon.close();
+		}
 	}
 
 	/**
@@ -319,14 +375,6 @@ public class SpielerSpeicher {
 		}
 		
 		return spielerVO;
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 	
 	/**
@@ -363,8 +411,6 @@ public class SpielerSpeicher {
 				SpielerTbl.ALL_COLUMNS, 
 				SpielerTbl.MANNSCHAFT_ID + "=" + String.valueOf(mannschaftId), null, null, null, null);
 		
-		int count = spielerCursor.getCount();
-		boolean h1 = spielerCursor.moveToFirst();
 		return spielerCursor;
 	}
 	
@@ -421,11 +467,14 @@ public class SpielerSpeicher {
     			do {    				
     				spielerVO= new SpielerVO();    				
     				spielerVO.key = c.getLong(c.getColumnIndex(SpielerTbl.ID));
-    				spielerVO.value = c.getString(c.getColumnIndex(SpielerTbl.NAME));
-    				
     				spielerVO.id = c.getLong(c.getColumnIndex(SpielerTbl.ID));
-    				spielerVO.name = c.getString(c.getColumnIndex(SpielerTbl.NAME));    				
+    				spielerVO.name = c.getString(c.getColumnIndex(SpielerTbl.NAME));    
+    				spielerVO.value = c.getString(c.getColumnIndex(SpielerTbl.NAME));
     				spielerVO.mannschaftId = c.getLong(c.getColumnIndex(SpielerTbl.MANNSCHAFT_ID));
+    				
+    				spielerVO.passNr = c.getLong(c.getColumnIndex(SpielerTbl.PASS_NR));
+    				spielerVO.vorname = c.getString(c.getColumnIndex(SpielerTbl.VORNAME));
+    				spielerVO.gebDatum = c.getString(c.getColumnIndex(SpielerTbl.GEB_DATUM));
     				
     				spielerVOs.add(spielerVO);
     			}while (c.moveToNext());
@@ -467,12 +516,17 @@ public class SpielerSpeicher {
 	 * @return Exemplar von GeoKontakt.
 	 */
 	public SpielerVO ladeGeoKontakt(Cursor c) {
-		final SpielerVO kontakt = new SpielerVO();
+		final SpielerVO spielerVO = new SpielerVO();
 
-		kontakt.id = c.getLong(c.getColumnIndex(SpielerTbl.ID));
-		kontakt.name = c.getString(c.getColumnIndex(SpielerTbl.NAME));
-		kontakt.mannschaftId = c.getLong(c.getColumnIndex(SpielerTbl.MANNSCHAFT_ID));
-		return kontakt;
+		spielerVO.id = c.getLong(c.getColumnIndex(SpielerTbl.ID));
+		spielerVO.mannschaftId = c.getLong(c.getColumnIndex(SpielerTbl.MANNSCHAFT_ID));
+		spielerVO.name = c.getString(c.getColumnIndex(SpielerTbl.NAME));
+		
+		spielerVO.passNr = c.getLong(c.getColumnIndex(SpielerTbl.PASS_NR));
+		spielerVO.vorname = c.getString(c.getColumnIndex(SpielerTbl.VORNAME));
+		spielerVO.gebDatum = c.getString(c.getColumnIndex(SpielerTbl.GEB_DATUM));
+		
+		return spielerVO;
 	}
 
 	/**

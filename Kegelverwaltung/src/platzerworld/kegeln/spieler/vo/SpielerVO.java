@@ -30,9 +30,12 @@ public class SpielerVO extends KeyValueVO{
 	public SpielerVO(){
 		
 	}
-	public SpielerVO(long mannschaftId, String name){
+	public SpielerVO(long mannschaftId, long passNr, String name, String vorname, String gebDatum){
 		this.mannschaftId = mannschaftId;
+		this.passNr = passNr;
 		this.name = name;
+		this.vorname = vorname;
+		this.gebDatum = gebDatum;
 	}
 	
 	public boolean istNeu() {

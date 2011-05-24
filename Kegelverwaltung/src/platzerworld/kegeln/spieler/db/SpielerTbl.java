@@ -22,7 +22,7 @@ public final class SpielerTbl implements SpielerColumns {
 	/**
 	 * SQL Anweisung zur Schemadefinition.
 	 */
-	public static final String SQL_CREATE = "CREATE TABLE SPIELER (_id   INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, mannschaft_id, FOREIGN KEY(mannschaft_id) REFERENCES MANNSCHAFT(_id));";
+	public static final String SQL_CREATE = "CREATE TABLE SPIELER (_id   INTEGER PRIMARY KEY AUTOINCREMENT, pass_nr INTEGER, name TEXT NOT NULL, vorname TEXT, geb_datum TEXT,  mannschaft_id, FOREIGN KEY(mannschaft_id) REFERENCES MANNSCHAFT(_id));";
 
 	/**
 	 * Standard-Sortierreihenfolge für die Tabelle. <br>
@@ -47,6 +47,13 @@ public final class SpielerTbl implements SpielerColumns {
 	 */
 	public static final String STMT_NAME_VEREIN_MANNSCHAFT_INSERT = "INSERT INTO spieler "
 			+ "(name, mannschaft_id) " + "VALUES (?,?)";
+	
+	/**
+	 * SQL Anweisung f&uuml;r Erzeugung eines Geokontakts aus den Stammdaten
+	 * Name, Mobilnummer.
+	 */
+	public static final String STMT_ALL_INSERT = "INSERT INTO spieler "
+			+ "(mannschaft_id, pass_nr, name, vorname, geb_datum) " + "VALUES (?,?,?,?,?)";
 
 	/**
 	 * SQL-Anweisung zur L&ouml;schung aller Geokontakte.
@@ -67,7 +74,7 @@ public final class SpielerTbl implements SpielerColumns {
 			+ "WHERE _id = ? and mannschaft_id  ?";
 
 	/** Liste aller bekannten Attribute. */
-	public static final String[] ALL_COLUMNS = new String[] { ID, NAME, MANNSCHAFT_ID };
+	public static final String[] ALL_COLUMNS = new String[] { ID, PASS_NR, NAME, VORNAME, GEB_DATUM, MANNSCHAFT_ID };
 
 	/**
 	 * WHERE-Bedingung f&uuml;r ID-Anfrage.
