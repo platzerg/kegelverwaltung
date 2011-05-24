@@ -14,9 +14,18 @@ public class SpielerVO extends KeyValueVO{
 
 	/** id der DB Tabelle in der Amando Datenbank. */
 	public long mannschaftId;
+	
+	/** Passnummer der DB Tabelle in der Amando Datenbank. */
+	public long passNr;
 
 	/** Name des Besitzers der Mobilnummer. */
 	public String name;
+	
+	/** Name des Besitzers der Mobilnummer. */
+	public String vorname;
+	
+	/** Geburtsdatum des Besitzers der Mobilnummer. */
+	public String gebDatum;
 
 	public SpielerVO(){
 		

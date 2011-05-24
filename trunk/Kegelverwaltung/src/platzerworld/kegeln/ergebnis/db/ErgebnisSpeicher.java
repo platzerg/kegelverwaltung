@@ -291,8 +291,8 @@ public class ErgebnisSpeicher {
 	 *            Anfangsbuchstaben (case sensitive) der zu suchenden Kontakte.
 	 * @return Cursor auf die Ergebnisliste.
 	 */
-	public List<ErgebnisVO> ladeErgebnisZumSpielerListeVO(CharSequence namensFilter, long spielerId) {
-		return ladeMannschaftZumSpielerListeVO(Sortierung.ID, namensFilter, spielerId);
+	public List<ErgebnisVO> ladeErgebnisZumSpielerListeVO(long spielerId) {
+		return ladeMannschaftZumSpielerListeVO(Sortierung.ID, spielerId);
 	}
 
 	/**
@@ -347,8 +347,7 @@ public class ErgebnisSpeicher {
 	 *            KlassenId
 	 * @return Cursor auf die Ergebnisliste.
 	 */
-	public List<ErgebnisVO> ladeMannschaftZumSpielerListeVO(Sortierung sortierung, CharSequence namensFilter,
-			long klasseId) {
+	public List<ErgebnisVO> ladeMannschaftZumSpielerListeVO(Sortierung sortierung, long klasseId) {
 
 		SQLiteDatabase d = mDb.getReadableDatabase();
 		Cursor mannschaftCursor = d.query(ErgebnisTbl.TABLE_NAME, ErgebnisTbl.ALL_COLUMNS, ErgebnisTbl.SPIELER_ID + "="

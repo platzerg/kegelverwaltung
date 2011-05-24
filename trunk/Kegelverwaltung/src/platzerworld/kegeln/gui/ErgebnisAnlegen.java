@@ -5,6 +5,7 @@ import platzerworld.kegeln.common.ConstantsIF;
 import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.ergebnis.db.ErgebnisSpeicher;
 import platzerworld.kegeln.ergebnis.vo.ErgebnisVO;
+import platzerworld.kegeln.spieler.vo.SpielerVO;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -30,6 +31,8 @@ public class ErgebnisAnlegen extends Activity implements ConstantsIF {
 	private ErgebnisSpeicher mErgebnisSpeicher;
 
 	private ErgebnisVO mErgebnisVO;
+	
+	SpielerVO aktuellerSpieler = null;
 
 	@Override
 	protected void onCreate(Bundle icicle) {
@@ -41,6 +44,12 @@ public class ErgebnisAnlegen extends Activity implements ConstantsIF {
 		Typeface font = StyleManager.getInstance().init(this).getTypeface();
 		TextView titeltext = (TextView) findViewById(R.id.txt_ergebnis_neuanlegen_titel);
 		titeltext.setTypeface(font);
+		
+		Bundle extras = getIntent().getExtras();
+		if (extras == null) {
+			return;
+		}
+		aktuellerSpieler = (SpielerVO) extras.getSerializable(INTENT_EXTRA_SPIELER);
 
 		final Button speichernButton = (Button) findViewById(R.id.sf_ergebnis_neuanlagen_ok);
 		speichernButton.setOnClickListener(mVereinAnlegenOkListener);
@@ -78,7 +87,7 @@ public class ErgebnisAnlegen extends Activity implements ConstantsIF {
 
 		mErgebnisSpeicher = new ErgebnisSpeicher(this);
 
-		mErgebnisVO = new ErgebnisVO(1, 1, 1, Long.parseLong(gesamtergebnis.getText().toString()),
+		mErgebnisVO = new ErgebnisVO(1, aktuellerSpieler.id, aktuellerSpieler.mannschaftId, Long.parseLong(gesamtergebnis.getText().toString()),
 				Long.parseLong(ergebnis501.getText().toString()), Long.parseLong(ergebnis502.getText().toString()),
 
 				Long.parseLong(volle251.getText().toString()), Long.parseLong(volle252.getText().toString()),
