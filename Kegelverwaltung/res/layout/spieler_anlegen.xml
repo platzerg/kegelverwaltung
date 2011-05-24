@@ -31,7 +31,7 @@
 		android:id="@id/linearLayoutFooter"
 		android:layout_marginLeft="5dip" android:layout_marginRight="5dip"
 		android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginBottom="5dip">
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sf_spieler_neuanlagen_ok" android:layout_gravity="bottom" android:id="@id/sf_spieler_neuanlagen_ok" style="@style/ActionButton"></Button>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom" android:id="@id/sf_spieler_neuanlagen_abbruch" android:text="@string/sf_spieler_neuanlagen_abbrechen" style="@style/ActionButton"></Button>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sf_spieler_neuanlagen_ok" android:layout_gravity="bottom" android:id="@id/sf_spieler_neuanlagen_ok" style="@style/ActionButton" android:width="@dimen/action_button_90"></Button>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom" android:id="@id/sf_spieler_neuanlagen_abbruch" android:text="@string/sf_spieler_neuanlagen_abbrechen" style="@style/ActionButton" android:width="@dimen/action_button_90"></Button>
 	</LinearLayout>
 </LinearLayout>

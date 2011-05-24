@@ -44,7 +44,7 @@
 	 	<item name="android:typeface">serif</item>
 	 	<item name="android:textStyle">bold</item>
 	 	<item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/BUTTON_TEXT</item>        
+        <item name="android:textColor">@color/LEMONCHIFFON</item>        
         <item name="android:shadowColor">#00ccff</item>
         <item name="android:shadowRadius">1.5</item>
         <item name="android:shadowDx">1</item>
@@ -54,7 +54,7 @@
 	
 	<!-- PlatzerworldTheme.Button -->   
 	<style name="ActionButton" parent="@android:style/Widget.Button" >
-	 	<item name="android:background">@drawable/kegeln_button</item>        
+	 	<item name="android:background">@drawable/kegeln_button</item>  
 	</style>	
 	
 	<!-- ListView-Style -->

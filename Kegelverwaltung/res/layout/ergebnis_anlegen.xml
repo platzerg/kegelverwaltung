@@ -93,9 +93,9 @@
 		android:layout_weight="1" android:layout_marginBottom="5dip">
 		<Button android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:layout_gravity="bottom"
-			android:id="@id/sf_ergebnis_neuanlagen_ok" android:text="@string/sf_ergebnis_neuanlagen_ok" style="@style/ActionButton"></Button>
+			android:id="@id/sf_ergebnis_neuanlagen_ok" android:text="@string/sf_ergebnis_neuanlagen_ok" style="@style/ActionButton" android:width="@dimen/action_button_90"></Button>
 		<Button android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:layout_gravity="bottom"
-			android:id="@id/sf_ergebnis_neuanlagen_abbruch" android:text="@string/sf_ergebnis_neuanlagen_abbrechen" style="@style/ActionButton"></Button>
+			android:id="@id/sf_ergebnis_neuanlagen_abbruch" android:text="@string/sf_ergebnis_neuanlagen_abbrechen" style="@style/ActionButton" android:width="@dimen/action_button_90"></Button>
 	</LinearLayout>
 </LinearLayout>
