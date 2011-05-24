@@ -9,6 +9,18 @@
 			style="@style/TitelTextBold" android:id="@id/txt_spieler_neuanlegen_titel" android:text="@string/txt_spieler_neuanlegen_titel"></TextView>
 	</LinearLayout>
 	<TableLayout android:id="@+id/tableLayout1" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_marginLeft="5dip" android:layout_marginRight="5dip" android:layout_marginBottom="5dip">
+		<TableRow android:layout_width="match_parent" android:id="@+id/TableRow03" android:layout_height="wrap_content" android:layout_marginBottom="5dip">
+			<TextView android:layout_height="wrap_content" android:width="@dimen/txt_spieler_anlegen_column_width" android:layout_width="wrap_content" android:id="@id/txt_spieler_neuanlegen_passnr" android:text="@string/txt_spieler_neuanlegen_passnr"></TextView>
+			<EditText android:layout_height="wrap_content" android:width="@dimen/edt_spieler_anlegen_column_width" android:inputType="text|textAutoComplete" android:layout_width="match_parent" android:background="@color/TITEL_COLOR" android:id="@id/edt_spieler_neuanlegen_passnr"></EditText>
+		</TableRow>
+		<TableRow android:layout_width="match_parent" android:id="@+id/TableRow02" android:layout_height="wrap_content" android:layout_marginBottom="5dip">
+			<TextView android:layout_height="wrap_content" android:width="@dimen/txt_spieler_anlegen_column_width" android:text="@string/txt_spieler_neuanlegen_name" android:layout_width="wrap_content" android:id="@id/txt_spieler_neuanlegen_name"></TextView>
+			<EditText android:layout_height="wrap_content" android:width="@dimen/edt_spieler_anlegen_column_width" android:inputType="text|textAutoComplete" android:layout_width="match_parent" android:background="@color/TITEL_COLOR" android:id="@id/edt_spieler_neuanlegen_name"></EditText>
+		</TableRow>
+		<TableRow android:layout_width="match_parent" android:id="@+id/TableRow01" android:layout_height="wrap_content" android:layout_marginBottom="5dip">
+			<TextView android:layout_height="wrap_content" android:width="@dimen/txt_spieler_anlegen_column_width" android:layout_width="wrap_content" android:id="@id/txt_spieler_neuanlegen_vorname" android:text="@string/txt_spieler_neuanlegen_vorname"></TextView>
+			<EditText android:layout_height="wrap_content" android:width="@dimen/edt_spieler_anlegen_column_width" android:inputType="text|textAutoComplete" android:layout_width="match_parent" android:background="@color/TITEL_COLOR" android:id="@id/edt_spieler_neuanlegen_vorname"></EditText>
+		</TableRow>
 		
 		<TableRow android:id="@+id/tableRow2" 
 			android:layout_width="match_parent" 
@@ -16,14 +28,14 @@
 			<TextView 
 				android:width="@dimen/txt_spieler_anlegen_column_width"
 				android:layout_width="wrap_content" 
-				android:layout_height="wrap_content" android:id="@id/txt_spieler_neuanlegen_name" android:text="@string/txt_spieler_neuanlegen_name">
+				android:layout_height="wrap_content" android:id="@id/txt_spieler_neuanlegen_gebdatum" android:text="@string/txt_spieler_neuanlegen_gebdatum">
 				<!-- android:layout_column="1" -->
 			</TextView>
 			<EditText 
 				android:width="@dimen/edt_spieler_anlegen_column_width"
 				android:layout_height="wrap_content" 
 				android:background="@color/TITEL_COLOR" 
-				android:layout_width="match_parent" android:id="@id/edt_spieler_neuanlegen_name" android:inputType="text|textAutoComplete">
+				android:layout_width="match_parent" android:inputType="text|textAutoComplete" android:id="@id/edt_spieler_neuanlegen_gebdatum">
 			</EditText>
 		</TableRow>
 	</TableLayout>
