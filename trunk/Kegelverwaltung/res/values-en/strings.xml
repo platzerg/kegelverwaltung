@@ -23,7 +23,10 @@
     <string name="men_spieler_anlegen">Spieler anlegen (en)</string>
     <string name="men_verein_anlegen">Verein anlegen (en)</string>
     <string name="txt_spieler_neuanlegen_titel">Spieler anlegen (en)</string>
+    <string name="txt_spieler_neuanlegen_passnr">PassNr: (en)</string>
     <string name="txt_spieler_neuanlegen_name">Name: (en)</string>
+    <string name="txt_spieler_neuanlegen_vorname">Vorname: (en)</string>
+    <string name="txt_spieler_neuanlegen_gebdatum">Gebdatum: (en)</string>
     <string name="edt_spieler_neuanlegen_name">Name Vorname (en)</string>
     <string name="sf_spieler_neuanlagen_ok">Speichern (en)</string>
     <string name="sf_spieler_neuanlagen_abbrechen">Abbrechen (en)</string>
