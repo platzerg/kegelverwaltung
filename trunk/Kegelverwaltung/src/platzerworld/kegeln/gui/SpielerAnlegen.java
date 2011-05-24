@@ -94,9 +94,9 @@ public class SpielerAnlegen extends Activity implements ConstantsIF{
 		mSpielerSpeicher = new SpielerSpeicher(this);		
 		long mannschaftId = mannschaftVO.key;
 		
-		mSpielerVO = new SpielerVO(mannschaftId, name.getText().toString());
+		mSpielerVO = new SpielerVO(mannschaftId, 1, name.getText().toString(), "", "");
 		mSpielerVO.id = 0;
-		mSpielerSpeicher.speichereGeoKontakt(mSpielerVO);
+		mSpielerSpeicher.speichereSpieler(mSpielerVO);
 		
 		finish();
 	}

@@ -207,29 +207,42 @@ public class KegelverwaltungDatenbank extends SQLiteOpenHelper {
 		// init testdata
 		final long t0 = System.currentTimeMillis();
 
-		final SQLiteStatement stmtInsertKontakt = db.compileStatement(SpielerTbl.STMT_NAME_VEREIN_MANNSCHAFT_INSERT);
+		final SQLiteStatement stmtInsertKontakt = db.compileStatement(SpielerTbl.STMT_ALL_INSERT);
 
 		db.beginTransaction();
 
 		try {
-			stmtInsertKontakt.bindString(1, "Platzer Günter");
-			stmtInsertKontakt.bindLong(2, 53);
+			stmtInsertKontakt.bindLong(1, 53);
+			stmtInsertKontakt.bindLong(2, 123);
+			stmtInsertKontakt.bindString(3, "Platzer");
+			stmtInsertKontakt.bindString(4, "GŸnter");
+			stmtInsertKontakt.bindString(5, "13.04.1972");
 			stmtInsertKontakt.executeInsert();
-			stmtInsertKontakt.bindString(1, "Arras Klaus");
-			stmtInsertKontakt.bindLong(2, 53);
+			
+			stmtInsertKontakt.bindLong(1, 53);
+			stmtInsertKontakt.bindLong(2, 456);
+			stmtInsertKontakt.bindString(3, "Arras");
+			stmtInsertKontakt.bindString(4, "Klaus");
+			stmtInsertKontakt.bindString(5, "12.09.1960");
 			stmtInsertKontakt.executeInsert();
+			
+			/*
+			
 			stmtInsertKontakt.bindString(1, "Schulze Frank");
 			stmtInsertKontakt.bindLong(2, 53);
 			stmtInsertKontakt.executeInsert();
+			
 			stmtInsertKontakt.bindString(1, "Geldmacher Daniel");
 			stmtInsertKontakt.bindLong(2, 53);
 			stmtInsertKontakt.executeInsert();
 			stmtInsertKontakt.bindString(1, "Staub Christoph");
 			stmtInsertKontakt.bindLong(2, 53);
 			stmtInsertKontakt.executeInsert();
+			
 			stmtInsertKontakt.bindString(1, "Frantz Hermann");
 			stmtInsertKontakt.bindLong(2, 53);
 			stmtInsertKontakt.executeInsert();
+			
 			stmtInsertKontakt.bindString(1, "Klostermaier Günter");
 			stmtInsertKontakt.bindLong(2, 53);
 			stmtInsertKontakt.executeInsert();
@@ -255,6 +268,8 @@ public class KegelverwaltungDatenbank extends SQLiteOpenHelper {
 			stmtInsertKontakt.bindString(1, "Binzer Klaus");
 			stmtInsertKontakt.bindLong(2, 15);
 			stmtInsertKontakt.executeInsert();
+			
+			*/
 
 			db.setTransactionSuccessful();
 			// CHECKSTYLE:OFF - methode deprecated
