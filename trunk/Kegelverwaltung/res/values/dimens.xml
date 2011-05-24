@@ -21,4 +21,6 @@
      <dimen name="edt_ergebnis_anlegen_column_width">100dip</dimen>
      <dimen name="edt_ergebnis_anlegen_row_filler">5dip</dimen>
      
+      <dimen name="action_button_90">90dip</dimen>
+     
 </resources>

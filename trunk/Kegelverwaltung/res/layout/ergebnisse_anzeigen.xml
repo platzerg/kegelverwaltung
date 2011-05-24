@@ -134,8 +134,8 @@
 		android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginBottom="5dip">
 		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" 
 		android:layout_gravity="bottom" android:id="@id/sf_ergebnis_neuanlagen" 
-		android:text="@string/sf_ergebnis_neuanlagen" style="@style/ActionButton"></Button>
-		<Button android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@id/sf_ergebnis_loeschen" android:text="@string/sf_ergebnis_loeschen" android:enabled="false" style="@style/ActionButton"></Button>
+		android:text="@string/sf_ergebnis_neuanlagen" style="@style/ActionButton" android:width="@dimen/action_button_90"></Button>
+		<Button android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@id/sf_ergebnis_loeschen" android:text="@string/sf_ergebnis_loeschen" android:enabled="false" style="@style/ActionButton" android:width="@dimen/action_button_90"></Button>
 	</LinearLayout>
 	
 </LinearLayout>
