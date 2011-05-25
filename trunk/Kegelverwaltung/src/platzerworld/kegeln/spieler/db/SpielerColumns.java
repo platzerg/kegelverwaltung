@@ -6,33 +6,38 @@ package platzerworld.kegeln.spieler.db;
 /**
  * Spalten der Tabelle SPIELER. <br>
  * 
- * @author pant
+ * @author platzerg
  */
 public interface SpielerColumns {
-	/** PrimŠrschlŸssel. */
+	/**
+	 * Primärschlüssel _id
+	 */
 	String ID = "_id";
 	
 	/**
-	 * Zeitpunkt der letzten Positionsmeldung. <br>
-	 * INTEGER
+	 * mannschaft_id
 	 */
 	String MANNSCHAFT_ID = "mannschaft_id";
 
 	
-	/** Passnummer der DB Tabelle in der Amando Datenbank. */
+	/**
+	 * pass_nr
+	 */
 	public String PASS_NR = "pass_nr";
 	
 	/**
-	 * Pflichtfeld. Name := Vorname Nachname <br>
-	 * Pflichtfeld <br>
-	 * TEXT
+	 * name
 	 */
 	String NAME = "name";
 	
-	/** Vorname des Besitzers der Mobilnummer. */
+	/**
+	 * vorname
+	 */
 	public String VORNAME = "vorname";
 	
-	/** Geburtsdatum des Besitzers der Mobilnummer. */
+	/**
+	 * geb_datum
+	 */
 	public String GEB_DATUM = "geb_datum";
 	
 
