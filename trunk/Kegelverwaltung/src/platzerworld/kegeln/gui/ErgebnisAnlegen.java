@@ -72,31 +72,40 @@ public class ErgebnisAnlegen extends Activity implements ConstantsIF {
 	};
 
 	private void speichern() {
-		EditText gesamtergebnis = (EditText) findViewById(R.id.edt_ergebnis_neuanlegen_gesamtergebnis);
-		EditText ergebnis501 = (EditText) findViewById(R.id.edt_ergebnis_neuanlegen_ergebnis_50_1);
-		EditText ergebnis502 = (EditText) findViewById(R.id.edt_ergebnis_neuanlegen_ergebnis_50_2);
+		String gesamtergebnis = ((EditText) findViewById(R.id.edt_ergebnis_neuanlegen_gesamtergebnis)).getText().toString();
+		String ergebnis501 = ((EditText) findViewById(R.id.edt_ergebnis_neuanlegen_ergebnis_50_1)).getText().toString();
+		String ergebnis502 = ((EditText) findViewById(R.id.edt_ergebnis_neuanlegen_ergebnis_50_2)).getText().toString();
 
-		EditText volle251 = (EditText) findViewById(R.id.edt_ergebnis_neuanlegen_volle_50_1);
-		EditText volle252 = (EditText) findViewById(R.id.edt_ergebnis_neuanlegen_volle_50_2);
+		String volle251 = ((EditText) findViewById(R.id.edt_ergebnis_neuanlegen_volle_50_1)).getText().toString();
+		String volle252 = ((EditText) findViewById(R.id.edt_ergebnis_neuanlegen_volle_50_2)).getText().toString();
 
-		EditText abr251 = (EditText) findViewById(R.id.edt_ergebnis_neuanlegen_abraeumen_50_1);
-		EditText abr252 = (EditText) findViewById(R.id.edt_ergebnis_neuanlegen_abraeumen_50_2);
+		String abr251 = ((EditText) findViewById(R.id.edt_ergebnis_neuanlegen_abraeumen_50_1)).getText().toString();
+		String abr252 = ((EditText) findViewById(R.id.edt_ergebnis_neuanlegen_abraeumen_50_2)).getText().toString();
 
-		EditText fehl251 = (EditText) findViewById(R.id.edt_ergebnis_neuanlegen_fehl_50_1);
-		EditText fehl252 = (EditText) findViewById(R.id.edt_ergebnis_neuanlegen_fehl_50_2);
+		String fehl251 = ((EditText) findViewById(R.id.edt_ergebnis_neuanlegen_fehl_50_1)).getText().toString();
+		String fehl252 = ((EditText) findViewById(R.id.edt_ergebnis_neuanlegen_fehl_50_2)).getText().toString();
 
-		mErgebnisSpeicher = new ErgebnisSpeicher(this);
+		if(null == gesamtergebnis || "".equals(gesamtergebnis)
+				|| null == ergebnis501 || "".equals(ergebnis501)
+				|| null == ergebnis502 || "".equals(ergebnis502)
+				|| null == volle251 || "".equals(volle251)
+				|| null == volle252 || "".equals(volle252)
+				|| null == abr251 || "".equals(abr251)
+				|| null == abr252 || "".equals(abr252)
+				|| null == fehl251 || "".equals(fehl251)
+				|| null == fehl252 || "".equals(fehl252)){
+			super.finish();
+		}else{
+			mErgebnisSpeicher = new ErgebnisSpeicher(this);
 
-		mErgebnisVO = new ErgebnisVO(1, aktuellerSpieler.id, aktuellerSpieler.mannschaftId, Long.parseLong(gesamtergebnis.getText().toString()),
-				Long.parseLong(ergebnis501.getText().toString()), Long.parseLong(ergebnis502.getText().toString()),
-
-				Long.parseLong(volle251.getText().toString()), Long.parseLong(volle252.getText().toString()),
-
-				Long.parseLong(abr251.getText().toString()), Long.parseLong(abr252.getText().toString()),
-
-				Long.parseLong(fehl251.getText().toString()), Long.parseLong(fehl252.getText().toString()));
-		mErgebnisVO.id = 0;
-		mErgebnisSpeicher.speichereErgebnis(mErgebnisVO);
+			mErgebnisVO = new ErgebnisVO(1, aktuellerSpieler.id, aktuellerSpieler.mannschaftId, Long.parseLong(gesamtergebnis),
+					Long.parseLong(ergebnis501), Long.parseLong(ergebnis502),
+					Long.parseLong(volle251), Long.parseLong(volle252),
+					Long.parseLong(abr251), Long.parseLong(abr252),
+					Long.parseLong(fehl251), Long.parseLong(fehl252));
+			mErgebnisVO.id = 0;
+			mErgebnisSpeicher.speichereErgebnis(mErgebnisVO);
+		}
 
 		finish();
 	}

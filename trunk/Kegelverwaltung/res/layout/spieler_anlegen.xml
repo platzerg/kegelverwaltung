@@ -11,7 +11,7 @@
 	<TableLayout android:id="@+id/tableLayout1" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_marginLeft="5dip" android:layout_marginRight="5dip" android:layout_marginBottom="5dip">
 		<TableRow android:layout_width="match_parent" android:id="@+id/TableRow01" android:layout_height="wrap_content" android:layout_marginBottom="5dip">
 			<TextView android:layout_height="wrap_content" android:width="@dimen/txt_spieler_anlegen_column_width" android:layout_width="wrap_content" android:id="@id/txt_spieler_neuanlegen_passnr" android:text="@string/txt_spieler_neuanlegen_passnr"></TextView>
-			<EditText android:layout_height="wrap_content" android:width="@dimen/edt_spieler_anlegen_column_width" android:inputType="text|textAutoComplete" android:layout_width="match_parent" android:background="@color/TITEL_COLOR" android:id="@id/edt_spieler_neuanlegen_passnr"></EditText>
+			<EditText android:layout_height="wrap_content" android:width="@dimen/edt_spieler_anlegen_column_width" android:layout_width="match_parent" android:background="@color/TITEL_COLOR" android:id="@id/edt_spieler_neuanlegen_passnr" android:inputType="number"></EditText>
 		</TableRow>
 		
 		<TableRow android:id="@+id/tableRow2" 
