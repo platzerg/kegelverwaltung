@@ -90,11 +90,16 @@ public class SpielerAnlegen extends Activity implements ConstantsIF{
 	};
 	
 	private void speichern(){
+		EditText passnr = (EditText) findViewById(R.id.edt_spieler_neuanlegen_passnr);
 		EditText name = (EditText) findViewById(R.id.edt_spieler_neuanlegen_name);
+		EditText vorname = (EditText) findViewById(R.id.edt_spieler_neuanlegen_vorname);
+		EditText gebDatum = (EditText) findViewById(R.id.edt_spieler_neuanlegen_gebdatum);
+		
 		mSpielerSpeicher = new SpielerSpeicher(this);		
 		long mannschaftId = mannschaftVO.key;
 		
-		mSpielerVO = new SpielerVO(mannschaftId, 1, name.getText().toString(), "", "");
+		mSpielerVO = new SpielerVO(mannschaftId, Long.parseLong(passnr.getText().toString()), 
+				name.getText().toString(), vorname.getText().toString(), gebDatum.getText().toString());
 		mSpielerVO.id = 0;
 		mSpielerSpeicher.speichereSpieler(mSpielerVO);
 		

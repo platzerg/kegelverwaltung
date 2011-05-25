@@ -44,7 +44,7 @@ public class BetaActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.betastart);
 		
-		TextView betaView = (TextView) findViewById(R.id.betaview);
+		TextView betaView = (TextView) findViewById(R.id.textView1);
 		
 		betaView.setText("BetaView");
 		
