@@ -68,15 +68,16 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 			return;
 		}
 		String spieler = (String) extras.getSerializable(INTENT_EXTRA_SPIELER);
-		
-		
 
 		mErgebnisListView = (ListView) this.findViewById(android.R.id.list);
-
 		
 		mSpielerSpeicher = new SpielerSpeicher(this);
-		
 		aktuellerSpieler = mSpielerSpeicher.ladeSpielerByName(null, spieler);
+		if(null == aktuellerSpieler){
+			super.finish();
+		}
+		
+		
 
 		// hinzufuegen
 		final Button buttonAnlegenErgebnis = (Button) findViewById(R.id.sf_ergebnis_neuanlagen);
@@ -95,8 +96,14 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 
 	@Override
 	protected void onDestroy() {
-		mErgebnisSpeicher.schliessen();
-		mSpielerSpeicher.schliessen();
+		if(null != mErgebnisSpeicher){
+			mErgebnisSpeicher.schliessen();
+		}
+		if(null != mErgebnisSpeicher){
+			mErgebnisSpeicher.schliessen();
+		}
+		
+		
 		super.onDestroy();
 	}
 
