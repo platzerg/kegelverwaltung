@@ -14,6 +14,7 @@ import platzerworld.kegeln.klasse.db.KlasseSpeicher;
 import platzerworld.kegeln.klasse.vo.KlasseVO;
 import platzerworld.kegeln.mannschaft.db.MannschaftSpeicher;
 import platzerworld.kegeln.mannschaft.vo.MannschaftVO;
+import platzerworld.kegeln.spieler.db.SpielerColumns;
 import platzerworld.kegeln.spieler.db.SpielerSpeicher;
 import platzerworld.kegeln.spieler.db.SpielerTbl;
 import platzerworld.kegeln.spieler.vo.SpielerVO;
@@ -102,6 +103,23 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		mannschaftSpinner.setOnItemSelectedListener(mSpinnerMansnchaftenItemAuswahlListener);
 
 		spielerListView = (ListView) this.findViewById(android.R.id.list);
+		spielerListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				ListView listView = (ListView) arg0;
+				HashMap<String, String> selHashMap = (HashMap<String, String>) listView.getItemAtPosition(arg2);
+				String name = selHashMap.get(SpielerColumns.NAME);
+				String _id = selHashMap.get(SpielerColumns.ID);
+				
+				mSelectedSpieler = new KeyValueVO(Integer.parseInt(_id), name);
+				
+				  final Intent intent = new Intent(LigaVerwalten.this, ErgebnisseAnzeigen.class);
+				  intent.putExtra(INTENT_EXTRA_SPIELER, name);
+					startActivity(intent);
+				  
+				return true;
+			}
+		});
 		
 		mKlasseSpeicher = new KlasseSpeicher(this);
 
@@ -369,8 +387,11 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		for (SpielerVO spielerVO : spielerListeVO) {
 			entitiesHashMap = new HashMap<String, String>();
 			entitiesHashMap.put(SpielerTbl.ID, String.valueOf(spielerVO.id));
-			entitiesHashMap.put(SpielerTbl.NAME, spielerVO.name);
 			entitiesHashMap.put(SpielerTbl.MANNSCHAFT_ID, String.valueOf(spielerVO.mannschaftId) );
+			entitiesHashMap.put(SpielerTbl.PASS_NR, String.valueOf(spielerVO.passNr));
+			entitiesHashMap.put(SpielerTbl.NAME, spielerVO.name);
+			entitiesHashMap.put(SpielerTbl.VORNAME, spielerVO.vorname);
+			entitiesHashMap.put(SpielerTbl.GEB_DATUM, spielerVO.gebDatum);
 			
 			mHashMapListForListView.add(entitiesHashMap);
 		}
