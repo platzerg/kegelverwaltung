@@ -24,7 +24,7 @@
 		
 		<TableRow android:id="@+id/tableRow2" 
 			android:layout_width="match_parent" 
-			android:layout_height="wrap_content">
+			android:layout_height="wrap_content" android:layout_marginBottom="5dip">
 			<TextView 
 				android:width="@dimen/txt_spieler_anlegen_column_width"
 				android:layout_width="wrap_content" 
@@ -37,6 +37,14 @@
 				android:background="@color/TITEL_COLOR" 
 				android:layout_width="match_parent" android:inputType="text|textAutoComplete" android:id="@id/edt_spieler_neuanlegen_gebdatum">
 			</EditText>
+		</TableRow>
+		<TableRow android:layout_marginBottom="5dip" android:id="@+id/TableRow05" android:layout_height="wrap_content" android:layout_width="match_parent">
+			<TextView android:layout_width="wrap_content" android:width="@dimen/txt_spieler_anlegen_column_width" android:layout_height="wrap_content" android:id="@id/txt_spieler_neuanlegen_latitude" android:text="@string/txt_spieler_neuanlegen_latitude"></TextView>
+			<EditText android:background="@color/TITEL_COLOR" android:layout_width="match_parent" android:width="@dimen/edt_spieler_anlegen_column_width" android:layout_height="wrap_content" android:id="@id/edt_spieler_neuanlegen_latitude" android:inputType="number|numberDecimal"></EditText>
+		</TableRow>
+		<TableRow android:layout_marginBottom="5dip" android:id="@+id/TableRow04" android:layout_width="match_parent" android:layout_height="wrap_content">
+			<TextView android:layout_width="wrap_content" android:width="@dimen/txt_spieler_anlegen_column_width" android:layout_height="wrap_content" android:id="@id/txt_spieler_neuanlegen_longitude" android:text="@string/txt_spieler_neuanlegen_longitude"></TextView>
+			<EditText android:background="@color/TITEL_COLOR" android:layout_width="match_parent" android:width="@dimen/edt_spieler_anlegen_column_width" android:layout_height="wrap_content" android:id="@id/edt_spieler_neuanlegen_longitude" android:inputType="number|numberDecimal"></EditText>
 		</TableRow>
 	</TableLayout>
 	<LinearLayout android:layout_width="match_parent"
