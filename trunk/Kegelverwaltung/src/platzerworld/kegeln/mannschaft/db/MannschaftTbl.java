@@ -44,7 +44,7 @@ public final class MannschaftTbl implements MannschaftColumns {
 	/**
 	 * SQL-Anweisung zum Löschen aller Mannschaften.
 	 */
-	public static final String STMT_MANNSCHAFT_DELETE = "DELETE mannschaft ";
+	public static final String STMT_MANNSCHAFT_DELETE = "DELETE from mannschaft ";
 
 	/**
 	 * SQL-Anweisung zum Löschen einer Mannschaft anhand seines Schlüsselwerts.

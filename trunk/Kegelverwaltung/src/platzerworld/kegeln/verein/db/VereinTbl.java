@@ -49,7 +49,7 @@ public final class VereinTbl implements VereinColumns {
 	/**
 	 * SQL-Anweisung zur L&ouml;schung aller Geokontakte.
 	 */
-	public static final String STMT_VEREIN_DELETE = "DELETE verein ";
+	public static final String STMT_VEREIN_DELETE = "DELETE from verein ";
 
 	/**
 	 * SQL-Anweisung zur L&ouml;schung eines Geokontakts anhand seines

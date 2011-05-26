@@ -54,6 +54,96 @@ public class KegelverwaltungDatenbank extends SQLiteOpenHelper {
 		super(context, DATENBANK_NAME, null, DATENBANK_VERSION);
 		mContext = context;
 	}
+	
+	public void resetDB(){
+		SQLiteDatabase dbCon = null;
+		try{
+		 dbCon = getWritableDatabase();
+			if(null != dbCon){
+				dbCon.execSQL(ErgebnisTbl.SQL_DROP);
+				dbCon.execSQL(SpielerTbl.SQL_DROP);
+				dbCon.execSQL(MannschaftTbl.SQL_DROP);
+				dbCon.execSQL(VereinTbl.SQL_DROP);
+				dbCon.execSQL(KlasseTbl.SQL_DROP);
+				
+				dbCon.close();
+				
+				this.db = getWritableDatabase();
+				initDatabase(mContext);
+			}
+		} finally {
+			dbCon.close();
+		}
+	}
+	
+	public void deleteTable(){
+		SQLiteDatabase dbCon = null;
+		try{
+		 dbCon = getWritableDatabase();
+			if(null != dbCon){
+				dbCon.execSQL(ErgebnisTbl.SQL_DROP);
+				dbCon.execSQL(SpielerTbl.SQL_DROP);
+				dbCon.execSQL(MannschaftTbl.SQL_DROP);
+				dbCon.execSQL(VereinTbl.SQL_DROP);
+				dbCon.execSQL(KlasseTbl.SQL_DROP);
+				
+				dbCon.close();
+			}
+		} finally {
+			dbCon.close();
+		}
+	}
+	
+	public void createTable(){
+		SQLiteDatabase dbCon = null;
+		try{
+		 dbCon = getWritableDatabase();
+			if(null != dbCon){
+				dbCon.execSQL(KlasseTbl.SQL_CREATE);
+				dbCon.execSQL(VereinTbl.SQL_CREATE);
+				dbCon.execSQL(MannschaftTbl.SQL_CREATE);
+				dbCon.execSQL(SpielerTbl.SQL_CREATE);
+				dbCon.execSQL(ErgebnisTbl.SQL_CREATE);
+				
+				dbCon.close();
+			}
+		} finally {
+			dbCon.close();
+		}
+	}
+	
+	public void deleteData(){
+		SQLiteDatabase dbCon = null;
+		try{
+		 dbCon = getWritableDatabase();
+			if(null != dbCon){
+				dbCon.execSQL(ErgebnisTbl.STMT_DELETE);
+				dbCon.execSQL(SpielerTbl.STMT_SPIELER_DELETE);
+				dbCon.execSQL(MannschaftTbl.STMT_MANNSCHAFT_DELETE);
+				dbCon.execSQL(VereinTbl.STMT_VEREIN_DELETE);
+				dbCon.execSQL(KlasseTbl.STMT_KLASSE_DELETE);
+				
+				dbCon.close();
+			}
+		} finally {
+			dbCon.close();
+		}
+	}
+	
+	public void insertData(){
+		try{
+		 db = getWritableDatabase();
+			if(null != db){
+				erzeugeKlassenDaten(db, mContext);
+				erzeugeVereinDaten(db);
+				erzeugeMannschaftDaten(db);
+				erzeugeSpielerDaten(db);
+				erzeugeErgebnisDaten(db);
+			}
+		} finally {
+			db.close();
+		}
+	}
 
 	/**
 	 * Wird aufgerufen, wenn das Datenbankschema neu angelegt werden soll. <br>
@@ -217,6 +307,8 @@ public class KegelverwaltungDatenbank extends SQLiteOpenHelper {
 			stmtInsertKontakt.bindString(3, "Platzer");
 			stmtInsertKontakt.bindString(4, "GŸnter");
 			stmtInsertKontakt.bindString(5, "13.04.1972");
+			stmtInsertKontakt.bindLong(6, (int) (48.17968 * 1E6));
+			stmtInsertKontakt.bindLong(6, (int) (11.5922 * 1E6));
 			stmtInsertKontakt.executeInsert();
 			
 			stmtInsertKontakt.bindLong(1, 53);

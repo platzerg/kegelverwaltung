@@ -63,6 +63,11 @@ public final class ErgebnisTbl implements ErgebnisColumns {
 	 * SQL-Anweisung zum Löschen aller Mannschaften.
 	 */
 	public static final String STMT_ERBEBNIS_DELETE = "DELETE ERBEBNIS ";
+	
+	/**
+	 * SQL-Anweisung zum Löschen aller Mannschaften.
+	 */
+	public static final String STMT_DELETE = "DELETE FROM ERGEBNIS";
 
 	/**
 	 * SQL-Anweisung zum Löschen einer Mannschaft anhand seines Schlüsselwerts.
