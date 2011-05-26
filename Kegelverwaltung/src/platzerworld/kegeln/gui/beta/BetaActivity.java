@@ -1,5 +1,6 @@
 package platzerworld.kegeln.gui.beta;
 
+import platzerworld.kegeln.KegelverwaltungDatenbank;
 import platzerworld.kegeln.R;
 import platzerworld.kegeln.common.map.ShowMap;
 import platzerworld.kegeln.gui.SchnittlisteAnzeigen;
@@ -57,6 +58,23 @@ public class BetaActivity extends Activity {
 		Button mapButton = (Button) findViewById(R.id.mapViewButton);
 		mapButton.setOnClickListener(mMapsListener);
 		
+		Button reseDBButton = (Button) findViewById(R.id.resetDB);
+		reseDBButton.setOnClickListener(mResetDBListener);
+		
+		Button deleteTableButton = (Button) findViewById(R.id.deleteTable);
+		deleteTableButton.setOnClickListener(mDeleteTableListener);
+		
+		Button createTableButton = (Button) findViewById(R.id.createTable);
+		createTableButton.setOnClickListener(mCreateTableListener);
+		
+		Button deleteDataButton = (Button) findViewById(R.id.deleteData);
+		deleteDataButton.setOnClickListener(mDeleteDataListener);
+		
+		Button insertDataButton = (Button) findViewById(R.id.InsertData);
+		insertDataButton.setOnClickListener(mInsertDataListener);
+		
+		
+		
 		showDisplayProperties();
 	}
 	
@@ -68,6 +86,66 @@ public class BetaActivity extends Activity {
 		public void onClick(View v) {
 			final Intent settingsActivity = new Intent(BetaActivity.this, ShowMap.class);
 			startActivity(settingsActivity);
+		}
+	};
+	
+	/**
+	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
+	 * Anzeigen'.
+	 */
+	private final OnClickListener mResetDBListener = new OnClickListener() {
+		public void onClick(View v) {
+			KegelverwaltungDatenbank db = new KegelverwaltungDatenbank(BetaActivity.this);
+			db.resetDB();
+			
+		}
+	};
+	
+	/**
+	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
+	 * Anzeigen'.
+	 */
+	private final OnClickListener mDeleteTableListener = new OnClickListener() {
+		public void onClick(View v) {
+			KegelverwaltungDatenbank db = new KegelverwaltungDatenbank(BetaActivity.this);
+			db.deleteTable();
+			
+		}
+	};
+	
+	/**
+	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
+	 * Anzeigen'.
+	 */
+	private final OnClickListener mCreateTableListener = new OnClickListener() {
+		public void onClick(View v) {
+			KegelverwaltungDatenbank db = new KegelverwaltungDatenbank(BetaActivity.this);
+			db.createTable();
+			
+		}
+	};
+	
+	/**
+	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
+	 * Anzeigen'.
+	 */
+	private final OnClickListener mDeleteDataListener = new OnClickListener() {
+		public void onClick(View v) {
+			KegelverwaltungDatenbank db = new KegelverwaltungDatenbank(BetaActivity.this);
+			db.deleteData();
+			
+		}
+	};
+	
+	/**
+	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
+	 * Anzeigen'.
+	 */
+	private final OnClickListener mInsertDataListener = new OnClickListener() {
+		public void onClick(View v) {
+			KegelverwaltungDatenbank db = new KegelverwaltungDatenbank(BetaActivity.this);
+			db.insertData();
+			
 		}
 	};
 	

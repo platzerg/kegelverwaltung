@@ -58,7 +58,7 @@ public final class SpielerTbl implements SpielerColumns {
 	/**
 	 * SQL-Anweisung zur L&ouml;schung aller Geokontakte.
 	 */
-	public static final String STMT_SPIELER_DELETE = "DELETE spieler ";
+	public static final String STMT_SPIELER_DELETE = "DELETE from spieler ";
 
 	/**
 	 * SQL-Anweisung zur L&ouml;schung eines Geokontakts anhand seines

@@ -46,7 +46,7 @@ public final class KlasseTbl implements KlasseColumns {
 	/**
 	 * SQL-Anweisung zur Löschung aller Klassen.
 	 */
-	public static final String STMT_KONTAKT_DELETE = "DELETE KLASSE ";
+	public static final String STMT_KLASSE_DELETE = "DELETE from KLASSE ";
 
 	/**
 	 * SQL-Anweisung zur Löschung einer Klasse anhand seines Schlüssewerts.
