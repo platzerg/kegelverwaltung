@@ -99,7 +99,8 @@ public class SpielerAnlegen extends Activity implements ConstantsIF{
 		long mannschaftId = mannschaftVO.key;
 		
 		mSpielerVO = new SpielerVO(mannschaftId, Long.parseLong(passnr.getText().toString()), 
-				name.getText().toString(), vorname.getText().toString(), gebDatum.getText().toString());
+				name.getText().toString(), vorname.getText().toString(), gebDatum.getText().toString(),
+				(int) (48.17968 * 1E6), (int) (11.5922 * 1E6));
 		mSpielerVO.id = 0;
 		mSpielerSpeicher.speichereSpieler(mSpielerVO);
 		

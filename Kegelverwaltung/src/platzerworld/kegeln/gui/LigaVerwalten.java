@@ -393,6 +393,9 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 			entitiesHashMap.put(SpielerTbl.VORNAME, spielerVO.vorname);
 			entitiesHashMap.put(SpielerTbl.GEB_DATUM, spielerVO.gebDatum);
 			
+			entitiesHashMap.put(SpielerTbl.LOC_LATITUDE, String.valueOf(spielerVO.latidute) );
+			entitiesHashMap.put(SpielerTbl.LOC_LONGITUDE, String.valueOf(spielerVO.longitude) );
+			
 			mHashMapListForListView.add(entitiesHashMap);
 		}
 
