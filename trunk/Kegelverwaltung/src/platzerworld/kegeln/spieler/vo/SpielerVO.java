@@ -26,16 +26,24 @@ public class SpielerVO extends KeyValueVO{
 	
 	/** Geburtsdatum des Besitzers der Mobilnummer. */
 	public String gebDatum;
+	
+	/** latidute */
+	public int latidute;
+	
+	/** longitude */
+	public int longitude;
 
 	public SpielerVO(){
 		
 	}
-	public SpielerVO(long mannschaftId, long passNr, String name, String vorname, String gebDatum){
+	public SpielerVO(long mannschaftId, long passNr, String name, String vorname, String gebDatum, int latidute, int longitude){
 		this.mannschaftId = mannschaftId;
 		this.passNr = passNr;
 		this.name = name;
 		this.vorname = vorname;
 		this.gebDatum = gebDatum;
+		this.latidute = latidute;
+		this.longitude = longitude;
 	}
 	
 	public boolean istNeu() {

@@ -40,6 +40,14 @@ public interface SpielerColumns {
 	 */
 	public String GEB_DATUM = "geb_datum";
 	
-
+	/**
+	 * Location Latidute
+	 */
+	public String LOC_LATITUDE = "loc_latidute";
+		
+	/**
+	 * Location Longitude
+	 */
+	public String LOC_LONGITUDE = "loc_longitude";
 	
 }

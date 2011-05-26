@@ -86,6 +86,8 @@ public class SpielerSpeicher {
 		daten.put(SpielerTbl.NAME, spielerVO.name);
 		daten.put(SpielerTbl.VORNAME, spielerVO.vorname);
 		daten.put(SpielerTbl.GEB_DATUM, spielerVO.gebDatum);
+		daten.put(SpielerTbl.LOC_LATITUDE, spielerVO.latidute);
+		daten.put(SpielerTbl.LOC_LONGITUDE, spielerVO.longitude);
 
 		final SQLiteDatabase dbCon = mDb.getWritableDatabase();
 
@@ -110,6 +112,8 @@ public class SpielerSpeicher {
 		daten.put(SpielerTbl.NAME, spielerVO.name);
 		daten.put(SpielerTbl.VORNAME, spielerVO.vorname);
 		daten.put(SpielerTbl.GEB_DATUM, spielerVO.gebDatum);
+		daten.put(SpielerTbl.LOC_LATITUDE, spielerVO.latidute);
+		daten.put(SpielerTbl.LOC_LONGITUDE, spielerVO.longitude);
 
 		final SQLiteDatabase dbCon = mDb.getWritableDatabase();
 
@@ -476,6 +480,9 @@ public class SpielerSpeicher {
     				spielerVO.vorname = c.getString(c.getColumnIndex(SpielerTbl.VORNAME));
     				spielerVO.gebDatum = c.getString(c.getColumnIndex(SpielerTbl.GEB_DATUM));
     				
+    				spielerVO.latidute = c.getInt(c.getColumnIndex(SpielerTbl.LOC_LATITUDE));
+    				spielerVO.longitude = c.getInt(c.getColumnIndex(SpielerTbl.LOC_LONGITUDE));
+    				
     				spielerVOs.add(spielerVO);
     			}while (c.moveToNext());
     		} 
@@ -525,6 +532,9 @@ public class SpielerSpeicher {
 		spielerVO.passNr = c.getLong(c.getColumnIndex(SpielerTbl.PASS_NR));
 		spielerVO.vorname = c.getString(c.getColumnIndex(SpielerTbl.VORNAME));
 		spielerVO.gebDatum = c.getString(c.getColumnIndex(SpielerTbl.GEB_DATUM));
+		
+		spielerVO.latidute = c.getInt(c.getColumnIndex(SpielerTbl.LOC_LATITUDE));
+		spielerVO.longitude = c.getInt(c.getColumnIndex(SpielerTbl.LOC_LONGITUDE));
 		
 		return spielerVO;
 	}
