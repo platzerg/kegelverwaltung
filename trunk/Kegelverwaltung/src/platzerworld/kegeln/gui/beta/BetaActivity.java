@@ -1,10 +1,13 @@
 package platzerworld.kegeln.gui.beta;
 
 import platzerworld.kegeln.R;
+import platzerworld.kegeln.common.map.ShowMap;
+import platzerworld.kegeln.gui.SchnittlisteAnzeigen;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.hardware.SensorListener;
 import android.hardware.SensorManager;
 import android.location.Criteria;
@@ -18,7 +21,10 @@ import android.os.Vibrator;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,8 +54,22 @@ public class BetaActivity extends Activity {
 		
 		betaView.setText("BetaView");
 		
+		Button mapButton = (Button) findViewById(R.id.mapViewButton);
+		mapButton.setOnClickListener(mMapsListener);
+		
 		showDisplayProperties();
 	}
+	
+	/**
+	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
+	 * Anzeigen'.
+	 */
+	private final OnClickListener mMapsListener = new OnClickListener() {
+		public void onClick(View v) {
+			final Intent settingsActivity = new Intent(BetaActivity.this, ShowMap.class);
+			startActivity(settingsActivity);
+		}
+	};
 	
 	private void showDisplayProperties(){
 		Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
