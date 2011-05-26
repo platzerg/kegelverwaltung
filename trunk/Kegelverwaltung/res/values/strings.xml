@@ -24,6 +24,8 @@
     <string name="men_verein_anlegen">Verein anlegen</string>
     <string name="txt_spieler_neuanlegen_titel">Spieler anlegen</string>
     <string name="txt_spieler_neuanlegen_passnr">PassNr:</string>
+    <string name="txt_spieler_neuanlegen_latitude">Latitude:</string>
+    <string name="txt_spieler_neuanlegen_longitude">Longitude:</string>
     <string name="txt_spieler_neuanlegen_name">Name:</string>
     <string name="txt_spieler_neuanlegen_vorname">Vorname:</string>
     <string name="txt_spieler_neuanlegen_gebdatum">Gebdatum:</string>

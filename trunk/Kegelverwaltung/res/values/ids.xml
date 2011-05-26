@@ -34,11 +34,15 @@
 	
 	<item type="id" name="txt_spieler_neuanlegen_titel" />
 	<item type="id" name="txt_spieler_neuanlegen_passnr" />
+	<item type="id" name="txt_spieler_neuanlegen_latitude" />
+	<item type="id" name="txt_spieler_neuanlegen_longitude" />
 	<item type="id" name="txt_spieler_neuanlegen_name" />
 	<item type="id" name="txt_spieler_neuanlegen_vorname" />
 	<item type="id" name="txt_spieler_neuanlegen_gebdatum" />
 	
 	<item type="id" name="edt_spieler_neuanlegen_passnr" />
+	<item type="id" name="edt_spieler_neuanlegen_latitude" />
+	<item type="id" name="edt_spieler_neuanlegen_longitude" />
 	<item type="id" name="edt_spieler_neuanlegen_name" />
 	<item type="id" name="edt_spieler_neuanlegen_vorname" />
 	<item type="id" name="edt_spieler_neuanlegen_gebdatum" />
