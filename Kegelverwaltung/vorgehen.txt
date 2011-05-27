@@ -1,0 +1,9 @@
+oncreate:
+     - init
+     	- initStyle
+     	- initWidgets
+     	- initListener
+		- initContextMenu
+		
+onDestroy:
+	 - cleanDatabase 
