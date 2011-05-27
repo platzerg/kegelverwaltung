@@ -9,6 +9,7 @@ import platzerworld.kegeln.common.ConstantsIF;
 import platzerworld.kegeln.common.KeyValueVO;
 import platzerworld.kegeln.common.db.KlassenFilterQueryProvider;
 import platzerworld.kegeln.common.logging.LOG;
+import platzerworld.kegeln.common.preference.KegelverwaltungPreference;
 import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.ergebnis.db.ErgebnisTbl;
 import platzerworld.kegeln.klasse.db.KlasseSpeicher;
@@ -501,10 +502,14 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	}
 	
 	private void savePreference() {
+		KegelverwaltungPreference.getInstance(this).saveIntState(PREFERENCE_KEY_INDEX_KLASSE, mSelectedKlasseItemPosition).saveIntState(PREFERENCE_KEY_INDEX_MANNSCHAFT, mSelectedMannschaftItemPosition);
+		
+		/**
 		final Editor myEditor = getPrivateSharedPreferences().edit();
 		myEditor.putInt(PREFERENCE_KEY_INDEX_KLASSE, mSelectedKlasseItemPosition);
 		myEditor.putInt(PREFERENCE_KEY_INDEX_MANNSCHAFT, mSelectedMannschaftItemPosition);
 		myEditor.commit();
+		*/
 	}
 
 	private void loadPreference(){
