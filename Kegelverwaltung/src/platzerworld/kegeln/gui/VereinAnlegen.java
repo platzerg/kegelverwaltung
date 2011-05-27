@@ -69,7 +69,7 @@ public class VereinAnlegen extends Activity implements ConstantsIF{
 		
 		mVereinVO = new VereinVO(name.getText().toString());
 		mVereinVO.id = 0;
-		mVereinSpeicher.speichereGeoKontakt(mVereinVO);
+		mVereinSpeicher.speichereVerein(mVereinVO);
 		
 		finish();
 	}

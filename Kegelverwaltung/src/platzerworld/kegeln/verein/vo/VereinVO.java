@@ -16,6 +16,13 @@ public class VereinVO extends KeyValueVO{
   /** Name des Besitzers der Mobilnummer. */
 	public String name;
 	
+	/** latidute */
+	public int latidute;
+	
+	/** longitude */
+	public int longitude;
+
+	
 	public VereinVO(){
 		
 	}
@@ -24,8 +31,10 @@ public class VereinVO extends KeyValueVO{
 		this.name = name;
 	}
 
-	public VereinVO(long key, String value){
+	public VereinVO(long key, String value, int latidute, int longitude){
 		super(key, value);
+		this.latidute = latidute;
+		this.longitude = longitude;
 	}
 	
   /**
