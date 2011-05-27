@@ -70,8 +70,7 @@ public class Startseite extends Activity implements ConstantsIF{
 
 		imageView = (ImageView) findViewById(R.id.imageView1);
 
-		imageView.startAnimation(AnimationUtils.loadAnimation(this,
-				R.anim.rotate_indefinitely));
+		imageView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely));
 
 		
 		Log.d(TAG, "onCreate(): PID: " + Process.myPid());
@@ -143,31 +142,13 @@ public class Startseite extends Activity implements ConstantsIF{
 	}
 
 
-	/**
-	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
-	 * Anzeigen'.
-	 */
 	private final OnClickListener mErgebnisseListener = new OnClickListener() {
 		public void onClick(View v) {
 			onClickErgebnisseAnzeigen(v);
 		}
 	};
 
-	/**
-	 * Wird bei Klick auf Schaltflaeche 'Karte anzeigen' aufgerufen.
-	 * 
-	 * @see res.layout.startseite_anzeigen.xml
-	 * 
-	 * @param sfNormal
-	 *            Schaltfläche
-	 * 
-	 * @version Android 1.6 >
-	 */
 	public void onClickErgebnisseAnzeigen(final View sfNormal) {
-		alert();
-	}
-	
-	private void alert(){
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 		alert.setTitle("Spieler zum Eintragen der Ergebnisse Suche");
 		alert.setMessage("Bitte geben Sie einen Suchstring ein!");
@@ -194,81 +175,36 @@ public class Startseite extends Activity implements ConstantsIF{
 		alert.show();
 	}
 
-	/**
-	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
-	 * Anzeigen'.
-	 */
 	private final OnClickListener mLigaverwaltungListener = new OnClickListener() {
 		public void onClick(View v) {
 			onClickLigaverwaltungAnzeigen(v);
 		}
 	};
 
-	/**
-	 * Wird bei Klick auf Schaltflaeche 'Karte anzeigen' aufgerufen.
-	 * 
-	 * @see res.layout.startseite_anzeigen.xml
-	 * 
-	 * @param sfNormal
-	 *            Schaltfläche
-	 * 
-	 * @version Android 1.6 >
-	 */
 	public void onClickLigaverwaltungAnzeigen(final View sfNormal) {
 		final Intent i = new Intent(this, LigaVerwalten.class);
 		startActivity(i);
 	}
 
-	/**
-	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
-	 * Anzeigen'.
-	 */
 	private final OnClickListener mTabellenListener = new OnClickListener() {
 		public void onClick(View v) {
 			onClickTabellenAnzeigen(v);
 		}
 	};
 
-	/**
-	 * Wird bei Klick auf Schaltflaeche 'Karte anzeigen' aufgerufen.
-	 * 
-	 * @see res.layout.startseite_anzeigen.xml
-	 * 
-	 * @param sfNormal
-	 *            Schaltfläche
-	 * 
-	 * @version Android 1.6 >
-	 */
 	public void onClickTabellenAnzeigen(final View sfNormal) {
 		final Intent settingsActivity = new Intent(this, TabellenAnzeigen.class);
 		startActivity(settingsActivity);
 	}
 
-	/**
-	 * Bis Android 1.6: Listener für Klick-Event auf Schaltfläche 'Karte
-	 * Anzeigen'.
-	 */
 	private final OnClickListener mSchnittlisteListener = new OnClickListener() {
 		public void onClick(View v) {
 			onClickSchnittlisteAnzeigen(v);
 		}
 	};
 
-	/**
-	 * Wird bei Klick auf Schaltflaeche 'Karte anzeigen' aufgerufen.
-	 * 
-	 * @see res.layout.startseite_anzeigen.xml
-	 * 
-	 * @param sfNormal
-	 *            Schaltfläche
-	 * 
-	 * @version Android 1.6 >
-	 */
 	public void onClickSchnittlisteAnzeigen(final View sfNormal) {
-		// Toast.makeText(this, "not emplemented yet",
-		// Toast.LENGTH_SHORT).show();
-		final Intent settingsActivity = new Intent(this,
-				SchnittlisteAnzeigen.class);
+		final Intent settingsActivity = new Intent(this, SchnittlisteAnzeigen.class);
 		startActivity(settingsActivity);
 	}
 
@@ -286,8 +222,7 @@ public class Startseite extends Activity implements ConstantsIF{
 	private boolean applyMenuChoice(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.opt_kegelverwaltung_einstellung:
-			Log.d(TAG, "opt_kegelverwaltung_einstellung:");
-			startActivity(new Intent(this, EinstellungenBearbeiten.class));
+			startEinstellungen();
 			return true;
 		case R.id.opt_kegelverwaltung_hilfe:
 			startHilfe();
@@ -302,6 +237,11 @@ public class Startseite extends Activity implements ConstantsIF{
 		}
 	}
 	
+	private void startEinstellungen(){
+		Log.d(TAG, "opt_kegelverwaltung_einstellung:");
+		startActivity(new Intent(this, EinstellungenBearbeiten.class));
+	}
+	
 	private void startHilfe(){
 		final Intent settingsActivity = new Intent(this, BetaActivity.class);
 		startActivity(settingsActivity);
@@ -310,8 +250,7 @@ public class Startseite extends Activity implements ConstantsIF{
 
 	private void getPrefs() {
 		// Get the xml/preferences.xml preferences
-		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(getBaseContext());
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
 		checkboxPreferenceHerren = prefs.getBoolean("CHECK_HERREN_PREF", true);
 		listPreferenceKlasse = prefs.getString("LIST_KLASSE_PREF", "Kreisklasse");
@@ -342,8 +281,7 @@ public class Startseite extends Activity implements ConstantsIF{
 	}
 
 	private void addCustomPreference(String preferenceId) {
-		final SharedPreferences pref = PreferenceManager
-				.getDefaultSharedPreferences(this);
+		final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 		final Editor editor = pref.edit();
 		editor.putLong("MAX_ERGEBNIS", 452);
 		editor.putString("NAME", "Guenter");
@@ -353,8 +291,7 @@ public class Startseite extends Activity implements ConstantsIF{
 	private boolean checkSMS() {
 		// Sets the sms inbox's URI
 		Uri uriSMS = Uri.parse("content://sms");
-		Cursor c = getBaseContext().getContentResolver().query(uriSMS, null,
-				"read = 0", null, null);
+		Cursor c = getBaseContext().getContentResolver().query(uriSMS, null, "read = 0", null, null);
 		// Checks the number of unread messages in the inbox
 		if (c.getCount() == 0) {
 			return false;
@@ -370,18 +307,15 @@ public class Startseite extends Activity implements ConstantsIF{
 
 		// Getting the user sound settings
 		AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
-		float actualVolume = (float) audioManager
-				.getStreamVolume(AudioManager.STREAM_MUSIC);
-		float maxVolume = (float) audioManager
-				.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+		float actualVolume = (float) audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+		float maxVolume = (float) audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		float volume = actualVolume / maxVolume;
 		soundPool.play(soundID, volume, volume, 1, 0, 1f);
 	}
 
 	// Call this method to stop the animation
 	public void stopAnimation() {
-		AnimationDrawable animator = (AnimationDrawable) imageView
-				.getBackground();
+		AnimationDrawable animator = (AnimationDrawable) imageView.getBackground();
 		animator.stop();
 		imageView.setImageResource(R.drawable.icon);
 	}
