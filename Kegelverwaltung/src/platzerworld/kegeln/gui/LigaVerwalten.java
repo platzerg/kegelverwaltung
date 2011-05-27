@@ -28,7 +28,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -167,6 +169,7 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		mKlassenSpinner.setOnItemSelectedListener(mSpinnerKlassenItemAuswahlListener);
 		mMannschaftSpinner.setOnItemSelectedListener(mSpinnerMansnchaftenItemAuswahlListener);
 		mSpielerListView.setOnItemLongClickListener(mOnItemLongClickListener);
+		mSpielerListView.setOnItemClickListener(mOnItemClickListener);
 		mButtonSpielerLoeschen.setOnClickListener(mSpielerLoeschenListener);
 		mButtonMannschaftLoeschen.setOnClickListener(mMannschaftLoeschenListener);
 		mButtonKlasseLoeschen.setOnClickListener(mKlasseLoeschenListener);
@@ -190,6 +193,22 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	private final OnItemLongClickListener mOnItemLongClickListener = new OnItemLongClickListener() {
 		public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 			return anzeigenErgebnisZuSpieler(arg0, arg2);
+		}
+	};
+	
+	private final OnItemClickListener mOnItemClickListener = new OnItemClickListener() {
+
+		@Override
+		public void onItemClick(AdapterView<?> parent, View arg1, int position, long id) {
+			mButtonSpielerLoeschen.setEnabled(true);
+			for(int i=0; i<parent.getChildCount(); i++) {
+			     if(i == position) {
+			    	 parent.getChildAt(i).setBackgroundColor(Color.rgb(255, 140, 0));
+			     } else {
+			         parent.getChildAt(i).setBackgroundColor(0);
+			     }
+			 }
+			onSpielerListItemClicked(position);
 		}
 	};
 	
@@ -400,12 +419,13 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 
 	private final AdapterView.OnItemSelectedListener mSpinnerKlassenItemAuswahlListener = new AdapterView.OnItemSelectedListener() {
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+			mSelectedKlasseItemPosition = position;
 			mButtonKlasseLoeschen.setEnabled(true);
 			KeyValueVO keyValueVO = (KeyValueVO) mKlassenSpinner.getSelectedItem();
-			mSelectedKlasseItemPosition = position;
 			mMannschaftSpeicher = new MannschaftSpeicher(LigaVerwalten.this);
 			zeigeMannschaftenZurKlasseId(keyValueVO.key);
 			mMannschaftSpinner.setSelection(mSelectedMannschaftItemPosition);
+			
 		}
 
 		public void onNothingSelected(AdapterView<?> arg0) {
