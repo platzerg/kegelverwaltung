@@ -95,12 +95,18 @@ public class SpielerAnlegen extends Activity implements ConstantsIF{
 		EditText vorname = (EditText) findViewById(R.id.edt_spieler_neuanlegen_vorname);
 		EditText gebDatum = (EditText) findViewById(R.id.edt_spieler_neuanlegen_gebdatum);
 		
+		EditText latitude = (EditText) findViewById(R.id.edt_spieler_neuanlegen_latitude);
+		EditText longitude = (EditText) findViewById(R.id.edt_spieler_neuanlegen_longitude);
+		
 		mSpielerSpeicher = new SpielerSpeicher(this);		
 		long mannschaftId = mannschaftVO.key;
 		
+		float latitudeInt = Float.parseFloat(latitude.getText().toString());
+		float longitudeInt = Float.parseFloat(longitude.getText().toString());
+		
 		mSpielerVO = new SpielerVO(mannschaftId, Long.parseLong(passnr.getText().toString()), 
 				name.getText().toString(), vorname.getText().toString(), gebDatum.getText().toString(),
-				(int) (48.17968 * 1E6), (int) (11.5922 * 1E6));
+				(int) (latitudeInt * 1E6), (int) (longitudeInt * 1E6));
 		mSpielerVO.id = 0;
 		mSpielerSpeicher.speichereSpieler(mSpielerVO);
 		
