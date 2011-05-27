@@ -279,15 +279,7 @@ public class Startseite extends Activity implements ConstantsIF{
 		this.registerReceiver(SMSbr, SMSIntentFilter);
 
 	}
-
-	private void addCustomPreference(String preferenceId) {
-		final SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-		final Editor editor = pref.edit();
-		editor.putLong("MAX_ERGEBNIS", 452);
-		editor.putString("NAME", "Guenter");
-		editor.commit();
-	}
-
+	
 	private boolean checkSMS() {
 		// Sets the sms inbox's URI
 		Uri uriSMS = Uri.parse("content://sms");

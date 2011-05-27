@@ -18,5 +18,8 @@ public interface ConstantsIF extends Serializable {
 	public static final String INTENT_EXTRA_NEUE_MANNSCHAFT = "platzerworld.kegeln.NEUE_MANNSCHAFT";
 	public static final String INTENT_EXTRA_NEUER_VEREIN = "platzerworld.kegeln.NEUER_VEREIN";
 	public static final String INTENT_EXTRA_NEUES_ERGEBNIS = "platzerworld.kegeln.NEUES_ERGEBNIS";
+	
+	public static final String PREFERENCE_KEY_INDEX_KLASSE = "INDEX_KLASSE";
+	public static final String PREFERENCE_KEY_INDEX_MANNSCHAFT = "INDEX_MANNSCHAFT";
 
 }
