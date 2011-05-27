@@ -1,9 +1,19 @@
 oncreate:
-     - init
+	- init
      	- initStyle
      	- initWidgets
      	- initListener
 		- initContextMenu
 		
 onDestroy:
-	 - cleanDatabase 
+	 - cleanDatabase
+	 
+	 
+OnItemSelectedListener.onItemSelected
+	- arg0 		-> Spinner
+	- org1 		-> TextView
+	- position 	-> 0
+	- id 		-> 0
+
+
+		 
