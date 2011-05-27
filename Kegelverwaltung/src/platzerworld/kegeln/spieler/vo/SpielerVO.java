@@ -36,6 +36,11 @@ public class SpielerVO extends KeyValueVO{
 	public SpielerVO(){
 		
 	}
+	
+	public SpielerVO(long key, String value){
+		super(key, value);
+	}
+
 	public SpielerVO(long mannschaftId, long passNr, String name, String vorname, String gebDatum, int latidute, int longitude){
 		this.mannschaftId = mannschaftId;
 		this.passNr = passNr;
