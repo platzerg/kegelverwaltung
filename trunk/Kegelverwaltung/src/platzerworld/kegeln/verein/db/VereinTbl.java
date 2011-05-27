@@ -22,7 +22,7 @@ public final class VereinTbl implements VereinColumns {
 	/**
 	 * SQL Anweisung zur Schemadefinition.
 	 */
-	public static final String SQL_CREATE = "CREATE TABLE verein (_id  INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL);";
+	public static final String SQL_CREATE = "CREATE TABLE verein (_id  INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, loc_latidute INTEGER, loc_longitude INTEGER);";
 
 	/**
 	 * Standard-Sortierreihenfolge für die Tabelle. <br>
@@ -44,6 +44,13 @@ public final class VereinTbl implements VereinColumns {
 	 * SQL Anweisung f&uuml;r Erzeugung eines Geokontakts aus den Stammdaten
 	 * Name, Mobilnummer.
 	 */
+	public static final String STMT_ALL_INSERT = "INSERT INTO verein " + "(name, loc_latidute, loc_longitud) " + "VALUES (?,?,?)";
+
+	
+	/**
+	 * SQL Anweisung f&uuml;r Erzeugung eines Geokontakts aus den Stammdaten
+	 * Name, Mobilnummer.
+	 */
 	public static final String STMT_VEREIN_INSERT = "INSERT INTO verein " + "(name) " + "VALUES (?)";
 
 	/**
@@ -58,7 +65,7 @@ public final class VereinTbl implements VereinColumns {
 	public static final String STMT_VEREIN_DELETE_BY_ID = "DELETE verein " + "WHERE _id = ?";
 
 	/** Liste aller bekannten Attribute. */
-	public static final String[] ALL_COLUMNS = new String[] { ID, NAME };
+	public static final String[] ALL_COLUMNS = new String[] { ID, NAME, LOC_LATITUDE, LOC_LONGITUDE };
 
 	/**
 	 * WHERE-Bedingung f&uuml;r ID-Anfrage.

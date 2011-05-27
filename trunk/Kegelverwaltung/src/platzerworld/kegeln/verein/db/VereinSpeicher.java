@@ -61,32 +61,7 @@ public class VereinSpeicher {
 	private VereinSpeicher() {
 	}
 
-	/**
-	 * Legt einen neuen Geokontakt in der Datenbank an. Wenn das
-	 * <code>stichwort</code> gesetzt wird, werden auch die Positionsangaben
-	 * gespeichert.
-	 * 
-	 * @param name
-	 *            Vollständiger Name (Pflichtfeld)
-	 * @param lookupKey
-	 *            key des Telefonbuch-Kontakts
-	 * @param mobilnummer
-	 *            Rufnummer des Kontakts.
-	 * @param stichwort
-	 *            Stichwort der Geomarkierung.
-	 * @param laengengrad
-	 *            Längengrad, 0 wenn unbekannt
-	 * @param breitengrad
-	 *            Breitengrad, 0 wenn unbekannt
-	 * @param hoehe
-	 *            Höhe, 0 wenn unbekannt
-	 * @param zeitstempel
-	 *            Zeitpunkt des Kontakts.
-	 * @return Datenbank-Id des neuen Kontakts
-	 * @throws SQLException
-	 *             falls Speichern nicht möglich.
-	 */
-	public long speichereGeoKontakt(String name) {
+	public long speichereVerein(String name) {
 
 		final ContentValues daten = new ContentValues();
 		daten.put(VereinTbl.NAME, name);
@@ -113,43 +88,16 @@ public class VereinSpeicher {
 	 * @throws SQLException
 	 *             falls Neuanlegen gefordert aber nicht möglich.
 	 */
-	public long speichereGeoKontakt(VereinVO vereinVO) {
+	public long speichereVerein(VereinVO vereinVO) {
 		if (vereinVO.istNeu()) {
-			return speichereGeoKontakt(vereinVO.name);
+			return speichereVerein(vereinVO.name);
 		} else {
-			aendereGeoKontakt(vereinVO.id, vereinVO.name);
+			aendereVerein(vereinVO.id, vereinVO.name);
 			return vereinVO.id;
 		}
 	}
 
-	/**
-	 * Ändert einen vorhandenen Geokontakt in der Datenbank. Wenn die id nicht
-	 * mitgegeben wird, wird keine Änderung durchgeführt. <br>
-	 * Es werden bei der Änderung alle Parameter berücksichtigt. Wenn das
-	 * <code>stichwort</code> gesetzt wird, werden auch die Positionsangaben
-	 * gespeichert.
-	 * 
-	 * @param id
-	 *            Schlüssel des DB-Datensatzes.
-	 * @param name
-	 *            Vollständiger Name (Pflichtfeld)
-	 * @param lookupKey
-	 *            key des Telefonbuch-Kontakts
-	 * @param mobilnummer
-	 *            Rufnummer des Kontakts.
-	 * @param stichwort
-	 *            Stichwort der Geomarkierung. Wenn == null, werden
-	 *            Positionsdaten nicht berücksichtigt.
-	 * @param laengengrad
-	 *            Längengrad, 0 wenn unbekannt
-	 * @param breitengrad
-	 *            Breitengrad, 0 wenn unbekannt
-	 * @param hoehe
-	 *            Höhe, 0 wenn unbekannt
-	 * @param zeitstempel
-	 *            Zeitpunkt des Kontakts
-	 */
-	public void aendereGeoKontakt(long id, String name) {
+	public void aendereVerein(long id, String name) {
 		if (id == 0) {
 			Log.w(TAG, "id == 0 => kein update möglich.");
 			return;
@@ -175,7 +123,7 @@ public class VereinSpeicher {
 	 *            Schlüssel des gesuchten Kontakts
 	 * @return true, wenn Datensatz geloescht wurde.
 	 */
-	public boolean loescheGeoKontakt(long id) {
+	public boolean loescheVerein(long id) {
 		final SQLiteDatabase dbCon = mDb.getWritableDatabase();
 
 		int anzahlLoeschungen = 0;
@@ -198,7 +146,7 @@ public class VereinSpeicher {
 	 *            Schlüssel des gesuchten Kontakts
 	 * @return Cursor, oder null
 	 */
-	public Cursor ladeGeoKontaktDetails(long id) {
+	public Cursor ladeVereinDetails(long id) {
 		return mDb.getReadableDatabase().query(VereinTbl.TABLE_NAME, VereinTbl.ALL_COLUMNS, VereinTbl.WHERE_ID_EQUALS,
 				new String[] { String.valueOf(id) }, null, null, null);
 	}
@@ -212,7 +160,7 @@ public class VereinSpeicher {
 	 *            Schlüssel des gesuchten Kontakts
 	 * @return Cursor, oder null
 	 */
-	public VereinVO ladeGeoKontakt(long id) {
+	public VereinVO ladeVerein(long id) {
 		VereinVO kontakt = null;
 		Cursor c = null;
 		try {
@@ -221,7 +169,7 @@ public class VereinSpeicher {
 			if (c.moveToFirst() == false) {
 				return null;
 			}
-			kontakt = ladeGeoKontakt(c);
+			kontakt = ladeVerein(c);
 		} finally {
 			if (c != null) {
 				c.close();
@@ -238,7 +186,7 @@ public class VereinSpeicher {
 	 *            != null, Telefonnummer des Kontakts.
 	 * @return Cursor, oder null
 	 */
-	public Cursor ladeGeoKontaktDetails(String name) {
+	public Cursor ladeVereinDetails(String name) {
 		if (name == null) {
 			return null;
 		}
@@ -257,8 +205,8 @@ public class VereinSpeicher {
 	 *            Anfangsbuchstaben (case sensitive) der zu suchenden Kontakte.
 	 * @return Cursor auf die Ergebnisliste.
 	 */
-	public Cursor ladeGeoKontaktListe(CharSequence namensFilter) {
-		return ladeGeoKontaktListe(Sortierung.STANDARD, namensFilter);
+	public Cursor ladeVereinListe(CharSequence namensFilter) {
+		return ladeVereinListe(Sortierung.STANDARD, namensFilter);
 	}
 
 	/**
@@ -273,7 +221,7 @@ public class VereinSpeicher {
 	 *            Anfangsbuchstaben (case sensitive) der zu suchenden Kontakte.
 	 * @return Cursor auf die Ergebnisliste.
 	 */
-	public Cursor ladeGeoKontaktListe(Sortierung sortierung, CharSequence namensFilter) {
+	public Cursor ladeVereinListe(Sortierung sortierung, CharSequence namensFilter) {
 		final SQLiteQueryBuilder kontaktSuche = new SQLiteQueryBuilder();
 		kontaktSuche.setTables(VereinTbl.TABLE_NAME);
 		String[] whereAttribs = null;
@@ -283,7 +231,7 @@ public class VereinSpeicher {
 		}
 
 		return kontaktSuche.query(mDb.getReadableDatabase(), VereinTbl.ALL_COLUMNS, null, whereAttribs, null, null,
-				getKontaktSortierung(sortierung));
+				getVereinSortierung(sortierung));
 	}
 
 	/**
@@ -294,7 +242,7 @@ public class VereinSpeicher {
 	 *            Sortierung als enum.
 	 * @return Sortierung als ORDER_BY kompatible Anweisung.
 	 */
-	private static String getKontaktSortierung(Sortierung sortierung) {
+	private static String getVereinSortierung(Sortierung sortierung) {
 		String sortiertNach = VereinTbl.DEFAULT_SORT_ORDER;
 		switch (sortierung) {
 		case NAME:
@@ -317,7 +265,7 @@ public class VereinSpeicher {
 	 *            aktuelle Cursorposition != null
 	 * @return Exemplar von GeoKontakt.
 	 */
-	public VereinVO ladeGeoKontakt(Cursor c) {
+	public VereinVO ladeVerein(Cursor c) {
 		final VereinVO kontakt = new VereinVO();
 
 		kontakt.id = c.getLong(c.getColumnIndex(VereinTbl.ID));
@@ -350,7 +298,7 @@ public class VereinSpeicher {
 	 * 
 	 * @return Anzahl der Kontakte.
 	 */
-	public int anzahlGeoKontakte() {
+	public int anzahlVereine() {
 		final Cursor c = mDb.getReadableDatabase().rawQuery("select count(*) from " + VereinTbl.TABLE_NAME, null);
 		if (c.moveToFirst() == false) {
 			return 0;
