@@ -19,5 +19,8 @@
     
     <color name="LEMONCHIFFON">#FFFACD</color>
     
+     <color name="TRANSPARENT">#00000000</color>
+    
+    
 
 </resources>
