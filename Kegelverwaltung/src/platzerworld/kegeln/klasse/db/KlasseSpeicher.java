@@ -223,6 +223,17 @@ public class KlasseSpeicher {
 	 * Es kann (optional) ein Filterkriterium angegeben werden. 
 	 * Wenn der namensFilter definiert ist, werden nur Klassen geliefert, deren NAME mit diesem Buchstaben beginnt.
 	 * 
+	 * @return Cursor auf die Ergebnisliste.
+	 */
+	public List<KeyValueVO> ladeAlleKlassenListeVO() {
+		return ladeKlassenListeVO(Sortierung.STANDARD, null);
+	}
+	
+	/**
+	 * Liefert alle Kontakte sortiert nach NAME zurück. 
+	 * Es kann (optional) ein Filterkriterium angegeben werden. 
+	 * Wenn der namensFilter definiert ist, werden nur Klassen geliefert, deren NAME mit diesem Buchstaben beginnt.
+	 * 
 	 * @param namensFilter Anfangsbuchstaben (case sensitive) der zu suchenden Klasse.
 	 * @return Cursor auf die Ergebnisliste.
 	 */

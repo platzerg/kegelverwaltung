@@ -244,6 +244,17 @@ public class MannschaftSpeicher {
      * @param klasseId Anfangsbuchstaben (case sensitive) der zu suchenden Kontakte.
 	 * @return Cursor auf die Ergebnisliste.
 	 */
+	public List<KeyValueVO> ladeAlleMannschaftenZurKlasseListeVO(long klasseId) {
+		return ladeMannschaftZurKlasseListeVO(Sortierung.ID, null, klasseId);
+	}
+	
+	/**
+	 * Liefert alle Mannschaften zur KlassenId und Namensfilter.
+	 * 
+	 * @param namensFilter Anfangsbuchstaben (case sensitive) der zu suchenden Kontakte.
+     * @param klasseId Anfangsbuchstaben (case sensitive) der zu suchenden Kontakte.
+	 * @return Cursor auf die Ergebnisliste.
+	 */
 	public List<KeyValueVO> ladeMannschaftZurKlasseListeVO(CharSequence namensFilter, long klasseId) {
 		return ladeMannschaftZurKlasseListeVO(Sortierung.ID, namensFilter, klasseId);
 	}

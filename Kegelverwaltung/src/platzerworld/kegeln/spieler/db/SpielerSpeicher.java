@@ -430,6 +430,22 @@ public class SpielerSpeicher {
 	 *            Anfangsbuchstaben (case sensitive) der zu suchenden Kontakte.
 	 * @return Cursor auf die Ergebnisliste.
 	 */
+	public ArrayList<SpielerVO> ladeAlleSpielerListeZurMannschaftVO(long mannschaftId) {
+		return ladeSpielerListeZurMannschaftVO(Sortierung.ID, null, mannschaftId);
+	}
+	
+	/**
+	 * Liefert alle Kontakte mit einstellbarer Sortierung zurück. <br>
+	 * Es kann (optional) ein Filterkriterium angegeben werden. Wenn der
+	 * <code>namensFilter</code> definiert ist, werden nur Kontakte geliefert,
+	 * deren NAME mit diesem Buchstaben beginnt.
+	 * 
+	 * @param sortierung
+	 *            Art der Sortierung
+	 * @param namensFilter
+	 *            Anfangsbuchstaben (case sensitive) der zu suchenden Kontakte.
+	 * @return Cursor auf die Ergebnisliste.
+	 */
 	public ArrayList<SpielerVO> ladeSpielerListeZurMannschaftVO(CharSequence namensFilter, long mannschaftId) {
 		return ladeSpielerListeZurMannschaftVO(Sortierung.ID, namensFilter, mannschaftId);
 	}

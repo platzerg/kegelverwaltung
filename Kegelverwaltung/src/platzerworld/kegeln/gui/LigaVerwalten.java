@@ -8,6 +8,7 @@ import platzerworld.kegeln.R;
 import platzerworld.kegeln.common.ConstantsIF;
 import platzerworld.kegeln.common.KeyValueVO;
 import platzerworld.kegeln.common.db.KlassenFilterQueryProvider;
+import platzerworld.kegeln.common.logging.LOG;
 import platzerworld.kegeln.common.style.StyleManager;
 import platzerworld.kegeln.ergebnis.db.ErgebnisTbl;
 import platzerworld.kegeln.klasse.db.KlasseSpeicher;
@@ -19,12 +20,16 @@ import platzerworld.kegeln.spieler.db.SpielerSpeicher;
 import platzerworld.kegeln.spieler.db.SpielerTbl;
 import platzerworld.kegeln.spieler.vo.SpielerVO;
 import platzerworld.kegeln.verein.vo.VereinVO;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -55,6 +60,8 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	private static final long serialVersionUID = -5920434564538725124L;
 
 	private static final String TAG = LigaVerwalten.class.getSimpleName();
+	
+	//private static final LOG log = LOG.getInstance().init(LOG.VERBOSE, TAG);
 
 	private KlasseSpeicher mKlasseSpeicher;
 	private MannschaftSpeicher mMannschaftSpeicher;
@@ -72,6 +79,9 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	private long mMannschaftId;
 	
 	private SpielerVO mSelectedSpieler;
+	
+	private int mSelectedKlasseItemPosition=0;
+	private int mSelectedMannschaftItemPosition=0;
 
 	ArrayList<HashMap<String, String>> mHashMapListForListView;
 	
@@ -79,7 +89,7 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		Log.d(TAG, "onCreate(): entered...");
-
+		
 		setContentView(R.layout.liga_verwalten);
 		setTitle(R.string.txt_spieler_auflisten_titel);
 		
@@ -90,6 +100,35 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	protected void onStart() {
 		zeigeKlassen();
 		super.onStart();
+	}
+	
+	@Override
+	protected void onResume() {
+		loadPreference();
+		mKlassenSpinner.setSelection(mSelectedKlasseItemPosition);
+		super.onResume();
+	}
+	
+	@Override
+	protected void onPostResume() {
+		super.onPostResume();
+	}
+
+	@Override
+	protected void onPause() {
+		Log.d(TAG, "onPause(): entered...");
+		savePreference();
+		super.onPause();
+	}
+
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
 	}
 
 	@Override
@@ -118,7 +157,9 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		mSpielerListView = (ListView) this.findViewById(android.R.id.list);
 		mButtonSpielerLoeschen = (Button) findViewById(R.id.sf_spieler_auflisten_loeschen);
 		mButtonKlasseLoeschen = (Button) findViewById(R.id.sf_klassen_auflisten_loeschen);
+		mButtonKlasseLoeschen.setEnabled(false);
 		mButtonMannschaftLoeschen = (Button) findViewById(R.id.sf_mannschaften_auflisten_loeschen);
+		mButtonMannschaftLoeschen.setEnabled(false);
 	}
 	
 	private void initListener(){
@@ -301,7 +342,7 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 
 		Log.i(TAG, "Dauer Anfrage zeigeKlassen() [ms]" + (System.currentTimeMillis() - t0));
 
-		List<KeyValueVO> klassenListeVO = mKlasseSpeicher.ladeKlassenListeVO(null);
+		List<KeyValueVO> klassenListeVO = mKlasseSpeicher.ladeAlleKlassenListeVO();
 
 		ArrayAdapter<KeyValueVO> klassenAdapter = new ArrayAdapter<KeyValueVO>(
 				this, android.R.layout.simple_spinner_item, klassenListeVO);
@@ -316,7 +357,7 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 
 		Log.i(TAG, "Dauer Anfrage [ms]" + (System.currentTimeMillis() - t0));
 
-		List<KeyValueVO> mannschaftenListeVO = mMannschaftSpeicher.ladeMannschaftZurKlasseListeVO(null, klasseId);
+		List<KeyValueVO> mannschaftenListeVO = mMannschaftSpeicher.ladeAlleMannschaftenZurKlasseListeVO(klasseId);
 
 		ArrayAdapter<KeyValueVO> mannschaftenAdapter = new ArrayAdapter<KeyValueVO>(this,
 				android.R.layout.simple_spinner_item, mannschaftenListeVO);
@@ -328,7 +369,7 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 	}
 
 	private void zeigeSpielerZurMannschaftId(long mannschaftId) {
-		List<SpielerVO> spielerListeVO = mSpielerSpeicher.ladeSpielerListeZurMannschaftVO(null, mannschaftId);
+		List<SpielerVO> spielerListeVO = mSpielerSpeicher.ladeAlleSpielerListeZurMannschaftVO(mannschaftId);
 
 		mHashMapListForListView = new ArrayList<HashMap<String, String>>();
 
@@ -360,9 +401,10 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
 			mButtonKlasseLoeschen.setEnabled(true);
 			KeyValueVO keyValueVO = (KeyValueVO) mKlassenSpinner.getSelectedItem();
-
+			mSelectedKlasseItemPosition = position;
 			mMannschaftSpeicher = new MannschaftSpeicher(LigaVerwalten.this);
 			zeigeMannschaftenZurKlasseId(keyValueVO.key);
+			mMannschaftSpinner.setSelection(mSelectedMannschaftItemPosition);
 		}
 
 		public void onNothingSelected(AdapterView<?> arg0) {
@@ -372,6 +414,7 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 
 	private final AdapterView.OnItemSelectedListener mSpinnerMansnchaftenItemAuswahlListener = new AdapterView.OnItemSelectedListener() {
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+			mSelectedMannschaftItemPosition = position;
 			mButtonMannschaftLoeschen.setEnabled(true);
 			mSpielerSpeicher = new SpielerSpeicher(LigaVerwalten.this);
 			KeyValueVO keyValueVO = (KeyValueVO) mMannschaftSpinner.getSelectedItem();
@@ -456,5 +499,23 @@ public class LigaVerwalten extends ListActivity implements ConstantsIF {
 		final Intent intent = new Intent(this, VereinAnlegen.class);
 		startActivityForResult(intent, REQUEST_CODE_VEREIN_NEUANLEGEN);
 	}
+	
+	private void savePreference() {
+		final Editor myEditor = getPrivateSharedPreferences().edit();
+		myEditor.putInt(PREFERENCE_KEY_INDEX_KLASSE, mSelectedKlasseItemPosition);
+		myEditor.putInt(PREFERENCE_KEY_INDEX_MANNSCHAFT, mSelectedMannschaftItemPosition);
+		myEditor.commit();
+	}
 
+	private void loadPreference(){
+		SharedPreferences mySharedPreferences = getPrivateSharedPreferences();
+		int klassePos = mySharedPreferences.getInt(PREFERENCE_KEY_INDEX_KLASSE, 0);
+		int mannschaftPos = mySharedPreferences.getInt(PREFERENCE_KEY_INDEX_MANNSCHAFT, 0);
+		mSelectedKlasseItemPosition = klassePos;
+		mSelectedMannschaftItemPosition = mannschaftPos;
+	}
+	
+	private SharedPreferences getPrivateSharedPreferences(){
+		return getSharedPreferences("KegelVerwaltungPrefs", Activity.MODE_PRIVATE);
+	}
 }
