@@ -31,7 +31,7 @@
 	<!--MySpinnterItem:SpinnerItem -->
 	<style name="MySpinnterItem" parent="@android:style/Widget.TextView.SpinnerItem">
 		<item name="android:textAppearance">@style/MyTextAppearanceSpinnerItem</item>
-		<item name="android:textColor">@color/COLOR_BLACK</item>
+		<item name="android:textColor">@color/SIENNA</item>
 	</style>
 	
 	<!--MyTextAppearanceSpinnerItem:TextView.SpinnerItem -->
