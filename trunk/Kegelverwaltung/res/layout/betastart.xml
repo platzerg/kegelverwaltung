@@ -9,6 +9,6 @@
     <Button android:text="Delete Data" android:layout_width="wrap_content" android:id="@+id/deleteData" android:layout_height="wrap_content"></Button>
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/InsertData" android:text="Insert Data"></Button>
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/resetDB" android:text="Reset DB"></Button>
-    <Button android:text="Button" android:id="@+id/button7" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/stopmap" android:text="Stop Map"></Button>
     <TextView android:text="TextView" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
 </LinearLayout>
