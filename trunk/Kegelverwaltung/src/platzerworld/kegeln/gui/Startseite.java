@@ -8,6 +8,7 @@ import platzerworld.kegeln.common.style.StyleManager;
 
 import platzerworld.kegeln.gui.beta.BetaActivity;
 import platzerworld.kegeln.gui.einstellung.EinstellungenBearbeiten;
+import platzerworld.kegeln.klasse.db.KlasseSpeicher;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -36,6 +37,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,60 +53,34 @@ public class Startseite extends Activity implements ConstantsIF{
 	private String listPreferenceKlasse;
 	private String listPreferenceVerein;
 	private String editSpielernameTextPreference;
-	private String ringtonePreference;
-	private String secondEditTextPreference;
-	private String customPref;
-	private ImageView imageView;
 	
+	private Button mButtonErgebnisse;
+	private Button mButtonLigaverwaltung;
+	private Button mButtonTabellen;
+	private Button mButtonSchnittlisten;
+	private ImageView mImageViewAnimation;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.startseite);
+		
+		init();
+		
 		playSound(getCurrentFocus());
 
-		Typeface font = StyleManager.getInstance().init(this).getTypeface();
 		SoundManager.getInstance().initSounds(this);
 		SoundManager.getInstance().loadSounds();
 		SoundManager.getInstance().playSound(1, 1);
 
-		imageView = (ImageView) findViewById(R.id.imageView1);
-
-		imageView.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely));
-
 		
-		Log.d(TAG, "onCreate(): PID: " + Process.myPid());
-		Log.d(TAG, "onCreate(): TID: " + Process.myTid());
-		Log.d(TAG, "onCreate(): UID: " + Process.myUid());
+		mImageViewAnimation.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_indefinitely));
 
-		TextView titeltext = (TextView) findViewById(R.id.txt_kegelverwaltung_titel);
-		titeltext.setTypeface(font);
-
-		// hinzufuegen
-		final Button buttonErgebnisse = (Button) findViewById(R.id.sf_ergebnisse);
-		buttonErgebnisse.setTypeface(font);
-		buttonErgebnisse.setOnClickListener(mErgebnisseListener);
-
-		// hinzufuegen
-		final Button buttonLigaverwaltung = (Button) findViewById(R.id.sf_ligaverwaltung);
-		buttonLigaverwaltung.setTypeface(font);
-		buttonLigaverwaltung.setOnClickListener(mLigaverwaltungListener);
-
-		// hinzufuegen
-		final Button buttonTabellen = (Button) findViewById(R.id.sf_tabellen);
-		buttonTabellen.setTypeface(font);
-		buttonTabellen.setOnClickListener(mTabellenListener);
-
-		// hinzufuegen
-		final Button buttonSchnittlisten = (Button) findViewById(R.id.sf_schnittlisten);
-		buttonSchnittlisten.setTypeface(font);
-		buttonSchnittlisten.setOnClickListener(mSchnittlisteListener);
 
 		registerSMS();
 
 	}
-
 	
 	@Override
 	protected void onStart() {
@@ -138,7 +115,55 @@ public class Startseite extends Activity implements ConstantsIF{
 	@Override
 	protected void onDestroy() {
 		Log.d(TAG, "onDestroy");
+		cleanDatabase();
 		super.onDestroy();
+	}
+	
+	
+	private void init(){
+		initWidgets();
+		initStyle();
+		initListener();
+		initContextMenu();
+		initDatabase();
+	}
+	
+	private void initStyle() {
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		
+		TextView titeltext = (TextView) findViewById(R.id.txt_kegelverwaltung_titel);
+		titeltext.setTypeface(font);
+		
+		mButtonErgebnisse.setTypeface(font);
+		mButtonLigaverwaltung.setTypeface(font);
+		mButtonTabellen.setTypeface(font);
+		mButtonSchnittlisten.setTypeface(font);
+	}
+	
+	private void initWidgets(){
+		mButtonErgebnisse = (Button) findViewById(R.id.sf_ergebnisse);
+		mButtonLigaverwaltung = (Button) findViewById(R.id.sf_ligaverwaltung);	
+		mButtonTabellen = (Button) findViewById(R.id.sf_tabellen);	
+		mButtonSchnittlisten = (Button) findViewById(R.id.sf_schnittlisten);		
+		mImageViewAnimation = (ImageView) findViewById(R.id.imageView1);
+	}
+	
+	private void initListener(){
+		mButtonErgebnisse.setOnClickListener(mErgebnisseListener);		
+		mButtonLigaverwaltung.setOnClickListener(mLigaverwaltungListener);
+		mButtonTabellen.setOnClickListener(mTabellenListener);
+		mButtonSchnittlisten.setOnClickListener(mSchnittlisteListener);
+	}
+	
+	private void initContextMenu(){
+	}
+	
+	private void initDatabase(){
+		
+	}
+	
+	private void cleanDatabase(){
+		
 	}
 
 
@@ -257,13 +282,7 @@ public class Startseite extends Activity implements ConstantsIF{
 		listPreferenceVerein = prefs.getString("LIST_VEREIN_PREF", "KC-Ismaning");
 
 		editSpielernameTextPreference = prefs.getString("EDIT_SPIELERNAME_PREF", "Guenter Platzer");
-		ringtonePreference = prefs.getString("ringtonePref", "DEFAULT_RINGTONE_URI");
-		secondEditTextPreference = prefs.getString("SecondEditTextPref", "Nothing has been entered");
-
-		// Get the custom preference
-		SharedPreferences mySharedPreferences = getSharedPreferences("myCustomSharedPrefs", Activity.MODE_PRIVATE);
-		customPref = mySharedPreferences.getString("myCusomPref", "");
-
+	
 		Log.d(TAG, "getPrefs() CHECK_HERREN_PREF: Herren: " + checkboxPreferenceHerren);
 		Log.d(TAG, "getPrefs() LIST_KLASSE_PREF: Klasse: " + listPreferenceKlasse);
 		Log.d(TAG, "getPrefs() LIST_VEREIN_PREF: Verein: " + listPreferenceVerein);
@@ -307,9 +326,9 @@ public class Startseite extends Activity implements ConstantsIF{
 
 	// Call this method to stop the animation
 	public void stopAnimation() {
-		AnimationDrawable animator = (AnimationDrawable) imageView.getBackground();
+		AnimationDrawable animator = (AnimationDrawable) mImageViewAnimation.getBackground();
 		animator.stop();
-		imageView.setImageResource(R.drawable.icon);
+		mImageViewAnimation.setImageResource(R.drawable.icon);
 	}
 
 }

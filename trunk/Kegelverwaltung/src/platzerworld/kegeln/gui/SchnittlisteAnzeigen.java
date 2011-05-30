@@ -20,26 +20,19 @@ public class SchnittlisteAnzeigen extends Activity {
 	/** Kuerzel fuers Logging. */
 	private static final String TAG = SchnittlisteAnzeigen.class.getSimpleName();
 
+	private WebView mWebViewSchnittlisteAnzeigen;
 
 	@Override
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		Log.d(TAG, "onCreate(): entered...");
-
 		setContentView(R.layout.schnittliste_anzeigen);
 		
-		Typeface font = StyleManager.getInstance().init(this).getTypeface();
-		TextView titeltext = (TextView) findViewById(R.id.txt_schnittlisten_titel);
-		titeltext.setTypeface(font);
+		init();
         
-        WebView webView= (WebView) findViewById(R.id.wv_schnittliste_anzeigen);
-        
-		webView.getSettings().setJavaScriptEnabled(true);
-		webView.loadUrl("http://www.kegelkreisrunde.de/punktspielbetrieb/schnittwertung/index.html");	
+		mWebViewSchnittlisteAnzeigen.getSettings().setJavaScriptEnabled(true);
+		mWebViewSchnittlisteAnzeigen.loadUrl("http://www.kegelkreisrunde.de/punktspielbetrieb/schnittwertung/index.html");	
 		
-
-
-
 	}
 
 	@Override
@@ -49,6 +42,38 @@ public class SchnittlisteAnzeigen extends Activity {
 
 	@Override
 	protected void onDestroy() {
+		cleanDatabase();
 		super.onDestroy();
+	}
+	
+	private void init(){
+		initStyle();
+		initWidgets();
+		initListener();
+		initContextMenu();
+		initDatabase();
+	}
+	
+	private void initStyle() {
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		TextView titeltext = (TextView) findViewById(R.id.txt_schnittlisten_titel);
+		titeltext.setTypeface(font);
+	}
+	
+	private void initWidgets(){
+		mWebViewSchnittlisteAnzeigen = (WebView) findViewById(R.id.wv_schnittliste_anzeigen);
+	}
+	
+	private void initListener(){
+
+	}
+	
+	private void initContextMenu(){
+	}
+	
+	private void initDatabase(){
+	}
+	
+	private void cleanDatabase(){
 	}
 }

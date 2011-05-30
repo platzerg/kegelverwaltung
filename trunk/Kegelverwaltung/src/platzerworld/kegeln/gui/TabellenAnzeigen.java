@@ -20,6 +20,8 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -32,29 +34,19 @@ import android.widget.TextView;
 public class TabellenAnzeigen extends Activity {
 
 	/** Kuerzel fuers Logging. */
-	private static final String TAG = ErgebnisseAnzeigen.class.getSimpleName();
-
-	private MannschaftSpeicher mMannschaftSpeicher;
+	private static final String TAG = ErgebnisseAnzeigen.class.getSimpleName();	
+	private WebView mWebViewTabellenAnzeigen;
 
 	@Override
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		Log.d(TAG, "onCreate(): entered...");
-
-		
 		setContentView(R.layout.tabellen_anzeigen);
 		
-		Typeface font = StyleManager.getInstance().init(this).getTypeface();
-		TextView titeltext = (TextView) findViewById(R.id.txt_tabellen_titel);
-		titeltext.setTypeface(font);
-		         
-        WebView webView= (WebView) findViewById(R.id.wv_tabellen_anzeigen);
-        
-		webView.getSettings().setJavaScriptEnabled(true);
-		webView.loadUrl("http://www.kegelkreisrunde.de/punktspielbetrieb/tabellen/index.html");	
-		
-
-
+		init();       
+		       
+		mWebViewTabellenAnzeigen.getSettings().setJavaScriptEnabled(true);
+		mWebViewTabellenAnzeigen.loadUrl("http://www.kegelkreisrunde.de/punktspielbetrieb/tabellen/index.html");	
 	}
 
 	@Override
@@ -64,7 +56,38 @@ public class TabellenAnzeigen extends Activity {
 
 	@Override
 	protected void onDestroy() {
+		cleanDatabase();
 		super.onDestroy();
 	}
+	
+	private void init(){
+		initStyle();
+		initWidgets();
+		initListener();
+		initContextMenu();
+		initDatabase();
+	}
+	
+	private void initStyle() {
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		TextView titeltext = (TextView) findViewById(R.id.txt_tabellen_titel);
+		titeltext.setTypeface(font);
+	}
+	
+	private void initWidgets(){
+		mWebViewTabellenAnzeigen = (WebView) findViewById(R.id.wv_tabellen_anzeigen); 
+	}
+	
+	private void initListener(){
 
+	}
+	
+	private void initContextMenu(){
+	}
+	
+	private void initDatabase(){
+	}
+	
+	private void cleanDatabase(){
+	}
 }
