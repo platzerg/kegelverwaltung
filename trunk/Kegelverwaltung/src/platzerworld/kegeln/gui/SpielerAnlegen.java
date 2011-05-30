@@ -44,6 +44,9 @@ public class SpielerAnlegen extends Activity implements ConstantsIF{
 
 	/** Kuerzel fuers Logging. */
 	private static final String TAG = ErgebnisseAnzeigen.class.getSimpleName();
+	
+	private Button mSpeichernButton;
+	private Button mAbbruchButton;
 
 	private SpielerSpeicher mSpielerSpeicher;
 	
@@ -54,12 +57,7 @@ public class SpielerAnlegen extends Activity implements ConstantsIF{
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		Log.d(TAG, "onCreate(): entered...");
-
 		setContentView(R.layout.spieler_anlegen);
-		
-		Typeface font = StyleManager.getInstance().init(this).getTypeface();
-		TextView titeltext = (TextView) findViewById(R.id.txt_spieler_neuanlegen_titel);
-		titeltext.setTypeface(font);
 
 		Bundle extras = getIntent().getExtras();
 		if (extras == null) {
@@ -67,14 +65,51 @@ public class SpielerAnlegen extends Activity implements ConstantsIF{
 		}
 		mannschaftVO = (KeyValueVO) extras.getSerializable(INTENT_EXTRA_MANNSCHAFT);
 		
-		
-
-		final Button speichernButton = (Button) findViewById(R.id.sf_spieler_neuanlagen_ok);
-		speichernButton.setOnClickListener(mSpielerAnlegenOkListener);
-		
-		final Button abbruchButton = (Button) findViewById(R.id.sf_spieler_neuanlagen_abbruch);
-		abbruchButton.setOnClickListener(mSpielerAnlegenAbbruchListener);
-
+		init();
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		cleanDatabase();
+		super.onDestroy();
+	}
+	
+	private void init(){
+		initStyle();
+		initWidgets();
+		initListener();
+		initContextMenu();
+		initDatabase();
+	}
+	
+	private void initStyle() {
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		TextView titeltext = (TextView) findViewById(R.id.txt_spieler_neuanlegen_titel);
+		titeltext.setTypeface(font);
+	}
+	
+	private void initWidgets(){
+		mSpeichernButton = (Button) findViewById(R.id.sf_spieler_neuanlagen_ok);
+		mAbbruchButton = (Button) findViewById(R.id.sf_spieler_neuanlagen_abbruch);
+	}
+	
+	private void initListener(){		
+		mSpeichernButton.setOnClickListener(mSpielerAnlegenOkListener);
+		mAbbruchButton.setOnClickListener(mSpielerAnlegenAbbruchListener);
+	}
+	
+	private void initContextMenu(){
+	}
+	
+	private void initDatabase(){
+	}
+	
+	private void cleanDatabase(){
 	}
 	
 	private OnClickListener mSpielerAnlegenOkListener = new OnClickListener() {
@@ -112,17 +147,6 @@ public class SpielerAnlegen extends Activity implements ConstantsIF{
 		
 		finish();
 	}
-
-	@Override
-	protected void onStart() {
-		super.onStart();
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-	}
-
 
 	@Override
 	public void finish() {

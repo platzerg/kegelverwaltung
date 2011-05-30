@@ -26,6 +26,9 @@ public class KlasseAnlegen extends Activity implements ConstantsIF{
 
 	/** Kuerzel fuers Logging. */
 	private static final String TAG = ErgebnisseAnzeigen.class.getSimpleName();
+	
+	private Button mSpeichernButton;
+	private Button mAbbruchButton;
 
 	private KlasseSpeicher mKlasseSpeicher;
 	
@@ -35,19 +38,54 @@ public class KlasseAnlegen extends Activity implements ConstantsIF{
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		Log.d(TAG, "onCreate(): entered...");
-
 		setContentView(R.layout.klasse_anlegen);
 
+		init();
+
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		cleanDatabase();
+		super.onDestroy();
+	}
+	
+	private void init(){
+		initStyle();
+		initWidgets();
+		initListener();
+		initContextMenu();
+		initDatabase();
+	}
+	
+	private void initStyle() {
 		Typeface font = StyleManager.getInstance().init(this).getTypeface();
 		TextView titeltext = (TextView) findViewById(R.id.txt_klasse_neuanlegen_titel);
 		titeltext.setTypeface(font);
-
-		final Button speichernButton = (Button) findViewById(R.id.sf_klasse_neuanlagen_ok);
-		speichernButton.setOnClickListener(mKlasseAnlegenOkListener);
-		
-		final Button abbruchButton = (Button) findViewById(R.id.sf_klasse_neuanlagen_abbruch);
-		abbruchButton.setOnClickListener(mKlasseAnlegenAbbruchListener);
-
+	}
+	
+	private void initWidgets(){
+		mSpeichernButton = (Button) findViewById(R.id.sf_klasse_neuanlagen_ok);
+		mAbbruchButton = (Button) findViewById(R.id.sf_klasse_neuanlagen_abbruch);
+	}
+	
+	private void initListener(){		
+		mSpeichernButton.setOnClickListener(mKlasseAnlegenOkListener);
+		mAbbruchButton.setOnClickListener(mKlasseAnlegenAbbruchListener);
+	}
+	
+	private void initContextMenu(){
+	}
+	
+	private void initDatabase(){
+	}
+	
+	private void cleanDatabase(){
 	}
 	
 	private OnClickListener mKlasseAnlegenOkListener = new OnClickListener() {
@@ -71,16 +109,6 @@ public class KlasseAnlegen extends Activity implements ConstantsIF{
 		mKlasseSpeicher.speichereKlasse(mKlasseVO);
 		
 		finish();
-	}
-
-	@Override
-	protected void onStart() {
-		super.onStart();
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
 	}
 
 

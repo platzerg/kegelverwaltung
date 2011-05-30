@@ -26,6 +26,9 @@ public class VereinAnlegen extends Activity implements ConstantsIF{
 
 	/** Kuerzel fuers Logging. */
 	private static final String TAG = ErgebnisseAnzeigen.class.getSimpleName();
+	
+	private Button mSpeichernButton;
+	private Button mAbbruchButton;
 
 	private VereinSpeicher mVereinSpeicher;
 	
@@ -36,19 +39,53 @@ public class VereinAnlegen extends Activity implements ConstantsIF{
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		Log.d(TAG, "onCreate(): entered...");
-
 		setContentView(R.layout.verein_anlegen);
 
+		init();
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		cleanDatabase();
+		super.onDestroy();
+	}
+	
+	private void init(){
+		initStyle();
+		initWidgets();
+		initListener();
+		initContextMenu();
+		initDatabase();
+	}
+	
+	private void initStyle() {
 		Typeface font = StyleManager.getInstance().init(this).getTypeface();
 		TextView titeltext = (TextView) findViewById(R.id.txt_verein_neuanlegen_titel);
 		titeltext.setTypeface(font);
-
-		final Button speichernButton = (Button) findViewById(R.id.sf_verein_neuanlagen_ok);
-		speichernButton.setOnClickListener(mVereinAnlegenOkListener);
-		
-		final Button abbruchButton = (Button) findViewById(R.id.sf_verein_neuanlagen_abbruch);
-		abbruchButton.setOnClickListener(mVereinAnlegenAbbruchListener);
-
+	}
+	
+	private void initWidgets(){
+		mSpeichernButton = (Button) findViewById(R.id.sf_verein_neuanlagen_ok);
+		mSpeichernButton.setOnClickListener(mVereinAnlegenOkListener);
+	}
+	
+	private void initListener(){		
+		mAbbruchButton = (Button) findViewById(R.id.sf_verein_neuanlagen_abbruch);
+		mAbbruchButton.setOnClickListener(mVereinAnlegenAbbruchListener);
+	}
+	
+	private void initContextMenu(){
+	}
+	
+	private void initDatabase(){
+	}
+	
+	private void cleanDatabase(){
 	}
 	
 	private OnClickListener mVereinAnlegenOkListener = new OnClickListener() {
@@ -73,17 +110,6 @@ public class VereinAnlegen extends Activity implements ConstantsIF{
 		
 		finish();
 	}
-
-	@Override
-	protected void onStart() {
-		super.onStart();
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-	}
-
 
 	@Override
 	public void finish() {

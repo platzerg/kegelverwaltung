@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -39,6 +40,9 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 
 	/** Kuerzel fuers Logging. */
 	private static final String TAG = ErgebnisseAnzeigen.class.getSimpleName();
+	
+	private Button mAnlegenErgebnisButton;
+	private Button mLoeschenErgebnisButton;
 
 	private ErgebnisSpeicher mErgebnisSpeicher;
 	private SpielerSpeicher mSpielerSpeicher;
@@ -55,56 +59,78 @@ public class ErgebnisseAnzeigen extends ListActivity implements ConstantsIF {
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		Log.d(TAG, "onCreate(): entered...");
-
+		
 		setContentView(R.layout.ergebnisse_anzeigen);
 		setTitle(R.string.txt_ergebnis_anzeigen_titel);
 		
-		Typeface font = StyleManager.getInstance().init(this).getTypeface();
-		TextView titeltext = (TextView) findViewById(R.id.txt_ergebnisse_titel);
-		titeltext.setTypeface(font);
-		
+
 		Bundle extras = getIntent().getExtras();
 		if (extras == null) {
 			return;
 		}
-		String spieler = (String) extras.getSerializable(INTENT_EXTRA_SPIELER);
-
-		mErgebnisListView = (ListView) this.findViewById(android.R.id.list);
 		
+		init();
+		
+		String spieler = (String) extras.getSerializable(INTENT_EXTRA_SPIELER);
 		mSpielerSpeicher = new SpielerSpeicher(this);
 		aktuellerSpieler = mSpielerSpeicher.ladeSpielerByName(null, spieler);
 		if(null == aktuellerSpieler){
 			super.finish();
 		}
 		
-		
-
-		// hinzufuegen
-		final Button buttonAnlegenErgebnis = (Button) findViewById(R.id.sf_ergebnis_neuanlagen);
-		buttonAnlegenErgebnis.setOnClickListener(mErgebnisAnlegenListener);
-		
-		final Button buttonLoeschen = (Button) findViewById(R.id.sf_ergebnis_loeschen);
-		buttonLoeschen.setOnClickListener(mErgebnisLoeschenListener);
 	}
 
 	@Override
 	protected void onStart() {
-		mErgebnisSpeicher = new ErgebnisSpeicher(this);
 		zeigeErgebnisse();
 		super.onStart();
 	}
 
 	@Override
 	protected void onDestroy() {
-		if(null != mErgebnisSpeicher){
-			mErgebnisSpeicher.schliessen();
-		}
-		if(null != mErgebnisSpeicher){
-			mErgebnisSpeicher.schliessen();
-		}
-		
-		
+		cleanDatabase();
 		super.onDestroy();
+	}
+	
+	private void init(){
+		initStyle();
+		initWidgets();
+		initListener();
+		initContextMenu();
+		initDatabase();
+	}
+	
+	private void initStyle() {
+		Typeface font = StyleManager.getInstance().init(this).getTypeface();
+		TextView titeltext = (TextView) findViewById(R.id.txt_ergebnisse_titel);
+		titeltext.setTypeface(font);
+	}
+	
+	private void initWidgets(){
+		mErgebnisListView = (ListView) this.findViewById(android.R.id.list);
+		mAnlegenErgebnisButton = (Button) findViewById(R.id.sf_ergebnis_neuanlagen);
+		mLoeschenErgebnisButton = (Button) findViewById(R.id.sf_ergebnis_loeschen);
+	}
+	
+	private void initListener(){
+		mAnlegenErgebnisButton.setOnClickListener(mErgebnisAnlegenListener);
+		mLoeschenErgebnisButton.setOnClickListener(mErgebnisLoeschenListener);
+	}
+	
+	private void initContextMenu(){
+	}
+	
+	private void initDatabase(){
+		mErgebnisSpeicher = new ErgebnisSpeicher(this);
+	}
+	
+	private void cleanDatabase(){
+		if(null != mErgebnisSpeicher){
+			mErgebnisSpeicher.schliessen();
+		}
+		if(null != mErgebnisSpeicher){
+			mErgebnisSpeicher.schliessen();
+		}
 	}
 
 	/**
